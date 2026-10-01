@@ -76,3 +76,9 @@ footer.site a { color: var(--muted); }
   h1 { font-size: 28px; }
   main { padding: 40px 0 56px; }
 }
+
+@media (max-width: 420px) {
+  nav a.ext { display: none; }
+  header.site .wrap { gap: 12px; }
+  .brand { gap: 8px; }
+}
