@@ -3,43 +3,128 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Focus — Privacy policy</title>
+<title>Privacy Policy — Focus</title>
+<meta name="description" content="How the Focus app collects, uses and protects your information.">
+<link rel="icon" href="logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<main>
-<p class="prompt">PS C:\focus\privacy&gt;</p>
-<h1>Privacy policy</h1>
-<p class="dim">Last updated: October 1, 2026</p>
+<header class="site"><div class="wrap">
+<a class="brand" href="./"><img src="logo.png" alt="">Focus</a>
+<nav>
+<a href="./">Home</a>
+<a href="privacy.html" aria-current="page">Privacy</a>
+<a href="terms.html">Terms</a>
+<a href="https://github.com/SuS1234trwtw/focus-timer">Source</a>
+</nav>
+</div></header>
+<main><div class="wrap">
 
-<p>This policy explains what the Focus iPhone app ("Focus", "we") stores and why. Focus has no ads, no analytics and no tracking, and we never sell data.</p>
+<h1>Privacy Policy</h1>
+<p class="meta">Effective October 1, 2026</p>
 
-<h2>Tasks and focus sessions</h2>
-<p>Your tasks and finished focus/break sessions are stored on your phone. They are also synced to our database (hosted by Supabase) under an anonymous account the app creates automatically, so they can be restored. We don't ask for your name or email for this.</p>
-
-<h2>Spotify (optional)</h2>
-<p>If you connect Spotify, Focus reads the song currently playing and can play, pause and skip on your request. Your Spotify sign-in tokens are kept in your phone's Keychain and are only sent to Spotify. We don't store your Spotify data on our servers.</p>
-
-<h2>Google Calendar (optional)</h2>
-<p>If you connect Google Calendar, Focus asks for the <code>calendar.app.created</code> permission. With it, Focus:</p>
+<div class="summary">
+<h2>Summary</h2>
 <ul>
-<li>creates one secondary calendar named "Focus" in your Google account, and</li>
-<li>adds an event to that calendar for each finished focus block (and break, if you enable it), containing the start time, end time and the name of the task you were working on.</li>
+<li>No ads, no analytics, no tracking. We never sell your data.</li>
+<li>Your tasks and session history sync to our database under an anonymous account.</li>
+<li>Spotify and Google Calendar are optional and only used for the features you turn on.</li>
+<li>Focus can access only the &ldquo;Focus&rdquo; calendar it creates &mdash; nothing else in your Google account.</li>
 </ul>
-<p>Focus cannot read, change or delete any of your other calendars or events. Your Google sign-in tokens are kept in your phone's Keychain and are only sent to Google. Event data goes directly from your phone to Google; we don't copy it to our servers, share it with anyone, or use it for anything other than creating those events.</p>
-<p>Focus's use and transfer of information received from Google APIs adheres to the <a href="https://developers.google.com/terms/api-services-user-data-policy">Google API Services User Data Policy</a>, including the Limited Use requirements.</p>
+</div>
 
-<h2>Deleting your data</h2>
+<nav class="toc" aria-label="Contents"><ol>
+<li><a href="#who">Who we are</a></li>
+<li><a href="#collect">Information we collect</a></li>
+<li><a href="#use">How we use information</a></li>
+<li><a href="#google">Google user data</a></li>
+<li><a href="#share">Sharing and service providers</a></li>
+<li><a href="#retention">Storage, retention and security</a></li>
+<li><a href="#choices">Your choices and deletion</a></li>
+<li><a href="#children">Children</a></li>
+<li><a href="#changes">Changes to this policy</a></li>
+<li><a href="#contact">Contact</a></li>
+</ol></nav>
+
+<h2 id="who">1. Who we are</h2>
+<p>This Privacy Policy describes how the Focus iPhone app (&ldquo;Focus&rdquo;, &ldquo;we&rdquo;, &ldquo;us&rdquo;) handles information. Focus is developed by An Le as an independent, open-source project.</p>
+
+<h2 id="collect">2. Information we collect</h2>
+<h3>Information you create in the app</h3>
 <ul>
-<li>Unlink Spotify or Google Calendar in the app's Settings; this deletes the tokens from your phone.</li>
-<li>You can revoke Focus's access to Google anytime at <a href="https://myaccount.google.com/permissions">myaccount.google.com/permissions</a>, and delete the "Focus" calendar in Google Calendar.</li>
-<li>Deleting the app removes everything stored on your phone. To delete synced tasks from our database, open an issue at the support link below.</li>
+<li><strong>Tasks:</strong> task titles, whether they are done or active, and when they were created or changed.</li>
+<li><strong>Focus sessions:</strong> the type (focus or break), start time, end time and length of each finished session, and which task it was linked to.</li>
+<li><strong>Settings:</strong> timer lengths, appearance, sound and haptic preferences. These stay on your device.</li>
+</ul>
+<h3>Anonymous account</h3>
+<p>To sync your tasks and sessions, Focus automatically creates an anonymous account with our database provider. It is identified by a random ID. We do not ask for your name, email address or phone number.</p>
+<h3>Spotify (optional)</h3>
+<p>If you connect Spotify, Focus reads the track currently playing on your account (title, artist, artwork) and sends play, pause and skip commands when you tap them.</p>
+<h3>Google Calendar (optional)</h3>
+<p>If you connect Google Calendar, see <a href="#google">section 4</a>.</p>
+<h3>What we do not collect</h3>
+<p>Focus does not collect your location, contacts, photos, advertising identifiers, browsing activity or analytics, and contains no third-party advertising or tracking SDKs.</p>
+
+<h2 id="use">3. How we use information</h2>
+<ul>
+<li>To run the timer, show your tasks and display the countdown in the Dynamic Island and on the lock screen.</li>
+<li>To back up and sync your tasks and session history.</li>
+<li>To show and control your Spotify playback, if you connected Spotify.</li>
+<li>To add finished sessions to your Google Calendar, if you connected it.</li>
+</ul>
+<p>We do not use your information for advertising, profiling or any purpose unrelated to these features.</p>
+
+<h2 id="google">4. Google user data</h2>
+<p>Connecting Google Calendar is optional. Focus requests a single permission (OAuth scope): <code>https://www.googleapis.com/auth/calendar.app.created</code>. With it, Focus:</p>
+<ul>
+<li>creates one secondary calendar named &ldquo;Focus&rdquo; in your Google account, and</li>
+<li>adds an event to that calendar for each finished focus block (and each break, if you enable it). Each event contains the start time, end time, your time zone and the title of the task you were working on.</li>
+</ul>
+<p>Focus cannot read, change or delete any other calendar or event in your account. Your Google sign-in tokens are stored only in your device&rsquo;s secure Keychain and are sent only to Google. Events waiting to be sent (for example, while you are offline) are kept on your device until they are delivered. Calendar data is sent directly from your device to Google; we do not copy it to our servers, use it for advertising, sell it or share it with anyone, and no person reads it.</p>
+<p>Focus&rsquo;s use and transfer of information received from Google APIs adheres to the <a href="https://developers.google.com/terms/api-services-user-data-policy">Google API Services User Data Policy</a>, including the Limited Use requirements.</p>
+
+<h2 id="share">5. Sharing and service providers</h2>
+<p>We do not sell, rent or trade your information. Information is processed only by the services needed to provide Focus:</p>
+<ul>
+<li><strong>Supabase</strong> &mdash; hosts the database that syncs your tasks and session history.</li>
+<li><strong>Spotify</strong> &mdash; only if you connect it, under <a href="https://www.spotify.com/legal/privacy-policy/">Spotify&rsquo;s Privacy Policy</a>.</li>
+<li><strong>Google</strong> &mdash; only if you connect Google Calendar, under <a href="https://policies.google.com/privacy">Google&rsquo;s Privacy Policy</a>.</li>
+<li><strong>Apple</strong> &mdash; iOS features such as notifications and Live Activities run on your device under Apple&rsquo;s terms.</li>
+</ul>
+<p>We may disclose information if required by law.</p>
+
+<h2 id="retention">6. Storage, retention and security</h2>
+<p>Data on your device stays there until you delete it or remove the app. Synced tasks and sessions are kept until you ask us to delete them. Spotify and Google tokens are kept in the iOS Keychain until you unlink the service. Connections to our database, Spotify and Google use encrypted HTTPS, and database access is restricted so that each anonymous account can read only its own records. No method of storage or transmission is completely secure, but we work to protect your information.</p>
+
+<h2 id="choices">7. Your choices and deletion</h2>
+<ul>
+<li><strong>Unlink services:</strong> in Settings, tap &ldquo;unlink spotify&rdquo; or &ldquo;unlink google&rdquo;. This deletes the tokens from your device.</li>
+<li><strong>Revoke Google access:</strong> at any time at <a href="https://myaccount.google.com/permissions">myaccount.google.com/permissions</a>. You can also delete the &ldquo;Focus&rdquo; calendar in Google Calendar.</li>
+<li><strong>Delete synced data:</strong> contact us (see <a href="#contact">section 10</a>) and we will delete your synced tasks and sessions.</li>
+<li><strong>Delete everything on your device:</strong> remove the app.</li>
 </ul>
 
-<h2>Contact</h2>
-<p>Questions or requests: <a href="https://github.com/SuS1234trwtw/focus-timer/issues">github.com/SuS1234trwtw/focus-timer/issues</a></p>
+<h2 id="children">8. Children</h2>
+<p>Focus is not directed to children under 13, and we do not knowingly collect personal information from them.</p>
 
-<footer><a href="index.html">← Focus home</a></footer>
-</main>
+<h2 id="changes">9. Changes to this policy</h2>
+<p>We may update this policy from time to time. The effective date at the top shows the latest version. Significant changes will be noted on this page.</p>
+
+<h2 id="contact">10. Contact</h2>
+<p>Questions or requests about privacy:</p>
+<ul class="contact">
+<li><strong>GitHub:</strong> <a href="https://github.com/SuS1234trwtw/focus-timer/issues">github.com/SuS1234trwtw/focus-timer/issues</a></li>
+<li><strong>Discord:</strong> <code>notanlee</code></li>
+<li><strong>TikTok:</strong> <a href="https://www.tiktok.com/@notanlee1">@notanlee1</a></li>
+</ul>
+
+</div></main>
+<footer class="site"><div class="wrap">
+<span>&copy; 2026 An Le &middot; Open source under the <a href="https://github.com/SuS1234trwtw/focus-timer/blob/main/LICENSE">MIT License</a></span>
+<span><a href="privacy.html">Privacy</a> &middot; <a href="terms.html">Terms</a> &middot; <a href="./#contact">Contact</a></span>
+</div></footer>
 </body>
 </html>
