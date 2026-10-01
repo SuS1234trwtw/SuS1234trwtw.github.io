@@ -1,0 +1,11 @@
+:root{--bg:#0C0C0C;--text:#CCCCCC;--dim:#7a7a7a;--accent:#3B78FF;--ok:#16C60C}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.6 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+main{max-width:720px;margin:0 auto;padding:48px 16px}
+h1{color:#fff;font-size:28px;margin:0 0 4px}
+h2{color:var(--accent);font-size:18px;margin:32px 0 8px}
+a{color:var(--accent)}
+.prompt{color:var(--ok)}
+.dim{color:var(--dim)}
+ul{padding-left:20px}
+footer{margin-top:48px;color:var(--dim);font-size:14px}
