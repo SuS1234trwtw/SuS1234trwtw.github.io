@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Install Focus — iloader & SideStore guide</title>
+<meta name="description" content="Step-by-step guide to install Focus on iPhone with iloader or SideStore, on Windows or Mac.">
+<link rel="icon" href="logo.png?v=3">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css?v=3">
+</head>
+<body>
+<header class="site"><div class="wrap">
+<a class="brand" href="./"><img src="logo.png?v=3" alt="">Focus</a>
+<nav>
+<a href="install.html" aria-current="page">Install</a>
+<a href="privacy.html">Privacy</a>
+<a href="terms.html">Terms</a>
+<a class="ext" href="https://github.com/SuS1234trwtw/focus-timer">Source</a>
+</nav>
+</div></header>
+<main><div class="wrap">
+
+<h1>Install Focus</h1>
+<p class="meta">Updated October 1, 2026 &middot; iPhone with iOS 26 or later &middot; free Apple Account</p>
+
+<div class="summary">
+<h2>Before you start</h2>
+<ul>
+<li>Focus isn&rsquo;t on the App Store. You install it yourself (&ldquo;sideloading&rdquo;) with a free Apple Account.</li>
+<li>Free installs expire after <strong>7 days</strong>. Re-install with iloader, or let SideStore refresh it for you.</li>
+<li>Your iPhone needs a passcode, and you need a USB cable for the first setup.</li>
+<li>Download the latest Focus IPA: <a href="https://github.com/SuS1234trwtw/focus-timer/releases/latest">GitHub Releases &rarr; latest</a> (the file named <code>FocusTimer-&lt;version&gt;-&lt;build&gt;.ipa</code>).</li>
+</ul>
+</div>
+
+<nav class="toc" aria-label="Contents"><ol>
+<li><a href="#which">Which method should I pick?</a></li>
+<li><a href="#iloader-windows">iloader on Windows</a></li>
+<li><a href="#iloader-mac">iloader on Mac</a></li>
+<li><a href="#iphone">First launch on the iPhone</a></li>
+<li><a href="#sidestore">SideStore: one-tap updates on the phone</a></li>
+<li><a href="#updates">Updating Focus</a></li>
+<li><a href="#trouble">Troubleshooting</a></li>
+</ol></nav>
+
+<h2 id="which">1. Which method should I pick?</h2>
+<ul>
+<li><strong>iloader only</strong> &mdash; simplest. Plug in your phone and install the IPA from your computer. Every 7 days (and for each update) you do it again.</li>
+<li><strong>SideStore</strong> &mdash; a bit more setup once, then Focus updates and refreshes right on your phone, no computer needed. You still use iloader once to install SideStore.</li>
+</ul>
+
+<h2 id="iloader-windows">2. iloader on Windows</h2>
+<ol>
+<li><strong>Check your PC.</strong> iloader needs 64-bit Windows on an Intel or AMD processor (Windows on Arm isn&rsquo;t supported).</li>
+<li><strong>Install iTunes</strong> so Windows can talk to your iPhone: download it from <a href="https://www.apple.com/itunes/download/win64">apple.com</a> (recommended) or the Microsoft Store. Open it once and check it sees your iPhone. If it doesn&rsquo;t, uninstall iTunes and &ldquo;Apple Mobile Device Support&rdquo;, then install the <strong>Apple Devices</strong> app from the Microsoft Store instead.</li>
+<li><strong>Download iloader</strong> only from <a href="https://github.com/nab138/iloader/releases">github.com/nab138/iloader/releases</a> or <a href="https://iloader.app">iloader.app</a>. Pick <code>iloader-windows-x64.msi</code> and run the installer.</li>
+<li><strong>Plug in your iPhone</strong> and unlock it. Tap <strong>Trust</strong> on the &ldquo;Trust This Computer?&rdquo; pop-up and enter your passcode.</li>
+<li><strong>Sign in:</strong> open iloader. In the <strong>Apple ID</strong> panel enter your Apple Account email and password and click <strong>Login</strong>. Type the 6-digit code from your other Apple device and click <strong>Submit</strong>. (A different Apple Account than the one on your phone is fine. Security-key sign-in isn&rsquo;t supported.)</li>
+<li><strong>Select your iPhone</strong> in the <strong>iDevice</strong> panel. Not there? Click <strong>Refresh Devices</strong>.</li>
+<li><strong>Install Focus:</strong> under <strong>Installers</strong> click <strong>Import IPA</strong> and choose the Focus <code>.ipa</code> you downloaded. Wait for &ldquo;Sign &amp; Install App&rdquo; to finish. If iloader says &ldquo;Maximum certificates reached&rdquo;, let it revoke the old one and click <strong>Continue</strong>.</li>
+<li>Continue with <a href="#iphone">First launch on the iPhone</a>.</li>
+</ol>
+
+<h2 id="iloader-mac">3. iloader on Mac</h2>
+<ol>
+<li><strong>Nothing extra to install</strong> &mdash; macOS already includes what&rsquo;s needed to talk to your iPhone.</li>
+<li><strong>Download iloader</strong> from <a href="https://github.com/nab138/iloader/releases">github.com/nab138/iloader/releases</a> or <a href="https://iloader.app">iloader.app</a>: pick <code>iloader-darwin-universal.dmg</code> (works on Apple silicon and Intel Macs). Open it and drag iloader to Applications.</li>
+<li>If macOS blocks it, go to <strong>System Settings &rarr; Privacy &amp; Security</strong> and click <strong>Open Anyway</strong>.</li>
+<li><strong>Plug in your iPhone</strong>, unlock it and tap <strong>Trust</strong> on the phone (and on the Mac if asked). No prompt? Open Finder, then unplug and re-plug the phone.</li>
+<li>Then follow steps 5&ndash;8 of the <a href="#iloader-windows">Windows guide</a> &mdash; iloader works the same on Mac.</li>
+</ol>
+
+<h2 id="iphone">4. First launch on the iPhone</h2>
+<ol>
+<li><strong>Trust the developer:</strong> open <strong>Settings &rarr; General &rarr; VPN &amp; Device Management</strong>, tap your Apple Account under &ldquo;Developer App&rdquo;, tap <strong>Trust</strong> (then <strong>Allow &amp; Restart</strong> if asked) and enter your passcode.</li>
+<li><strong>Turn on Developer Mode:</strong> open <strong>Settings &rarr; Privacy &amp; Security</strong>, scroll to the bottom, turn on <strong>Developer Mode</strong> and tap <strong>Restart</strong>. After the restart, confirm with <strong>Turn On</strong> and enter your passcode.</li>
+<li>Open <strong>Focus</strong>. Start a focus block to see the timer in the Dynamic Island.</li>
+</ol>
+
+<h2 id="sidestore">5. SideStore: one-tap updates on the phone</h2>
+<ol>
+<li><strong>Install LocalDevVPN</strong> from the <a href="https://apps.apple.com/app/localdevvpn/id6755608044">App Store</a>. Open it, tap connect and allow the VPN configuration. SideStore needs it (and Wi-Fi) switched on whenever it installs, updates or refreshes apps.</li>
+<li><strong>Install SideStore with iloader:</strong> plug in your phone, sign in and select it in iloader (steps 1&ndash;6 of the <a href="#iloader-windows">Windows guide</a>), then under <strong>Installers</strong> choose <strong>SideStore (Stable)</strong>. iloader downloads SideStore, installs it and places the pairing file for you.</li>
+<li>On the iPhone, trust the developer and turn on Developer Mode (<a href="#iphone">section 4</a>), connect LocalDevVPN, open <strong>SideStore</strong> and sign in with the same Apple Account.</li>
+<li>In SideStore, go to <strong>My Apps</strong> and tap the <strong>7 DAYS</strong> button next to SideStore to refresh it once (tap <strong>Yes</strong> or <strong>Refresh Now</strong> if asked). SideStore may jump to the Home Screen &mdash; that&rsquo;s normal.</li>
+<li><strong>Add the Focus source:</strong> open the <strong>Sources</strong> tab, tap <strong>+</strong>, paste this URL and tap <strong>Done</strong>:<br><code>https://github.com/SuS1234trwtw/focus-timer/releases/latest/download/source.json</code><br>Already have Focus installed? Open Focus &rarr; Settings &rarr; updates &rarr; <strong>add to sidestore</strong> instead.</li>
+<li>Open the Focus source and install it. When SideStore asks about <strong>App Extensions</strong>, choose <strong>Keep App Extensions (Register App ID for Each Extension)</strong> so the Dynamic Island and widgets keep working.</li>
+<li>SideStore now refreshes Focus in the background and shows an <strong>Update</strong> button when a new build is out.</li>
+</ol>
+
+<h2 id="updates">6. Updating Focus</h2>
+<ul>
+<li>Focus checks for new builds by itself. When one is out you&rsquo;ll see <code>&gt; update available</code> at the top of the app and in <strong>Settings &rarr; updates</strong>.</li>
+<li><strong>iloader:</strong> download the new IPA from <a href="https://github.com/SuS1234trwtw/focus-timer/releases/latest">Releases</a> on your computer, then use <strong>Import IPA</strong> again. Install over the old version (don&rsquo;t delete it first) so your local settings stay; tasks are also backed up by sync.</li>
+<li><strong>SideStore:</strong> open <strong>My Apps</strong> and tap <strong>Update</strong> next to Focus.</li>
+</ul>
+
+<h2 id="trouble">7. Troubleshooting</h2>
+<ul>
+<li><strong>iloader can&rsquo;t find my iPhone</strong> &mdash; make sure iTunes (or Apple Devices) sees it, try another cable or USB port, unlock the phone and tap Trust.</li>
+<li><strong>&ldquo;Untrusted Developer&rdquo;</strong> when opening Focus &mdash; do step 1 of <a href="#iphone">section 4</a>.</li>
+<li><strong>&ldquo;Unable to Verify App&rdquo;</strong> &mdash; connect to the internet, then in VPN &amp; Device Management tap your Apple Account and <strong>Verify App</strong>.</li>
+<li><strong>Focus stopped opening after a week</strong> &mdash; the free 7-day signature expired. Re-install with iloader, or refresh it in SideStore.</li>
+<li><strong>&ldquo;Maximum number of apps&rdquo; / not enough App IDs</strong> &mdash; a free account can have 3 sideloaded apps active at once (SideStore counts as one; expired apps still count) and register 10 App IDs per 7 days. Remove an app you don&rsquo;t use, or wait for old App IDs to expire.</li>
+<li><strong>No timer in the Dynamic Island / no widget</strong> &mdash; the widget extension wasn&rsquo;t signed. Re-install with iloader, or in SideStore pick &ldquo;Register App ID for Each Extension&rdquo;. Focus &rarr; Settings &rarr; island shows whether the extension is signed.</li>
+<li><strong>SideStore errors about the VPN, Wi-Fi or pairing file</strong> &mdash; turn on Wi-Fi and LocalDevVPN, turn off DNS or ad blockers, and restart SideStore. Still failing? In iloader click <strong>Delete Stored Pairing</strong>, re-select your phone and tap Trust, then <strong>Manage Pairing File &rarr; Place</strong> next to SideStore. See the <a href="https://docs.sidestore.io/docs/troubleshooting/error-codes">SideStore error codes</a>.</li>
+</ul>
+
+<h2>Need help?</h2>
+<ul class="contact">
+<li><strong>GitHub:</strong> <a href="https://github.com/SuS1234trwtw/focus-timer/issues">github.com/SuS1234trwtw/focus-timer/issues</a></li>
+<li><strong>Discord:</strong> <code>notanlee</code></li>
+<li><strong>TikTok:</strong> <a href="https://www.tiktok.com/@notanlee1">@notanlee1</a></li>
+</ul>
+
+<p class="meta">iloader and SideStore are independent open-source projects and aren&rsquo;t affiliated with Focus or Apple.</p>
+</div></main>
+<footer class="site"><div class="wrap">
+<span>&copy; 2026 An Le &middot; Open source under the <a href="https://github.com/SuS1234trwtw/focus-timer/blob/main/LICENSE">MIT License</a></span>
+<span><a href="privacy.html">Privacy</a> &middot; <a href="terms.html">Terms</a> &middot; <a href="./#contact">Contact</a> &middot; <a href="https://github.com/SuS1234trwtw/focus-timer">Source</a></span>
+</div></footer>
+</body>
+</html>
