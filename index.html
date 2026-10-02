@@ -5,39 +5,195 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Focus — Pomodoro timer for iPhone</title>
 <meta name="description" content="A minimal Pomodoro timer and task list for iPhone.">
-<link rel="icon" href="logo.png?v=3">
+<meta name="theme-color" content="#050505">
+<link rel="icon" href="logo.png?v=10">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=3">
+<link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css?v=10">
+<script>
+(function () {
+  var d = document.documentElement, seen = false;
+  d.className += ' js';
+  // boot on every visit; skip it only when coming back from another page of this site
+  try { seen = sessionStorage.getItem('focus.booted') === '1' && document.referrer.indexOf(location.origin) === 0; } catch (e) {}
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!seen && !reduce) d.className += ' booting';
+})();
+</script>
 </head>
 <body>
+
+<div class="boot" id="boot" aria-hidden="true">
+<div class="boot-inner">
+<div class="boot-top"><span class="wdots"><i></i><i></i><i></i></span><span class="t">focus &mdash; boot &mdash; tty1 &mdash; 80&times;24</span><span id="boot-clock">00:00:00</span></div>
+<div class="boot-main">
+<div class="boot-log" id="boot-log"></div>
+<aside class="boot-side">
+<p class="h"><span>// system</span><em id="v-host">focus-os 1.8.0</em></p>
+<div class="bs-row"><span>cpu</span><div class="bs-bar"><i id="b-cpu"></i></div><em id="v-cpu">0%</em></div>
+<div class="bs-row"><span>mem</span><div class="bs-bar"><i id="b-mem"></i></div><em id="v-mem">0%</em></div>
+<div class="bs-row"><span>net</span><div class="bs-bar"><i id="b-net"></i></div><em id="v-net">0%</em></div>
+<div class="grid-wrap"><p class="h"><span>// modules</span><em id="v-mod">0/9</em></p><div class="bs-grid" id="bs-grid"></div></div>
+<div class="wave-wrap"><p class="h"><span>// signal</span><em id="v-hz">0 hz</em></p><div class="bs-wave" id="bs-wave"></div></div>
+<p class="h"><span>// uptime</span><em id="v-up">0.000s</em></p>
+</aside>
+<div class="ascii" id="ascii"></div>
+<p class="ascii-sub" id="ascii-sub">pomodoro &middot; tasks &middot; island</p>
+</div>
+<div class="boot-bottom"><span class="bstage" id="boot-stage">post</span><div class="track"><div class="fill" id="boot-fill"></div></div><span class="pct" id="boot-pct">000%</span></div>
+</div>
+<p class="boot-skip">tap or press any key to skip</p>
+</div>
+
 <header class="site"><div class="wrap">
-<a class="brand" href="./"><img src="logo.png?v=3" alt="">Focus</a>
+<a class="brand" href="./"><img src="logo.png?v=10" alt="">Focus</a>
 <nav>
 <a href="install.html">Install</a>
 <a href="privacy.html">Privacy</a>
 <a href="terms.html">Terms</a>
 <a class="ext" href="https://github.com/SuS1234trwtw/focus-timer">Source</a>
 </nav>
+<span class="scrollbar" id="scrollbar"></span>
 </div></header>
-<main><div class="wrap">
 
-<h1>Focus</h1>
-<p class="lead">A minimal Pomodoro timer and task list for iPhone, with a terminal-inspired look.</p>
+<main class="home">
 
-<ul class="features">
-<li><strong>Focus &amp; break timer</strong><span>Custom lengths, sounds and haptics.</span></li>
-<li><strong>Task list</strong><span>Simple tasks, synced across your devices.</span></li>
-<li><strong>Dynamic Island</strong><span>Live countdown on the island and lock screen.</span></li>
-<li><strong>Spotify</strong><span>Optional: see and control what&rsquo;s playing.</span></li>
-<li><strong>Google Calendar</strong><span>Optional: log finished focus blocks to a &ldquo;Focus&rdquo; calendar.</span></li>
-<li><strong>Open source</strong><span>Code available under the MIT License.</span></li>
-</ul>
+<section class="hero" aria-label="Focus">
+<div class="hero-inner" id="hero-inner">
+<p class="mode reveal"><b class="js-mode">Focus</b> &middot; <span class="js-state">session 1</span></p>
+<h1 class="time reveal d1 js-clock" id="time" tabindex="0" role="button" aria-label="Focus timer, tap to pause or start">25:00<span class="cursor"></span></h1>
+<p class="tag reveal d2">A minimal Pomodoro timer and task list for iPhone, with a terminal-inspired look.</p>
+<div class="actions reveal d3">
+<a class="btn solid" href="install.html">+ Install</a>
+<a class="btn" href="https://github.com/SuS1234trwtw/focus-timer">Source &#8599;</a>
+</div>
+<p class="hint reveal d3">tap the timer to pause &middot; it&rsquo;s live</p>
+</div>
+<p class="scroll-hint">scroll<i>&darr;</i></p>
+</section>
 
-<h2>How Focus uses Google Calendar</h2>
-<p>Connecting Google Calendar is optional. When you connect, Focus creates one secondary calendar named &ldquo;Focus&rdquo; in your Google account and adds an event to it each time you finish a focus block (and each break, if you turn that on). Focus requests only the <code>calendar.app.created</code> permission, so it can access only the calendar it created &mdash; it cannot see, change or delete your other calendars or events. You can unlink at any time in the app&rsquo;s Settings.</p>
+<div class="story" id="story">
+<section class="chapter" data-shot="0" aria-labelledby="c1">
+<p class="idx reveal">[01] &middot; timer</p>
+<h2 class="big reveal d1" id="c1">Focus. Break.<br><span class="soft">Repeat.</span></h2>
+<p class="sub reveal d2">Focus &amp; break timer with custom lengths, sounds and haptics.</p>
+<div class="phone-inline reveal d3"><div class="phone"><div class="screen"><div class="slide on" data-i="0"><div class="shot-fallback"><span>&gt;_</span><b>timer</b><i>screenshot coming soon</i></div><img class="shot" src="shots/timer.webp" alt="Focus showing the timer during a focus block" loading="lazy" decoding="async" onerror="this.remove()"></div></div><img class="frame" src="iphone.png" alt="" aria-hidden="true"></div></div>
+<div class="visual reveal d3">
+<div class="term">
+<div class="term-bar"><span>~/focus</span><span class="js-state">session 1</span></div>
+<div class="term-body">
+<div class="meter" id="m-focus"><span class="lbl">FOCUS</span><div class="track"><div class="fill"></div></div><span class="num">25:00</span></div>
+<div class="meter brk" id="m-break"><span class="lbl">BREAK</span><div class="track"><div class="fill"></div></div><span class="num">05:00</span></div>
+</div>
+<div class="ctrls">
+<button class="mini js-toggle" type="button">pause</button>
+<button class="mini js-switch" type="button">&#8644; switch</button>
+<button class="mini js-reset" type="button">&#8634; reset</button>
+</div>
+</div>
+</div>
+</section>
+
+<section class="chapter" data-shot="1" aria-labelledby="c2">
+<p class="idx reveal">[02] &middot; tasks</p>
+<h2 class="big reveal d1" id="c2">Your list.<br><span class="soft">Everywhere.</span></h2>
+<p class="sub reveal d2">Simple tasks, synced across your devices.</p>
+<div class="phone-inline reveal d3"><div class="phone"><div class="screen"><div class="slide on" data-i="1"><div class="shot-fallback"><span>&gt;_</span><b>tasks</b><i>screenshot coming soon</i></div><img class="shot" src="shots/tasks.webp" alt="Focus showing the task list" loading="lazy" decoding="async" onerror="this.remove()"></div></div><img class="frame" src="iphone.png" alt="" aria-hidden="true"></div></div>
+<div class="visual reveal d3">
+<div class="term">
+<div class="term-bar"><span>~/tasks</span><span id="tasks-left">2 left</span></div>
+<div class="term-body">
+<ul class="tasks" id="tasks"></ul>
+<form class="add" id="add-task" autocomplete="off">
+<span aria-hidden="true">+</span>
+<input id="new-task" maxlength="48" placeholder="add a task, press enter" aria-label="Add a task">
+</form>
+</div>
+</div>
+</div>
+</section>
+
+<section class="chapter" data-shot="2" aria-labelledby="c3">
+<p class="idx reveal">[03] &middot; dynamic island</p>
+<h2 class="big reveal d1" id="c3">Lives in<br><span class="soft">the island.</span></h2>
+<p class="sub reveal d2">Live countdown on the island and lock screen. Hold it to pause or switch modes.</p>
+<div class="phone-inline reveal d3"><div class="phone"><div class="screen"><div class="slide on" data-i="2"><div class="shot-fallback"><span>&gt;_</span><b>lock</b><i>screenshot coming soon</i></div><img class="shot" src="shots/lock.webp" alt="Lock screen with the Focus timer in a Live Activity" loading="lazy" decoding="async" onerror="this.remove()"></div><div class="island pisland" tabindex="0" role="button" aria-expanded="false" aria-label="Dynamic Island, tap to expand"><span class="l js-mode">FOCUS</span><span class="r js-time">25:00</span><span class="ctl"><button type="button" class="js-toggle">&#10074;&#10074; pause</button><button type="button" class="js-switch">&#8644; switch</button></span><span class="note">paused</span></div></div><img class="frame" src="iphone.png" alt="" aria-hidden="true"></div></div>
+<p class="island-tip reveal d3"><span class="tip-up">&uarr; </span>tap or hold the island on the phone<span class="tip-right"> &rarr;</span></p>
+</section>
+
+<section class="chapter" data-shot="3" aria-labelledby="c4">
+<p class="idx reveal">[04] &middot; spotify</p>
+<h2 class="big reveal d1" id="c4">Music,<br><span class="soft">in reach.</span></h2>
+<p class="sub reveal d2">Optional: see and control what&rsquo;s playing. Try it here with music made live in your browser, random every track and free of copyright.</p>
+<div class="phone-inline reveal d3"><div class="phone"><div class="screen"><div class="slide on" data-i="3"><div class="shot-fallback"><span>&gt;_</span><b>spotify</b><i>screenshot coming soon</i></div><img class="shot" src="shots/spotify.webp" alt="Focus showing the song playing on Spotify" loading="lazy" decoding="async" onerror="this.remove()"></div></div><img class="frame" src="iphone.png" alt="" aria-hidden="true"></div></div>
+<div class="visual reveal d3">
+<div id="player-mount"></div>
+</div>
+</section>
+
+<section class="chapter" data-shot="4" id="calendar" aria-labelledby="c5">
+<p class="idx reveal">[05] &middot; google calendar</p>
+<h2 class="big reveal d1" id="c5">Every block,<br><span class="soft">logged.</span></h2>
+<p class="sub reveal d2">Optional: log finished focus blocks to a &ldquo;Focus&rdquo; calendar.</p>
+<div class="phone-inline reveal d3"><div class="phone"><div class="screen"><div class="slide on" data-i="4"><div class="shot-fallback"><span>&gt;_</span><b>calendar</b><i>screenshot coming soon</i></div><img class="shot" src="shots/calendar.webp" alt="Google Calendar showing logged Focus blocks" loading="lazy" decoding="async" onerror="this.remove()"></div></div><img class="frame" src="iphone.png" alt="" aria-hidden="true"></div></div>
+<div class="visual reveal d3">
+<div class="term">
+<div class="term-bar"><span>calendar &middot; focus</span><span>today</span></div>
+<div class="term-body">
+<div class="cal-row"><span class="h">09:00</span><span class="ev">focus &middot; 25 min</span></div>
+<div class="cal-row"><span class="h">09:25</span><span class="ev brk">break &middot; 5 min</span></div>
+<div class="cal-row"><span class="h">09:30</span><span class="ev">focus &middot; 25 min</span></div>
+<div class="cal-row"><span class="h">09:55</span><span class="ev">focus &middot; 25 min</span></div>
+</div>
+</div>
+</div>
+<div class="fine reveal">
+<p><strong>How Focus uses Google Calendar.</strong> Connecting Google Calendar is optional. When you connect, Focus creates one secondary calendar named &ldquo;Focus&rdquo; in your Google account and adds an event to it each time you finish a focus block (and each break, if you turn that on). Focus requests only the <code>calendar.app.created</code> permission, so it can access only the calendar it created &mdash; it cannot see, change or delete your other calendars or events. You can unlink at any time in the app&rsquo;s Settings.</p>
 <p>Read the <a href="privacy.html">Privacy Policy</a> for full details.</p>
+</div>
+</section>
+
+<section class="chapter" data-shot="5" aria-labelledby="c6">
+<p class="idx reveal">[06] &middot; open source</p>
+<h2 class="big reveal d1" id="c6">Open source.<br><span class="soft">MIT.</span></h2>
+<p class="sub reveal d2">Code available under the MIT License.</p>
+<div class="phone-inline reveal d3"><div class="phone"><div class="screen"><div class="slide on" data-i="5"><div class="shot-fallback"><span>&gt;_</span><b>widget</b><i>screenshot coming soon</i></div><img class="shot" src="shots/widget.webp" alt="The Focus widget on the Home Screen" loading="lazy" decoding="async" onerror="this.remove()"></div></div><img class="frame" src="iphone.png" alt="" aria-hidden="true"></div></div>
+<div class="visual reveal d3">
+<div class="term">
+<div class="term-bar"><span>~</span><span>git</span></div>
+<div class="term-body">
+<p><span class="k">$</span> git clone github.com/SuS1234trwtw/focus-timer</p>
+<p class="k">cloning into 'focus-timer'... done.</p>
+<p><span class="k">$</span> <a href="https://github.com/SuS1234trwtw/focus-timer">open source &#8599;</a><span class="caret"></span></p>
+</div>
+</div>
+</div>
+</section>
+<div class="stage" aria-hidden="false"><div class="phone sticky"><div class="screen"><div class="slide on" data-i="0"><div class="shot-fallback"><span>&gt;_</span><b>timer</b><i>screenshot coming soon</i></div><img class="shot" src="shots/timer.webp" alt="Focus showing the timer during a focus block" loading="lazy" decoding="async" onerror="this.remove()"></div><div class="slide" data-i="1"><div class="shot-fallback"><span>&gt;_</span><b>tasks</b><i>screenshot coming soon</i></div><img class="shot" src="shots/tasks.webp" alt="Focus showing the task list" loading="lazy" decoding="async" onerror="this.remove()"></div><div class="slide" data-i="2"><div class="shot-fallback"><span>&gt;_</span><b>lock</b><i>screenshot coming soon</i></div><img class="shot" src="shots/lock.webp" alt="Lock screen with the Focus timer in a Live Activity" loading="lazy" decoding="async" onerror="this.remove()"></div><div class="slide" data-i="3"><div class="shot-fallback"><span>&gt;_</span><b>spotify</b><i>screenshot coming soon</i></div><img class="shot" src="shots/spotify.webp" alt="Focus showing the song playing on Spotify" loading="lazy" decoding="async" onerror="this.remove()"></div><div class="slide" data-i="4"><div class="shot-fallback"><span>&gt;_</span><b>calendar</b><i>screenshot coming soon</i></div><img class="shot" src="shots/calendar.webp" alt="Google Calendar showing logged Focus blocks" loading="lazy" decoding="async" onerror="this.remove()"></div><div class="slide" data-i="5"><div class="shot-fallback"><span>&gt;_</span><b>widget</b><i>screenshot coming soon</i></div><img class="shot" src="shots/widget.webp" alt="The Focus widget on the Home Screen" loading="lazy" decoding="async" onerror="this.remove()"></div><div class="island pisland" tabindex="0" role="button" aria-expanded="false" aria-label="Dynamic Island, tap to expand"><span class="l js-mode">FOCUS</span><span class="r js-time">25:00</span><span class="ctl"><button type="button" class="js-toggle">&#10074;&#10074; pause</button><button type="button" class="js-switch">&#8644; switch</button></span><span class="note">paused</span></div></div><img class="frame" src="iphone.png" alt="" aria-hidden="true"></div></div>
+</div>
+
+<section class="cta" aria-labelledby="cta">
+<p class="q reveal">&gt; interested?</p>
+<h2 class="big reveal d1" id="cta">Install it.</h2>
+<div class="cta-wrap reveal d2">
+<a class="btn solid" href="install.html">Open the install guide &rarr;</a>
+<div class="peek term">
+<div class="term-bar"><span>// install guide</span><span>~10 min</span></div>
+<div class="term-body">
+<ol>
+<li><a href="install.html">Download the Focus IPA</a></li>
+<li><a href="install.html">Get iloader on your computer</a></li>
+<li><a href="install.html">Sign in &amp; install to your iPhone</a></li>
+<li><a href="install.html">Trust it &amp; open Focus</a></li>
+</ol>
+<a class="all" href="install.html">full step-by-step guide &rarr;</a>
+</div>
+</div>
+</div>
+</section>
+
+<div class="home-info"><div class="wrap">
 
 <h2>Install &amp; updates</h2>
 <p>Focus is installed by sideloading with a free Apple ID. Follow the <a href="install.html">step-by-step install guide</a> for Windows or Mac.</p>
@@ -55,10 +211,342 @@
 </ul>
 
 <p class="meta">Focus is an independent project and is not affiliated with, endorsed by or sponsored by Google, Spotify or Apple.</p>
-</div></main>
+</div></div>
+</main>
 <footer class="site"><div class="wrap">
 <span>&copy; 2026 An Le &middot; Open source under the <a href="https://github.com/SuS1234trwtw/focus-timer/blob/main/LICENSE">MIT License</a></span>
 <span><a href="privacy.html">Privacy</a> &middot; <a href="terms.html">Terms</a> &middot; <a href="./#contact">Contact</a> &middot; <a href="https://github.com/SuS1234trwtw/focus-timer">Source</a></span>
 </div></footer>
+
+<script>
+(function () {
+  var root = document.documentElement;
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function $(id) { return document.getElementById(id); }
+
+  function all(sel) { return [].slice.call(document.querySelectorAll(sel)); }
+  function pad(n) { return (n < 10 ? '0' : '') + n; }
+  function fmt(s) { return pad(Math.floor(s / 60)) + ':' + pad(s % 60); }
+
+  /* ---------- one shared timer: hero, meters, island, lock screen ---------- */
+  var LEN = { focus: 25 * 60, break: 5 * 60 };
+  var T = { mode: 'focus', left: LEN.focus, running: true, round: 1 };
+  var islands = all('.island');
+
+  function draw() {
+    var focus = T.mode === 'focus';
+    $('time').firstChild.nodeValue = fmt(T.left);
+    all('.js-time').forEach(function (el) { el.textContent = fmt(T.left); });
+    all('.js-mode').forEach(function (el) { el.textContent = focus ? 'Focus' : 'Break'; });
+    all('.js-state').forEach(function (el) { el.textContent = T.running ? 'session ' + T.round : 'paused'; });
+    all('.js-toggle').forEach(function (el) { el.innerHTML = T.running ? '&#10074;&#10074; pause' : '&#9654; start'; });
+    $('hero-inner').classList.toggle('paused', !T.running);
+    islands.forEach(function (el) { el.classList.toggle('paused', !T.running); });
+    // meters: the running one fills up, the other shows its full length
+    var mf = $('m-focus'), mb = $('m-break');
+    mf.classList.toggle('on', focus); mb.classList.toggle('on', !focus);
+    mf.querySelector('.fill').style.width = (focus ? (1 - T.left / LEN.focus) * 100 : 100) + '%';
+    mb.querySelector('.fill').style.width = (focus ? 0 : (1 - T.left / LEN.break) * 100) + '%';
+    mf.querySelector('.num').textContent = focus ? fmt(T.left) : '25:00';
+    mb.querySelector('.num').textContent = focus ? '05:00' : fmt(T.left);
+  }
+  function toggle() { T.running = !T.running; draw(); }
+  function switchMode() {
+    T.mode = T.mode === 'focus' ? 'break' : 'focus';
+    if (T.mode === 'focus') T.round += 1;
+    T.left = LEN[T.mode];
+    draw();
+  }
+  function reset() { T.mode = 'focus'; T.left = LEN.focus; T.round = 1; T.running = true; draw(); }
+  var ticking = false;
+  function startClock() {
+    if (ticking) return;
+    ticking = true;
+    draw();
+    setInterval(function () {
+      if (!T.running) return;
+      T.left -= 1;
+      if (T.left < 0) switchMode(); else draw();
+    }, 1000);
+  }
+
+  $('time').addEventListener('click', toggle);
+  $('time').addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); } });
+  all('.js-toggle').forEach(function (b) { b.addEventListener('click', function (e) { e.stopPropagation(); toggle(); }); });
+  all('.js-switch').forEach(function (b) { b.addEventListener('click', function (e) { e.stopPropagation(); switchMode(); }); });
+  all('.js-reset').forEach(function (b) { b.addEventListener('click', reset); });
+
+  /* ---------- islands (the big one and the one on each phone): tap or hold to expand ---------- */
+  var canHover = !!(window.matchMedia && matchMedia('(hover: hover)').matches);
+  function setIsland(el, open) {
+    el.classList.toggle('open', open);
+    el.setAttribute('aria-expanded', open ? 'true' : 'false');
+  }
+  islands.forEach(function (el) {
+    var holdTimer = null, held = false;
+    function cancelHold() { clearTimeout(holdTimer); }
+    el.addEventListener('pointerdown', function (e) {
+      if (e.target.closest('button')) return;
+      held = false;
+      holdTimer = setTimeout(function () { held = true; setIsland(el, true); }, 500);
+    });
+    el.addEventListener('pointerup', cancelHold);
+    el.addEventListener('pointerleave', cancelHold);
+    el.addEventListener('click', function (e) {
+      if (e.target.closest('button')) return;
+      if (held) { held = false; return; }
+      setIsland(el, canHover ? true : !el.classList.contains('open'));
+    });
+    el.addEventListener('keydown', function (e) {
+      if (e.target !== el) return;
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setIsland(el, !el.classList.contains('open')); }
+      if (e.key === 'Escape') setIsland(el, false);
+    });
+    el.addEventListener('contextmenu', function (e) { e.preventDefault(); });
+    if (canHover) {
+      el.addEventListener('mouseenter', function () { setIsland(el, true); });
+      el.addEventListener('mouseleave', function () { setIsland(el, false); });
+    }
+  });
+  document.addEventListener('click', function (e) {
+    islands.forEach(function (el) { if (!el.contains(e.target)) setIsland(el, false); });
+  });
+
+  /* ---------- the pinned phone shows each chapter's screen ---------- */
+  var stagePhone = document.querySelector('.phone.sticky');
+  function showShot(i) {
+    if (!stagePhone) return;
+    all('.phone.sticky .slide').forEach(function (s) { s.classList.toggle('on', +s.getAttribute('data-i') === i); });
+    stagePhone.classList.toggle('at-island', i === 2);
+    if (i !== 2) islands.forEach(function (el) { if (stagePhone.contains(el)) setIsland(el, false); });
+  }
+  if (stagePhone && 'IntersectionObserver' in window) {
+    var shotIO = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) showShot(+e.target.getAttribute('data-shot')); });
+    }, { rootMargin: '-45% 0px -45% 0px' });
+    all('.chapter[data-shot]').forEach(function (c) { shotIO.observe(c); });
+  }
+
+  /* ---------- tasks ---------- */
+  var KEY = 'focus.demoTasks';
+  var tasks = [
+    { t: 'outline the essay', d: true },
+    { t: 'reply to emails', d: true },
+    { t: 'read chapter 4', d: false },
+    { t: 'plan tomorrow', d: false }
+  ];
+  try { var saved = JSON.parse(localStorage.getItem(KEY)); if (saved && saved.length) tasks = saved; } catch (e) {}
+  function saveTasks() { try { localStorage.setItem(KEY, JSON.stringify(tasks)); } catch (e) {} }
+  function esc(s) { return s.replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+  function renderTasks(newIdx) {
+    $('tasks').innerHTML = tasks.map(function (k, i) {
+      return '<li><button type="button" class="task' + (k.d ? ' done' : '') + (i === newIdx ? ' new' : '') + '" data-i="' + i + '" aria-pressed="' + k.d + '">' +
+        '<span class="box">' + (k.d ? '[x]' : '[ ]') + '</span><span class="t">' + esc(k.t) + '</span></button></li>';
+    }).join('');
+    var left = tasks.filter(function (k) { return !k.d; }).length;
+    $('tasks-left').textContent = left ? left + ' left' : 'all done';
+  }
+  $('tasks').addEventListener('click', function (e) {
+    var b = e.target.closest('.task');
+    if (!b) return;
+    var i = +b.getAttribute('data-i');
+    tasks[i].d = !tasks[i].d;
+    saveTasks();
+    renderTasks();
+    var again = $('tasks').querySelector('[data-i="' + i + '"]');
+    if (again) again.focus();
+  });
+  $('add-task').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var v = $('new-task').value.trim();
+    if (!v) return;
+    tasks.push({ t: v, d: false });
+    if (tasks.length > 7) tasks.shift();
+    $('new-task').value = '';
+    saveTasks();
+    renderTasks(tasks.length - 1);
+  });
+  renderTasks();
+
+  /* ---------- scroll reveal ---------- */
+  var reveals = document.querySelectorAll('.reveal');
+  function revealAll() { for (var i = 0; i < reveals.length; i++) reveals[i].classList.add('in'); }
+  function startReveal() {
+    if (!('IntersectionObserver' in window) || reduce) { revealAll(); return; }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { rootMargin: '0px 0px -12% 0px', threshold: 0.15 });
+    for (var i = 0; i < reveals.length; i++) io.observe(reveals[i]);
+  }
+
+  /* ---------- scroll progress + hero fade ---------- */
+  var bar = $('scrollbar'), hero = $('hero-inner'), queued = false;
+  function onScroll() {
+    queued = false;
+    var y = window.scrollY || 0, max = document.documentElement.scrollHeight - innerHeight;
+    bar.style.setProperty('--p', max > 0 ? Math.min(1, y / max) : 0);
+    if (!reduce) {
+      var p = Math.min(1, y / (innerHeight * 0.7));
+      hero.style.transform = 'scale(' + (1 - p * 0.12) + ') translateY(' + (p * -30) + 'px)';
+      hero.style.opacity = 1 - p * 0.9;
+    }
+  }
+  addEventListener('scroll', function () { if (!queued) { queued = true; requestAnimationFrame(onScroll); } }, { passive: true });
+
+  function ready() {
+    startClock();
+    startReveal();
+    onScroll();
+  }
+
+  /* ---------- boot ---------- */
+  if (!root.classList.contains('booting')) { ready(); return; }
+
+  var boot = $('boot'), log = $('boot-log'), fill = $('boot-fill'), pct = $('boot-pct'), stage = $('boot-stage');
+  var ascii = $('ascii'), grid = $('bs-grid'), wave = $('bs-wave');
+  var t0 = performance.now(), timers = [], finished = false, raf = 0, progress = 0;
+
+  // FOCUS in 5 rows of pixels, 45 columns wide
+  var L = {
+    F: ['███████', '██     ', '█████  ', '██     ', '██     '],
+    O: [' ██████ ', '██    ██', '██    ██', '██    ██', ' ██████ '],
+    C: [' ██████', '██     ', '██     ', '██     ', ' ██████'],
+    U: ['██    ██', '██    ██', '██    ██', '██    ██', ' ██████ '],
+    S: [' ██████', '██     ', ' █████ ', '     ██', '██████ ']
+  };
+  var art = '';
+  for (var r = 0; r < 5; r++) art += ['F', 'O', 'C', 'U', 'S'].map(function (c) { return L[c][r]; }).join('  ');
+  ascii.innerHTML = art.split('').map(function (ch) { return ch === ' ' ? '<i></i>' : '<i class="px"></i>'; }).join('');
+  var pixels = [].slice.call(ascii.querySelectorAll('.px'));
+
+  // side panel: module grid and signal wave
+  for (var g = 0; g < 48; g++) grid.appendChild(document.createElement('i'));
+  for (var w = 0; w < 32; w++) wave.appendChild(document.createElement('i'));
+  var cells = [].slice.call(grid.children), bars = [].slice.call(wave.children);
+
+  function later(fn, ms) { timers.push(setTimeout(fn, ms)); }
+  function pad2(n) { return (n < 10 ? '0' : '') + n; }
+  function setPct(p) {
+    progress = p;
+    fill.style.width = p + '%';
+    pct.textContent = ('00' + Math.round(p)).slice(-3) + '%';
+  }
+  function stamp() { return '<span class="ts">[' + ((performance.now() - t0) / 1000).toFixed(4).padStart(8, ' ') + ']</span> '; }
+
+  // the log: one line per step, the newest at the bottom
+  var rows = [];
+  function push(html) {
+    rows.push(stamp() + html);
+    if (rows.length > 16) rows.shift();
+    log.innerHTML = '<div>' + rows.join('\n') + '</div>';
+  }
+  function swapLast(html) {
+    rows[rows.length - 1] = rows[rows.length - 1].replace(/<span class="warn">\[ \.\. \]<\/span>$/, html);
+    log.innerHTML = '<div>' + rows.join('\n') + '</div>';
+  }
+  function dots(name) {
+    var len = name.replace(/&[a-z]+;/g, 'x').length; // an entity is one character on screen
+    return ' ' + new Array(Math.max(2, 26 - len)).join('.') + ' ';
+  }
+
+  // live stats while booting
+  function tick(now) {
+    var s = (now - t0) / 1000;
+    $('v-up').textContent = s.toFixed(3) + 's';
+    var d = new Date();
+    $('boot-clock').textContent = pad2(d.getHours()) + ':' + pad2(d.getMinutes()) + ':' + pad2(d.getSeconds());
+    var cpu = Math.round(35 + 55 * Math.abs(Math.sin(s * 3.1)) * (1 - progress / 140));
+    var mem = Math.round(12 + progress * 0.62);
+    var net = Math.round(20 + 70 * Math.abs(Math.sin(s * 1.7 + 1)));
+    [['cpu', cpu], ['mem', mem], ['net', net]].forEach(function (k) {
+      $('b-' + k[0]).style.width = k[1] + '%';
+      $('v-' + k[0]).textContent = k[1] + '%';
+    });
+    bars.forEach(function (b, i) { b.style.height = (12 + 88 * Math.abs(Math.sin(s * 4 + i * 0.45) * Math.cos(s * 1.3 + i * 0.2))) + '%'; });
+    $('v-hz').textContent = Math.round(400 + 80 * Math.sin(s * 2)) + ' hz';
+    var lit = Math.round(cells.length * progress / 100);
+    cells.forEach(function (c, i) {
+      c.className = i < lit ? 'on' : (i === lit ? (Math.floor(s * 8) % 2 ? 'half' : '') : '');
+    });
+    raf = requestAnimationFrame(tick);
+  }
+  raf = requestAnimationFrame(tick);
+
+  var steps = [
+    ['post', '<span class="hl">focus-os 1.8.0</span> (build 18) &mdash; booting on tty1', 0],
+    ['post', 'cpu: 6 cores online &middot; neural engine ready', 0],
+    ['post', 'mem: mapped 0x0000f000&ndash;0x7ffe3a10 &middot; 8.0 gb', 0],
+    ['modules', 'timer engine', 'ok'],
+    ['modules', 'core haptics', 'ok'],
+    ['modules', 'chime &middot; sounds', 'ok'],
+    ['modules', 'dynamic island', 'ok'],
+    ['modules', 'live activity', 'ok'],
+    ['modules', 'widgets', 'ok'],
+    ['sync', 'mount ~/tasks (supabase)', 'ok'],
+    ['sync', 'spotify bridge', 'idle'],
+    ['sync', 'google calendar', 'ok'],
+    ['fonts', 'fonts: geist mono &middot; 3 weights', 0],
+    ['shell', 'starting focus shell', 0]
+  ];
+  var mods = 0, t = 220;
+  steps.forEach(function (st, i) {
+    var name = st[1], status = st[2];
+    later(function () {
+      stage.textContent = st[0];
+      if (status) {
+        push('init ' + name + '<span class="warn">' + dots(name) + '</span><span class="warn">[ .. ]</span>');
+      } else {
+        push(name);
+      }
+      setPct((i + 0.5) / steps.length * 78);
+    }, t += 150 + (i % 3) * 40);
+    if (status) {
+      later(function () {
+        swapLast(status === 'ok' ? '<span class="ok">[ ok ]</span>' : '<span class="warn">[' + status + ']</span>');
+        if (st[0] === 'modules') { mods += 1; $('v-mod').textContent = mods + '/9'; }
+        setPct((i + 1) / steps.length * 78);
+      }, t += 110);
+    }
+  });
+  // the command, typed
+  var cmd = '$ focus --start';
+  later(function () { stage.textContent = 'shell'; push('<span class="hl"></span>'); }, t += 160);
+  for (var c = 1; c <= cmd.length; c++) (function (n) {
+    later(function () {
+      rows[rows.length - 1] = rows[rows.length - 1].replace(/<span class="hl">.*<\/span>.*$/, '<span class="hl">' + cmd.slice(0, n) + '</span><span class="caret"></span>');
+      log.innerHTML = '<div>' + rows.join('\n') + '</div>';
+    }, t += 38);
+  })(c);
+  later(function () { $('v-mod').textContent = '9/9'; setPct(84); }, t += 160);
+  // the banner assembles pixel by pixel over the dimmed panels
+  later(function () {
+    stage.textContent = 'render';
+    boot.classList.add('dim');
+    var order = pixels.slice().sort(function () { return Math.random() - 0.5; });
+    order.forEach(function (p, i) {
+      later(function () { p.classList.add('on'); setPct(84 + 16 * (i + 1) / order.length); }, Math.round(i / order.length * 650));
+    });
+  }, t += 120);
+  later(function () { stage.textContent = 'ready'; $('ascii-sub').classList.add('on'); }, t += 760);
+  later(finish, t += 900);
+
+  function finish() {
+    if (finished) return;
+    finished = true;
+    timers.forEach(clearTimeout);
+    cancelAnimationFrame(raf);
+    try { sessionStorage.setItem('focus.booted', '1'); } catch (e) {}
+    boot.classList.add('out');
+    setTimeout(function () { root.classList.remove('booting'); ready(); }, 300);
+    setTimeout(function () { boot.style.display = 'none'; }, 700);
+  }
+
+  boot.addEventListener('click', finish);
+  addEventListener('keydown', function () { if (!finished) finish(); });
+})();
+</script>
+<script src="player.js?v=10"></script>
 </body>
 </html>

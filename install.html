@@ -5,15 +5,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Install Focus — iloader & SideStore guide</title>
 <meta name="description" content="Step-by-step guide to install Focus on iPhone with iloader or SideStore, on Windows or Mac.">
-<link rel="icon" href="logo.png?v=3">
+<meta name="theme-color" content="#050505">
+<link rel="icon" href="logo.png?v=10">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=3">
+<link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css?v=10">
+<script>document.documentElement.className += ' js';</script>
 </head>
 <body>
 <header class="site"><div class="wrap">
-<a class="brand" href="./"><img src="logo.png?v=3" alt="">Focus</a>
+<a class="brand" href="./"><img src="logo.png?v=10" alt="">Focus</a>
 <nav>
 <a href="install.html" aria-current="page">Install</a>
 <a href="privacy.html">Privacy</a>
@@ -24,7 +26,7 @@
 <main><div class="wrap">
 
 <h1>Install Focus</h1>
-<p class="meta">Updated October 1, 2026 &middot; iPhone with iOS 26 or later &middot; free Apple Account</p>
+<p class="meta">Updated October 2, 2026 &middot; iPhone with iOS 26 or later &middot; free Apple Account</p>
 
 <div class="summary">
 <h2>Before you start</h2>
@@ -36,78 +38,151 @@
 </ul>
 </div>
 
-<nav class="toc" aria-label="Contents"><ol>
-<li><a href="#which">Which method should I pick?</a></li>
-<li><a href="#iloader-windows">iloader on Windows</a></li>
-<li><a href="#iloader-mac">iloader on Mac</a></li>
-<li><a href="#iphone">First launch on the iPhone</a></li>
-<li><a href="#sidestore">SideStore: one-tap updates on the phone</a></li>
-<li><a href="#updates">Updating Focus</a></li>
-<li><a href="#trouble">Troubleshooting</a></li>
-</ol></nav>
+<h2 id="which">Pick your way</h2>
+<div class="paths" role="tablist" aria-label="Install method">
+<a class="path-btn" role="tab" href="#iloader-windows" data-path="iloader-windows"><span class="k">[A] &middot; 10 steps</span><b>iloader &middot; Windows</b><span>Simplest. Install from your PC; redo it every 7 days and for each update.</span></a>
+<a class="path-btn" role="tab" href="#iloader-mac" data-path="iloader-mac"><span class="k">[B] &middot; 9 steps</span><b>iloader &middot; Mac</b><span>Same as A, on a Mac. Nothing extra to install.</span></a>
+<a class="path-btn" role="tab" href="#sidestore" data-path="sidestore"><span class="k">[C] &middot; 9 steps</span><b>SideStore</b><span>A bit more setup once, then updates and refreshes happen on your phone.</span></a>
+</div>
 
-<h2 id="which">1. Which method should I pick?</h2>
-<ul>
-<li><strong>iloader only</strong> &mdash; simplest. Plug in your phone and install the IPA from your computer. Every 7 days (and for each update) you do it again.</li>
-<li><strong>SideStore</strong> &mdash; a bit more setup once, then Focus updates and refreshes right on your phone, no computer needed. You still use iloader once to install SideStore.</li>
-</ul>
+<!-- ============ A: Windows ============ -->
+<section class="guide" id="iloader-windows">
+<div class="guide-head"><h2>[A] iloader on Windows</h2><span class="count"></span></div>
+<div class="dots"></div>
+<ol class="steps">
+<li class="step"><p class="where"><span>on your pc</span></p><h3>Check your PC</h3>
+<p>iloader needs 64-bit Windows on an Intel or AMD processor (Windows on Arm isn&rsquo;t supported).</p></li>
 
-<h2 id="iloader-windows">2. iloader on Windows</h2>
-<ol>
-<li><strong>Check your PC.</strong> iloader needs 64-bit Windows on an Intel or AMD processor (Windows on Arm isn&rsquo;t supported).</li>
-<li><strong>Install iTunes</strong> so Windows can talk to your iPhone: download it from <a href="https://www.apple.com/itunes/download/win64">apple.com</a> (recommended) or the Microsoft Store. Open it once and check it sees your iPhone. If it doesn&rsquo;t, uninstall iTunes and &ldquo;Apple Mobile Device Support&rdquo;, then install the <strong>Apple Devices</strong> app from the Microsoft Store instead.</li>
-<li><strong>Download iloader</strong> only from <a href="https://github.com/nab138/iloader/releases">github.com/nab138/iloader/releases</a> or <a href="https://iloader.app">iloader.app</a>. Pick <code>iloader-windows-x64.msi</code> and run the installer.</li>
-<li><strong>Plug in your iPhone</strong> and unlock it. Tap <strong>Trust</strong> on the &ldquo;Trust This Computer?&rdquo; pop-up and enter your passcode.</li>
-<li><strong>Sign in:</strong> open iloader. In the <strong>Apple ID</strong> panel enter your Apple Account email and password and click <strong>Login</strong>. Type the 6-digit code from your other Apple device and click <strong>Submit</strong>. (A different Apple Account than the one on your phone is fine. Security-key sign-in isn&rsquo;t supported.)</li>
-<li><strong>Select your iPhone</strong> in the <strong>iDevice</strong> panel. Not there? Click <strong>Refresh Devices</strong>.</li>
-<li><strong>Install Focus:</strong> under <strong>Installers</strong> click <strong>Import IPA</strong> and choose the Focus <code>.ipa</code> you downloaded. Wait for &ldquo;Sign &amp; Install App&rdquo; to finish. If iloader says &ldquo;Maximum certificates reached&rdquo;, let it revoke the old one and click <strong>Continue</strong>.</li>
-<li>Continue with <a href="#iphone">First launch on the iPhone</a>.</li>
+<li class="step"><p class="where"><span>on your pc</span></p><h3>Install iTunes</h3>
+<p>So Windows can talk to your iPhone: download it from <a href="https://www.apple.com/itunes/download/win64">apple.com</a> (recommended) or the Microsoft Store. Open it once and check it sees your iPhone.</p>
+<p>If it doesn&rsquo;t, uninstall iTunes and &ldquo;Apple Mobile Device Support&rdquo;, then install the <strong>Apple Devices</strong> app from the Microsoft Store instead.</p></li>
+
+<li class="step"><p class="where"><span>on your pc</span></p><h3>Download iloader</h3>
+<p>Only from <a href="https://github.com/nab138/iloader/releases">github.com/nab138/iloader/releases</a> or <a href="https://iloader.app">iloader.app</a>. Pick <code>iloader-windows-x64.msi</code> and run the installer.</p></li>
+
+<li class="step"><p class="where"><span>pc + iphone</span></p><h3>Plug in your iPhone</h3>
+<p>Unlock it. Tap <strong>Trust</strong> on the &ldquo;Trust This Computer?&rdquo; pop-up and enter your passcode.</p></li>
+
+<li class="step"><p class="where"><span>in iloader</span></p><h3>Sign in</h3>
+<p>Open iloader. In the <strong>Apple ID</strong> panel enter your Apple Account email and password and click <strong>Login</strong>. Type the 6-digit code from your other Apple device and click <strong>Submit</strong>.</p>
+<p>A different Apple Account than the one on your phone is fine. Security-key sign-in isn&rsquo;t supported.</p></li>
+
+<li class="step"><p class="where"><span>in iloader</span></p><h3>Select your iPhone</h3>
+<p>Pick it in the <strong>iDevice</strong> panel. Not there? Click <strong>Refresh Devices</strong>.</p></li>
+
+<li class="step"><p class="where"><span>in iloader</span></p><h3>Install Focus</h3>
+<p>Under <strong>Installers</strong> click <strong>Import IPA</strong> and choose the Focus <code>.ipa</code> you downloaded. Wait for &ldquo;Sign &amp; Install App&rdquo; to finish.</p>
+<p>If iloader says &ldquo;Maximum certificates reached&rdquo;, let it revoke the old one and click <strong>Continue</strong>.</p></li>
+
+<li class="step" id="iphone"><p class="where"><span>on your iphone</span></p><h3>Trust the developer</h3>
+<p>Open <strong>Settings &rarr; General &rarr; VPN &amp; Device Management</strong>, tap your Apple Account under &ldquo;Developer App&rdquo;, tap <strong>Trust</strong> (then <strong>Allow &amp; Restart</strong> if asked) and enter your passcode.</p></li>
+
+<li class="step"><p class="where"><span>on your iphone</span></p><h3>Turn on Developer Mode</h3>
+<p>Open <strong>Settings &rarr; Privacy &amp; Security</strong>, scroll to the bottom, turn on <strong>Developer Mode</strong> and tap <strong>Restart</strong>. After the restart, confirm with <strong>Turn On</strong> and enter your passcode.</p></li>
+
+<li class="step done-step"><p class="where"><span>done</span></p><h3>Open Focus</h3>
+<p>Start a focus block to see the timer in the Dynamic Island.</p>
+<p>Want updates without a computer? Set up <a href="#sidestore" data-go="sidestore">SideStore</a>.</p></li>
 </ol>
+<div class="step-nav"><button class="btn" data-act="prev">&larr; Back</button><button class="all-toggle" data-act="all">show all steps</button><button class="btn solid" data-act="next">Next &rarr;</button></div>
+<div class="show-all-nav"><button class="all-toggle" data-act="one">one step at a time</button></div>
+</section>
 
-<h2 id="iloader-mac">3. iloader on Mac</h2>
-<ol>
-<li><strong>Nothing extra to install</strong> &mdash; macOS already includes what&rsquo;s needed to talk to your iPhone.</li>
-<li><strong>Download iloader</strong> from <a href="https://github.com/nab138/iloader/releases">github.com/nab138/iloader/releases</a> or <a href="https://iloader.app">iloader.app</a>: pick <code>iloader-darwin-universal.dmg</code> (works on Apple silicon and Intel Macs). Open it and drag iloader to Applications.</li>
-<li>If macOS blocks it, go to <strong>System Settings &rarr; Privacy &amp; Security</strong> and click <strong>Open Anyway</strong>.</li>
-<li><strong>Plug in your iPhone</strong>, unlock it and tap <strong>Trust</strong> on the phone (and on the Mac if asked). No prompt? Open Finder, then unplug and re-plug the phone.</li>
-<li>Then follow steps 5&ndash;8 of the <a href="#iloader-windows">Windows guide</a> &mdash; iloader works the same on Mac.</li>
+<!-- ============ B: Mac ============ -->
+<section class="guide" id="iloader-mac">
+<div class="guide-head"><h2>[B] iloader on Mac</h2><span class="count"></span></div>
+<div class="dots"></div>
+<ol class="steps">
+<li class="step"><p class="where"><span>on your mac</span></p><h3>Download iloader</h3>
+<p>Nothing extra to install &mdash; macOS already includes what&rsquo;s needed to talk to your iPhone.</p>
+<p>Get iloader from <a href="https://github.com/nab138/iloader/releases">github.com/nab138/iloader/releases</a> or <a href="https://iloader.app">iloader.app</a>: pick <code>iloader-darwin-universal.dmg</code> (works on Apple silicon and Intel Macs). Open it and drag iloader to Applications.</p></li>
+
+<li class="step"><p class="where"><span>on your mac</span></p><h3>Allow it to open</h3>
+<p>If macOS blocks it, go to <strong>System Settings &rarr; Privacy &amp; Security</strong> and click <strong>Open Anyway</strong>.</p></li>
+
+<li class="step"><p class="where"><span>mac + iphone</span></p><h3>Plug in your iPhone</h3>
+<p>Unlock it and tap <strong>Trust</strong> on the phone (and on the Mac if asked). No prompt? Open Finder, then unplug and re-plug the phone.</p></li>
+
+<li class="step"><p class="where"><span>in iloader</span></p><h3>Sign in</h3>
+<p>Open iloader. In the <strong>Apple ID</strong> panel enter your Apple Account email and password and click <strong>Login</strong>. Type the 6-digit code from your other Apple device and click <strong>Submit</strong>.</p>
+<p>A different Apple Account than the one on your phone is fine. Security-key sign-in isn&rsquo;t supported.</p></li>
+
+<li class="step"><p class="where"><span>in iloader</span></p><h3>Select your iPhone</h3>
+<p>Pick it in the <strong>iDevice</strong> panel. Not there? Click <strong>Refresh Devices</strong>.</p></li>
+
+<li class="step"><p class="where"><span>in iloader</span></p><h3>Install Focus</h3>
+<p>Under <strong>Installers</strong> click <strong>Import IPA</strong> and choose the Focus <code>.ipa</code> you downloaded. Wait for &ldquo;Sign &amp; Install App&rdquo; to finish.</p>
+<p>If iloader says &ldquo;Maximum certificates reached&rdquo;, let it revoke the old one and click <strong>Continue</strong>.</p></li>
+
+<li class="step"><p class="where"><span>on your iphone</span></p><h3>Trust the developer</h3>
+<p>Open <strong>Settings &rarr; General &rarr; VPN &amp; Device Management</strong>, tap your Apple Account under &ldquo;Developer App&rdquo;, tap <strong>Trust</strong> (then <strong>Allow &amp; Restart</strong> if asked) and enter your passcode.</p></li>
+
+<li class="step"><p class="where"><span>on your iphone</span></p><h3>Turn on Developer Mode</h3>
+<p>Open <strong>Settings &rarr; Privacy &amp; Security</strong>, scroll to the bottom, turn on <strong>Developer Mode</strong> and tap <strong>Restart</strong>. After the restart, confirm with <strong>Turn On</strong> and enter your passcode.</p></li>
+
+<li class="step done-step"><p class="where"><span>done</span></p><h3>Open Focus</h3>
+<p>Start a focus block to see the timer in the Dynamic Island.</p>
+<p>Want updates without a computer? Set up <a href="#sidestore" data-go="sidestore">SideStore</a>.</p></li>
 </ol>
+<div class="step-nav"><button class="btn" data-act="prev">&larr; Back</button><button class="all-toggle" data-act="all">show all steps</button><button class="btn solid" data-act="next">Next &rarr;</button></div>
+<div class="show-all-nav"><button class="all-toggle" data-act="one">one step at a time</button></div>
+</section>
 
-<h2 id="iphone">4. First launch on the iPhone</h2>
-<ol>
-<li><strong>Trust the developer:</strong> open <strong>Settings &rarr; General &rarr; VPN &amp; Device Management</strong>, tap your Apple Account under &ldquo;Developer App&rdquo;, tap <strong>Trust</strong> (then <strong>Allow &amp; Restart</strong> if asked) and enter your passcode.</li>
-<li><strong>Turn on Developer Mode:</strong> open <strong>Settings &rarr; Privacy &amp; Security</strong>, scroll to the bottom, turn on <strong>Developer Mode</strong> and tap <strong>Restart</strong>. After the restart, confirm with <strong>Turn On</strong> and enter your passcode.</li>
-<li>Open <strong>Focus</strong>. Start a focus block to see the timer in the Dynamic Island.</li>
+<!-- ============ C: SideStore ============ -->
+<section class="guide" id="sidestore">
+<div class="guide-head"><h2>[C] SideStore: one-tap updates on the phone</h2><span class="count"></span></div>
+<div class="dots"></div>
+<ol class="steps">
+<li class="step"><p class="where"><span>on your iphone</span></p><h3>Install LocalDevVPN</h3>
+<p>Get it from the <a href="https://apps.apple.com/app/localdevvpn/id6755608044">App Store</a>. Open it, tap connect and allow the VPN configuration.</p>
+<p>SideStore needs it (and Wi-Fi) switched on whenever it installs, updates or refreshes apps.</p></li>
+
+<li class="step"><p class="where"><span>on your computer</span></p><h3>Set up iloader</h3>
+<p>Do steps 1&ndash;6 of <a href="#iloader-windows" data-go="iloader-windows">path A (Windows)</a> or 1&ndash;5 of <a href="#iloader-mac" data-go="iloader-mac">path B (Mac)</a>: install iloader, plug in your phone, sign in and select your iPhone. Then come back here.</p></li>
+
+<li class="step"><p class="where"><span>in iloader</span></p><h3>Install SideStore</h3>
+<p>Under <strong>Installers</strong> choose <strong>SideStore (Stable)</strong>. iloader downloads SideStore, installs it and places the pairing file for you.</p></li>
+
+<li class="step"><p class="where"><span>on your iphone</span></p><h3>Trust it &amp; turn on Developer Mode</h3>
+<p><strong>Settings &rarr; General &rarr; VPN &amp; Device Management</strong>: tap your Apple Account, tap <strong>Trust</strong>.</p>
+<p><strong>Settings &rarr; Privacy &amp; Security &rarr; Developer Mode</strong>: turn it on, restart, then confirm with <strong>Turn On</strong>.</p></li>
+
+<li class="step"><p class="where"><span>on your iphone</span></p><h3>Open SideStore</h3>
+<p>Connect LocalDevVPN, open <strong>SideStore</strong> and sign in with the same Apple Account.</p></li>
+
+<li class="step"><p class="where"><span>in sidestore</span></p><h3>Refresh SideStore once</h3>
+<p>Go to <strong>My Apps</strong> and tap the <strong>7 DAYS</strong> button next to SideStore (tap <strong>Yes</strong> or <strong>Refresh Now</strong> if asked). SideStore may jump to the Home Screen &mdash; that&rsquo;s normal.</p></li>
+
+<li class="step"><p class="where"><span>in sidestore</span></p><h3>Add the Focus source</h3>
+<p>Open the <strong>Sources</strong> tab, tap <strong>+</strong>, paste this URL and tap <strong>Done</strong>:</p>
+<p><code>https://github.com/SuS1234trwtw/focus-timer/releases/latest/download/source.json</code><button class="copy" data-copy="https://github.com/SuS1234trwtw/focus-timer/releases/latest/download/source.json">copy</button></p>
+<p>Already have Focus installed? Open Focus &rarr; Settings &rarr; updates &rarr; <strong>add to sidestore</strong> instead.</p></li>
+
+<li class="step"><p class="where"><span>in sidestore</span></p><h3>Install Focus</h3>
+<p>Open the Focus source and install it. When SideStore asks about <strong>App Extensions</strong>, choose <strong>Keep App Extensions (Register App ID for Each Extension)</strong> so the Dynamic Island and widgets keep working.</p></li>
+
+<li class="step done-step"><p class="where"><span>done</span></p><h3>That&rsquo;s it</h3>
+<p>SideStore now refreshes Focus in the background and shows an <strong>Update</strong> button when a new build is out.</p></li>
 </ol>
+<div class="step-nav"><button class="btn" data-act="prev">&larr; Back</button><button class="all-toggle" data-act="all">show all steps</button><button class="btn solid" data-act="next">Next &rarr;</button></div>
+<div class="show-all-nav"><button class="all-toggle" data-act="one">one step at a time</button></div>
+</section>
 
-<h2 id="sidestore">5. SideStore: one-tap updates on the phone</h2>
-<ol>
-<li><strong>Install LocalDevVPN</strong> from the <a href="https://apps.apple.com/app/localdevvpn/id6755608044">App Store</a>. Open it, tap connect and allow the VPN configuration. SideStore needs it (and Wi-Fi) switched on whenever it installs, updates or refreshes apps.</li>
-<li><strong>Install SideStore with iloader:</strong> plug in your phone, sign in and select it in iloader (steps 1&ndash;6 of the <a href="#iloader-windows">Windows guide</a>), then under <strong>Installers</strong> choose <strong>SideStore (Stable)</strong>. iloader downloads SideStore, installs it and places the pairing file for you.</li>
-<li>On the iPhone, trust the developer and turn on Developer Mode (<a href="#iphone">section 4</a>), connect LocalDevVPN, open <strong>SideStore</strong> and sign in with the same Apple Account.</li>
-<li>In SideStore, go to <strong>My Apps</strong> and tap the <strong>7 DAYS</strong> button next to SideStore to refresh it once (tap <strong>Yes</strong> or <strong>Refresh Now</strong> if asked). SideStore may jump to the Home Screen &mdash; that&rsquo;s normal.</li>
-<li><strong>Add the Focus source:</strong> open the <strong>Sources</strong> tab, tap <strong>+</strong>, paste this URL and tap <strong>Done</strong>:<br><code>https://github.com/SuS1234trwtw/focus-timer/releases/latest/download/source.json</code><br>Already have Focus installed? Open Focus &rarr; Settings &rarr; updates &rarr; <strong>add to sidestore</strong> instead.</li>
-<li>Open the Focus source and install it. When SideStore asks about <strong>App Extensions</strong>, choose <strong>Keep App Extensions (Register App ID for Each Extension)</strong> so the Dynamic Island and widgets keep working.</li>
-<li>SideStore now refreshes Focus in the background and shows an <strong>Update</strong> button when a new build is out.</li>
-</ol>
-
-<h2 id="updates">6. Updating Focus</h2>
+<h2 id="updates">Updating Focus</h2>
 <ul>
 <li>Focus checks for new builds by itself. When one is out you&rsquo;ll see <code>&gt; update available</code> at the top of the app and in <strong>Settings &rarr; updates</strong>.</li>
 <li><strong>iloader:</strong> download the new IPA from <a href="https://github.com/SuS1234trwtw/focus-timer/releases/latest">Releases</a> on your computer, then use <strong>Import IPA</strong> again. Install over the old version (don&rsquo;t delete it first) so your local settings stay; tasks are also backed up by sync.</li>
 <li><strong>SideStore:</strong> open <strong>My Apps</strong> and tap <strong>Update</strong> next to Focus.</li>
 </ul>
 
-<h2 id="trouble">7. Troubleshooting</h2>
-<ul>
-<li><strong>iloader can&rsquo;t find my iPhone</strong> &mdash; make sure iTunes (or Apple Devices) sees it, try another cable or USB port, unlock the phone and tap Trust.</li>
-<li><strong>&ldquo;Untrusted Developer&rdquo;</strong> when opening Focus &mdash; do step 1 of <a href="#iphone">section 4</a>.</li>
-<li><strong>&ldquo;Unable to Verify App&rdquo;</strong> &mdash; connect to the internet, then in VPN &amp; Device Management tap your Apple Account and <strong>Verify App</strong>.</li>
-<li><strong>Focus stopped opening after a week</strong> &mdash; the free 7-day signature expired. Re-install with iloader, or refresh it in SideStore.</li>
-<li><strong>&ldquo;Maximum number of apps&rdquo; / not enough App IDs</strong> &mdash; a free account can have 3 sideloaded apps active at once (SideStore counts as one; expired apps still count) and register 10 App IDs per 7 days. Remove an app you don&rsquo;t use, or wait for old App IDs to expire.</li>
-<li><strong>No timer in the Dynamic Island / no widget</strong> &mdash; the widget extension wasn&rsquo;t signed. Re-install with iloader, or in SideStore pick &ldquo;Register App ID for Each Extension&rdquo;. Focus &rarr; Settings &rarr; island shows whether the extension is signed.</li>
-<li><strong>SideStore errors about the VPN, Wi-Fi or pairing file</strong> &mdash; turn on Wi-Fi and LocalDevVPN, turn off DNS or ad blockers, and restart SideStore. Still failing? In iloader click <strong>Delete Stored Pairing</strong>, re-select your phone and tap Trust, then <strong>Manage Pairing File &rarr; Place</strong> next to SideStore. See the <a href="https://docs.sidestore.io/docs/troubleshooting/error-codes">SideStore error codes</a>.</li>
-</ul>
+<h2 id="trouble">Troubleshooting</h2>
+<details class="fold"><summary>iloader can&rsquo;t find my iPhone</summary><div class="body">Make sure iTunes (or Apple Devices) sees it, try another cable or USB port, unlock the phone and tap Trust.</div></details>
+<details class="fold"><summary>&ldquo;Untrusted Developer&rdquo; when opening Focus</summary><div class="body">Settings &rarr; General &rarr; VPN &amp; Device Management, tap your Apple Account and tap <strong>Trust</strong>.</div></details>
+<details class="fold"><summary>&ldquo;Unable to Verify App&rdquo;</summary><div class="body">Connect to the internet, then in VPN &amp; Device Management tap your Apple Account and <strong>Verify App</strong>.</div></details>
+<details class="fold"><summary>Focus stopped opening after a week</summary><div class="body">The free 7-day signature expired. Re-install with iloader, or refresh it in SideStore.</div></details>
+<details class="fold"><summary>&ldquo;Maximum number of apps&rdquo; / not enough App IDs</summary><div class="body">A free account can have 3 sideloaded apps active at once (SideStore counts as one; expired apps still count) and register 10 App IDs per 7 days. Remove an app you don&rsquo;t use, or wait for old App IDs to expire.</div></details>
+<details class="fold"><summary>No timer in the Dynamic Island / no widget</summary><div class="body">The widget extension wasn&rsquo;t signed. Re-install with iloader, or in SideStore pick &ldquo;Register App ID for Each Extension&rdquo;. Focus &rarr; Settings &rarr; island shows whether the extension is signed.</div></details>
+<details class="fold"><summary>SideStore errors about the VPN, Wi-Fi or pairing file</summary><div class="body">Turn on Wi-Fi and LocalDevVPN, turn off DNS or ad blockers, and restart SideStore. Still failing? In iloader click <strong>Delete Stored Pairing</strong>, re-select your phone and tap Trust, then <strong>Manage Pairing File &rarr; Place</strong> next to SideStore. See the <a href="https://docs.sidestore.io/docs/troubleshooting/error-codes">SideStore error codes</a>.</div></details>
 
 <h2>Need help?</h2>
 <ul class="contact">
@@ -122,5 +197,112 @@
 <span>&copy; 2026 An Le &middot; Open source under the <a href="https://github.com/SuS1234trwtw/focus-timer/blob/main/LICENSE">MIT License</a></span>
 <span><a href="privacy.html">Privacy</a> &middot; <a href="terms.html">Terms</a> &middot; <a href="./#contact">Contact</a> &middot; <a href="https://github.com/SuS1234trwtw/focus-timer">Source</a></span>
 </div></footer>
+
+<script>
+(function () {
+  var guides = [].slice.call(document.querySelectorAll('.guide'));
+  var tabs = [].slice.call(document.querySelectorAll('.path-btn'));
+  var state = {};
+
+  guides.forEach(function (g) {
+    var steps = [].slice.call(g.querySelectorAll('.step'));
+    var dots = g.querySelector('.dots');
+    var count = g.querySelector('.count');
+    var s = state[g.id] = { i: 0, steps: steps, g: g };
+    steps.forEach(function (st, n) {
+      var w = st.querySelector('.where');
+      var k = document.createElement('span');
+      k.textContent = 'step ' + (n + 1 < 10 ? '0' : '') + (n + 1) + ' / ' + (steps.length < 10 ? '0' : '') + steps.length;
+      w.insertBefore(k, w.firstChild);
+      var b = document.createElement('button');
+      b.setAttribute('aria-label', 'Step ' + (n + 1));
+      b.addEventListener('click', function () { go(g.id, n); });
+      dots.appendChild(b);
+    });
+    s.dots = [].slice.call(dots.children);
+    s.count = count;
+    g.classList.add('stepper');
+    g.addEventListener('click', function (e) {
+      var act = e.target.getAttribute && e.target.getAttribute('data-act');
+      if (act === 'next') go(g.id, s.i + 1);
+      else if (act === 'prev') go(g.id, s.i - 1);
+      else if (act === 'all') { g.classList.remove('stepper'); count.textContent = steps.length + ' steps'; }
+      else if (act === 'one') { g.classList.add('stepper'); go(g.id, s.i); g.scrollIntoView({ block: 'start' }); }
+    });
+    go(g.id, 0, true);
+  });
+
+  function go(id, n, quiet) {
+    var s = state[id];
+    var back = n < s.i;
+    n = Math.max(0, Math.min(s.steps.length - 1, n));
+    s.i = n;
+    s.steps.forEach(function (st, k) {
+      st.classList.toggle('cur', k === n);
+      st.classList.toggle('back', k === n && back);
+    });
+    s.dots.forEach(function (d, k) { d.classList.toggle('on', k <= n); });
+    s.count.textContent = 'step ' + (n + 1) + ' / ' + s.steps.length;
+    var prev = s.g.querySelector('[data-act="prev"]'), next = s.g.querySelector('[data-act="next"]');
+    prev.disabled = n === 0;
+    next.disabled = n === s.steps.length - 1;
+    if (!quiet) {
+      var top = s.g.getBoundingClientRect().top;
+      if (top < 0 || top > innerHeight * 0.5) s.g.scrollIntoView({ block: 'start' });
+    }
+  }
+
+  function pick(id, scroll) {
+    if (!state[id]) return;
+    guides.forEach(function (g) { g.hidden = g.id !== id; });
+    tabs.forEach(function (t) { t.setAttribute('aria-selected', t.getAttribute('data-path') === id ? 'true' : 'false'); });
+    current = id;
+    if (scroll) state[id].g.scrollIntoView({ block: 'start' });
+  }
+
+  var current = null;
+  function fromHash() {
+    var h = location.hash.replace('#', '');
+    if (h === 'iphone') { pick('iloader-windows'); go('iloader-windows', 7, true); return true; }
+    if (state[h]) { pick(h); return true; }
+    return false;
+  }
+  if (!fromHash()) pick(/Mac/.test(navigator.platform) ? 'iloader-mac' : 'iloader-windows');
+  // land at the top of the page unless a guide was asked for
+  addEventListener('hashchange', function () { if (fromHash()) state[current].g.scrollIntoView({ block: 'start' }); });
+
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('[data-path], [data-go]');
+    if (!a) return;
+    var id = a.getAttribute('data-path') || a.getAttribute('data-go');
+    if (!state[id]) return;
+    e.preventDefault();
+    if (history.replaceState) history.replaceState(null, '', '#' + id);
+    pick(id, true);
+  });
+
+  // arrow keys move through the open guide
+  addEventListener('keydown', function (e) {
+    if (!current || !state[current].g.classList.contains('stepper')) return;
+    if (/input|textarea/i.test(e.target.tagName)) return;
+    if (e.key === 'ArrowRight') go(current, state[current].i + 1);
+    if (e.key === 'ArrowLeft') go(current, state[current].i - 1);
+  });
+
+  // copy buttons
+  [].forEach.call(document.querySelectorAll('[data-copy]'), function (b) {
+    b.addEventListener('click', function () {
+      var text = b.getAttribute('data-copy');
+      function done() { b.textContent = 'copied'; setTimeout(function () { b.textContent = 'copy'; }, 1600); }
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(done, function () {});
+      else {
+        var t = document.createElement('textarea'); t.value = text; document.body.appendChild(t); t.select();
+        try { document.execCommand('copy'); done(); } catch (err) {}
+        document.body.removeChild(t);
+      }
+    });
+  });
+})();
+</script>
 </body>
 </html>
