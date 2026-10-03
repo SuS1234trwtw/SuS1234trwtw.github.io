@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Email confirmed — Focus</title>
+<meta name="description" content="Your Focus account email is confirmed. Go back to the app to finish setting up backup and sync.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#050505">
+<link rel="icon" href="logo.png?v=10">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css?v=10">
+<style>
+  .confirm { min-height: calc(100svh - 57px - 90px); display: flex; flex-direction: column; justify-content: center; }
+  .confirm .log { font-size: 13px; color: var(--muted); margin: 0 0 28px; white-space: pre-wrap; }
+  .confirm .log .ok { color: var(--fg); }
+  .confirm .actions { justify-content: flex-start; margin-top: 8px; }
+  .confirm .err { color: #e0786a; }
+</style>
+</head>
+<body>
+<header class="site"><div class="wrap">
+<a class="brand" href="./"><img src="logo.png?v=10" alt="">Focus</a>
+<nav>
+<a href="install.html">Install</a>
+<a href="privacy.html">Privacy</a>
+<a href="terms.html">Terms</a>
+<a class="ext" href="https://github.com/SuS1234trwtw/focus-timer">Source</a>
+</nav>
+</div></header>
+<main><div class="wrap confirm">
+
+<pre class="log" id="log">$ focus account --confirm
+  verify email ............ <span class="ok">[ ok ]</span></pre>
+<h1 id="title">Email confirmed</h1>
+<p class="lead" id="lead">Go back to Focus to finish setting up backup &amp; sync. The app picks it up by itself; if it doesn&rsquo;t, open Settings &rarr; account and tap <strong>i confirmed it</strong>.</p>
+<div class="actions">
+<a class="btn solid" id="open" href="focustimer://account-confirmed">Open Focus &rarr;</a>
+<a class="btn" href="./">Website</a>
+</div>
+<p class="meta" style="margin-top:28px">You can close this tab after opening the app.</p>
+
+</div></main>
+<footer class="site"><div class="wrap">
+<span>&copy; 2026 An Le &middot; Open source under the <a href="https://github.com/SuS1234trwtw/focus-timer/blob/main/LICENSE">MIT License</a></span>
+<span><a href="privacy.html">Privacy</a> &middot; <a href="terms.html">Terms</a> &middot; <a href="./#contact">Contact</a> &middot; <a href="https://github.com/SuS1234trwtw/focus-timer">Source</a></span>
+</div></footer>
+
+<script>
+(function () {
+  // Supabase sends people here after the confirmation link. On success it appends sign-in tokens
+  // to the address; this page never uses them, so strip them from the address bar and history.
+  var hash = new URLSearchParams(location.hash.replace(/^#/, ''));
+  var query = new URLSearchParams(location.search);
+  var error = hash.get('error_description') || query.get('error_description');
+  var code = hash.get('error_code') || query.get('error_code') || '';
+  if (location.hash || location.search) history.replaceState(null, '', location.pathname);
+
+  if (error) {
+    document.getElementById('log').innerHTML = '$ focus account --confirm\n  verify email ............ <span class="err">[ fail ]</span>';
+    document.getElementById('title').textContent = 'Link didn’t work';
+    var why = code === 'otp_expired'
+      ? 'This confirmation link expired or was already used. If you already clicked it once, your email is confirmed: go back to Focus and tap “i confirmed it”. Otherwise create the account again in the app to get a new link.'
+      : error.replace(/\+/g, ' ') + '. Go back to Focus and try again.';
+    document.getElementById('lead').textContent = why;
+  }
+})();
+</script>
+</body>
+</html>
