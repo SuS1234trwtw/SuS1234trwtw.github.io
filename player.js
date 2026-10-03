@@ -285,10 +285,13 @@
   }
 
   /* ---------- view ---------- */
+  var swapTimer = 0;
   function swapText(title, artist) {
     var a = $('np-title'), b = $('np-artist');
     a.classList.add('swap'); b.classList.add('swap');
-    setTimeout(function () {
+    // one swap at a time: a quick double skip shows only the last track, without a flicker between
+    clearTimeout(swapTimer);
+    swapTimer = setTimeout(function () {
       a.textContent = title; b.innerHTML = artist;
       a.classList.remove('swap'); b.classList.remove('swap');
     }, 150);
@@ -315,10 +318,10 @@
   function frame() {
     if (playing && analyser) {
       analyser.getByteFrequencyData(freq);
-      eqBars.forEach(function (b, i) { b.style.height = (15 + freq[2 + i * 3] / 255 * 85) + '%'; });
+      eqBars.forEach(function (b, i) { b.style.transform = 'scaleY(' + (0.15 + freq[2 + i * 3] / 255 * 0.85) + ')'; });
       if (!fileEl && track && currentTime() >= track.len) next();
     } else {
-      eqBars.forEach(function (b) { b.style.height = '30%'; });
+      eqBars.forEach(function (b) { b.style.transform = ''; });
     }
     draw();
     requestAnimationFrame(frame);

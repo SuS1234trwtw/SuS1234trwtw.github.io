@@ -6,11 +6,11 @@
 <title>Focus — Pomodoro timer for iPhone</title>
 <meta name="description" content="A minimal Pomodoro timer and task list for iPhone.">
 <meta name="theme-color" content="#050505">
-<link rel="icon" href="logo.png?v=11">
+<link rel="icon" href="logo.png?v=12">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=11">
+<link rel="stylesheet" href="style.css?v=12">
 <script>
 (function () {
   var d = document.documentElement, seen = false;
@@ -47,7 +47,7 @@
 </div>
 
 <header class="site"><div class="wrap">
-<a class="brand" href="./"><img src="logo.png?v=11" alt="">Focus</a>
+<a class="brand" href="./"><img src="logo.png?v=12" alt="">Focus</a>
 <nav>
 <a href="install.html">Install</a>
 <a href="privacy.html">Privacy</a>
@@ -245,8 +245,9 @@
     // meters: the running one fills up, the other shows its full length
     var mf = $('m-focus'), mb = $('m-break');
     mf.classList.toggle('on', focus); mb.classList.toggle('on', !focus);
-    mf.querySelector('.fill').style.width = (focus ? (1 - T.left / LEN.focus) * 100 : 100) + '%';
-    mb.querySelector('.fill').style.width = (focus ? 0 : (1 - T.left / LEN.break) * 100) + '%';
+    // clip, not width: no layout on every tick
+    mf.querySelector('.fill').style.clipPath = 'inset(0 ' + (focus ? T.left / LEN.focus * 100 : 0) + '% 0 0)';
+    mb.querySelector('.fill').style.clipPath = 'inset(0 ' + (focus ? 100 : T.left / LEN.break * 100) + '% 0 0)';
     mf.querySelector('.num').textContent = focus ? fmt(T.left) : '25:00';
     mb.querySelector('.num').textContent = focus ? '05:00' : fmt(T.left);
   }
@@ -382,13 +383,15 @@
   }
 
   /* ---------- scroll progress + hero fade ---------- */
-  var bar = $('scrollbar'), hero = $('hero-inner'), queued = false;
+  var bar = $('scrollbar'), hero = $('hero-inner'), queued = false, lastP = -1;
   function onScroll() {
     queued = false;
     var y = window.scrollY || 0, max = document.documentElement.scrollHeight - innerHeight;
     bar.style.setProperty('--p', max > 0 ? Math.min(1, y / max) : 0);
-    if (!reduce) {
-      var p = Math.min(1, y / (innerHeight * 0.7));
+    var p = Math.min(1, y / (innerHeight * 0.7));
+    // transform + opacity only, and no writes once the hero is fully faded out
+    if (!reduce && p !== lastP) {
+      lastP = p;
       hero.style.transform = 'scale(' + (1 - p * 0.12) + ') translateY(' + (p * -30) + 'px)';
       hero.style.opacity = 1 - p * 0.9;
     }
@@ -539,14 +542,15 @@
     cancelAnimationFrame(raf);
     try { sessionStorage.setItem('focus.booted', '1'); } catch (e) {}
     boot.classList.add('out');
+    // the header slides in as the overlay finishes fading (--duration-medium, 350ms)
     setTimeout(function () { root.classList.remove('booting'); ready(); }, 300);
-    setTimeout(function () { boot.style.display = 'none'; }, 700);
+    setTimeout(function () { boot.style.display = 'none'; }, 400);
   }
 
   boot.addEventListener('click', finish);
   addEventListener('keydown', function () { if (!finished) finish(); });
 })();
 </script>
-<script src="player.js?v=11"></script>
+<script src="player.js?v=12"></script>
 </body>
 </html>
