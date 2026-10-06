@@ -1,0 +1,37 @@
+# Focus
+
+> Focus is a minimal, terminal-styled Pomodoro timer and task list for iPhone (iOS 26+), made by An Le. It is free and installed by sideloading (iloader or SideStore) with a free Apple ID, not through the App Store.
+
+Focus looks like a terminal: monospace type, black background, no clutter. Run focus and break blocks, keep a short task list, and follow the timer from the Lock Screen and Dynamic Island. The app and this website are available in English and Vietnamese.
+
+## Website
+
+- [Home](https://sus1234trwtw.github.io/): what Focus is, features and screenshots
+- [Install guide](https://sus1234trwtw.github.io/install.html): step-by-step sideloading with iloader or SideStore, on Windows or Mac
+
+## Download
+
+- [Latest release (IPA)](https://github.com/SuS1234trwtw/focus-timer/releases/latest): download the Focus IPA
+- [SideStore source](https://github.com/SuS1234trwtw/focus-timer/releases/latest/download/source.json): add this URL in SideStore to install and get updates
+- [Source code](https://github.com/SuS1234trwtw/focus-timer): GitHub repository
+
+## Key features
+
+- Pomodoro timer: focus and break sessions with custom lengths, sounds and haptics
+- Task list: simple tasks, synced across your devices
+- Live Activity and Dynamic Island: the running timer on the Lock Screen and in the Island
+- Home Screen widgets
+- Spotify: see and control what is playing (optional)
+- Google Calendar: log finished focus blocks to a calendar named "Focus" (optional; uses only the calendar.app.created permission)
+- English and Vietnamese
+
+## Legal
+
+- [Privacy Policy](https://sus1234trwtw.github.io/privacy.html): no ads, no analytics, no tracking
+- [Terms of Service](https://sus1234trwtw.github.io/terms.html)
+- License: All rights reserved (c) 2026 An Le
+
+## Contact
+
+- Discord: notanlee
+- TikTok: [@notanlee1](https://www.tiktok.com/@notanlee1)

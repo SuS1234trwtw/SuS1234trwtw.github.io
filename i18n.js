@@ -286,6 +286,14 @@
     'cf.expired': 'Link xác nhận này đã hết hạn hoặc đã được dùng. Nếu bạn đã bấm nó một lần, email của bạn đã được xác nhận: quay lại Focus và chạm “i confirmed it”. Nếu không, tạo lại tài khoản trong app để nhận link mới.',
     'cf.retry': '{error}. Quay lại Focus và thử lại.',
 
+    /* 404 */
+    'nf.title': '404 — Không tìm thấy trang — Focus',
+    'nf.log': '$ cd trang-này\nfocus: không tìm thấy lệnh <span class="err">[ 404 ]</span>',
+    'nf.h': '404 &mdash; không tìm thấy lệnh',
+    'nf.lead': 'Không có gì ở địa chỉ này. Có thể trang đã được chuyển đi, hoặc link bị gõ sai.',
+    'nf.home': 'cd ~ &rarr;',
+    'nf.install': 'Hướng dẫn cài đặt',
+
     /* privacy (privacy.html) + terms (terms.html): the English in the HTML is the binding original, these are reference translations */
     'pv.title': 'Chính sách bảo mật — Focus',
     'pv.h1': 'Chính sách bảo mật',
