@@ -7,12 +7,12 @@
     'nav.install': 'Cài đặt',
     'nav.privacy': 'Bảo mật',
     'nav.terms': 'Điều khoản',
-    'nav.source': 'Mã nguồn',
+    'nav.source': 'Bản phát hành',
     'foot.rights': 'Bảo lưu mọi quyền',
     'foot.privacy': 'Bảo mật',
     'foot.terms': 'Điều khoản',
     'foot.contact': 'Liên hệ',
-    'foot.source': 'Mã nguồn',
+    'foot.source': 'Bản phát hành',
 
     /* index: boot */
     'idx.title': 'Focus — Hẹn giờ Pomodoro cho iPhone',
@@ -68,7 +68,7 @@
     'hero.time': 'Đồng hồ Focus, chạm để tạm dừng hoặc chạy tiếp',
     'hero.tag': 'Hẹn giờ Pomodoro và danh sách việc cần làm tối giản cho iPhone, mang chất terminal.',
     'hero.install': '+ Cài đặt',
-    'hero.source': 'Mã nguồn &#8599;',
+    'hero.source': 'Bản phát hành &#8599;',
     'hero.hint': 'chạm vào đồng hồ để tạm dừng &middot; nó chạy thật đấy',
     'hero.scroll': 'cuộn<i>&darr;</i>',
 
@@ -117,11 +117,11 @@
     // Google OAuth verification text: the English in index.html must stay byte-for-byte, only the attribute is added
     'cal.how': '<strong>Focus dùng Google Calendar như thế nào.</strong> Việc kết nối Google Calendar là tùy chọn. Khi bạn kết nối, Focus tạo một lịch phụ tên &ldquo;Focus&rdquo; trong tài khoản Google của bạn và thêm một sự kiện vào lịch đó mỗi khi bạn hoàn thành một phiên tập trung (và mỗi lần nghỉ, nếu bạn bật tùy chọn này). Focus chỉ yêu cầu quyền <code>calendar.app.created</code>, nên nó chỉ có thể truy cập lịch do chính nó tạo ra &mdash; nó không thể xem, thay đổi hay xóa các lịch hoặc sự kiện khác của bạn. Bạn có thể hủy liên kết bất cứ lúc nào trong phần cài đặt (Settings) của app.',
     'cal.read': 'Đọc <a href="privacy.html">Chính sách bảo mật</a> để biết đầy đủ chi tiết.',
-    'c6.idx': '[06] &middot; mã nguồn',
-    'c6.h': 'Mã nguồn công khai.<br><span class="soft">Cứ thoải mái đọc.</span>',
-    'c6.sub': 'Code được công khai để đọc trên GitHub. Bảo lưu mọi quyền.',
-    'git.cloning': 'đang clone vào \'focus-timer\'... xong.',
-    'git.source': 'mã nguồn &#8599;',
+    'c6.idx': '[06] &middot; bản phát hành',
+    'c6.h': 'Mọi bản build, công khai.<br><span class="soft">Bản nào cũng có ghi chú.</span>',
+    'c6.sub': 'Tải mọi phiên bản trên GitHub Releases, kèm ghi chú tính năng mới và lỗi đã sửa. Bảo lưu mọi quyền.',
+    'git.cloning': 'đang tải FocusTimer.ipa... xong.',
+    'git.source': 'bản phát hành &#8599;',
 
     /* index: CTA + info */
     'cta.q': '&gt; thấy hay không?',
@@ -391,7 +391,7 @@
     'tm.use.acct': 'Nếu bạn tạo tài khoản bằng địa chỉ email, bạn có trách nhiệm cung cấp một địa chỉ email do bạn kiểm soát và duy trì quyền truy cập vào địa chỉ đó. Chúng tôi có thể xóa các tài khoản không hoạt động hoặc bị sử dụng với mục đích lạm dụng.',
     'tm.use.guard': 'Tính năng bảo vệ tập trung và tắt tiếng thông báo phụ thuộc vào các mục tự động hóa và phím tắt do bạn thiết lập trong iOS. Các tính năng này được cung cấp như một công cụ hỗ trợ tập trung trong khả năng tốt nhất có thể, không kèm bất kỳ bảo đảm nào rằng ứng dụng sẽ bị chặn hoặc thông báo sẽ bị tắt tiếng.',
     'tm.lic.h': '3. Quyền sở hữu &amp; mã nguồn',
-    'tm.lic.p': 'Focus và mã nguồn của nó thuộc bản quyền &copy; 2026 An Le, bảo lưu mọi quyền. Mã nguồn được công bố tại <a href="https://github.com/SuS1234trwtw/focus-timer">github.com/SuS1234trwtw/focus-timer</a> chỉ để xem; bạn không được sao chép, sửa đổi, phân phối lại hoặc bán mã nguồn, dù toàn bộ hay một phần, khi chưa có sự cho phép bằng văn bản. Phông chữ và các thành phần khác của bên thứ ba có trong ứng dụng vẫn tuân theo giấy phép riêng của chúng.',
+    'tm.lic.p': 'Focus và mã nguồn của nó thuộc bản quyền &copy; 2026 An Le, bảo lưu mọi quyền. Mã nguồn được giữ riêng tư; bản thân ứng dụng được phát hành dưới dạng bản build tại <a href="https://github.com/SuS1234trwtw/focus-timer/releases">github.com/SuS1234trwtw/focus-timer</a>. Bạn không được sao chép, sửa đổi, phân phối lại hoặc bán ứng dụng hay mã nguồn của nó, dù toàn bộ hay một phần, khi chưa có sự cho phép bằng văn bản. Phông chữ và các thành phần khác của bên thứ ba có trong ứng dụng vẫn tuân theo giấy phép riêng của chúng.',
     'tm.third.h': '4. Dịch vụ của bên thứ ba',
     'tm.third.p': 'Focus có thể kết nối với Spotify và Google Calendar theo lựa chọn của bạn, có thể hoạt động cùng ứng dụng Phím tắt (Shortcuts) của Apple, và sử dụng GitHub để phân phối ứng dụng và kiểm tra cập nhật. Việc bạn sử dụng các dịch vụ đó chịu sự điều chỉnh của điều khoản và chính sách quyền riêng tư riêng của họ, và họ có thể thay đổi hoặc hạn chế việc cung cấp dịch vụ bất cứ lúc nào. Quyền truy cập các tính năng Spotify có thể chỉ giới hạn cho những tài khoản được mời. Focus không liên kết với, không được chứng thực hay tài trợ bởi Google, Spotify hay Apple.',
     'tm.cont.h': '5. Nội dung của bạn',

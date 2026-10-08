@@ -13,7 +13,7 @@ Focus looks like a terminal: monospace type, black background, no clutter. Run f
 
 - [Latest release (IPA)](https://github.com/SuS1234trwtw/focus-timer/releases/latest): download the Focus IPA
 - [SideStore source](https://github.com/SuS1234trwtw/focus-timer/releases/latest/download/source.json): add this URL in SideStore to install and get updates
-- [Source code](https://github.com/SuS1234trwtw/focus-timer): GitHub repository
+- [All releases](https://github.com/SuS1234trwtw/focus-timer/releases): every version with release notes (the source code is private)
 
 ## Key features
 
