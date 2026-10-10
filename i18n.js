@@ -44,6 +44,7 @@
     'demo.hint': 'chạm vào đồng hồ hoặc island &middot; nó chạy thật đấy',
     'demo.cap': 'Chạy thử &middot; hẹn giờ, island &amp; nhạc',
     'tk.aria': 'Phong cách: Mono, Cozy, PowerShell, CMD, Ubuntu',
+    'tk.pause': 'Tạm dừng dòng chữ chạy',
     'f.h': 'Tính năng',
     'f.styles': 'Phong cách terminal',
     'f.styles.d': 'Năm kiểu giao diện: Mono, Cozy, PowerShell, CMD và Ubuntu. Mỗi kiểu có màn hình khởi động, báo động và crash, phông chữ và biểu tượng app riêng.',
@@ -85,11 +86,11 @@
     'q1.q': 'App có miễn phí không?',
     'q1.a': 'Có. $ Focus miễn phí, không quảng cáo, không phân tích và không theo dõi.',
     'q2.q': 'Sao phải sideload, và cài thế nào?',
-    'q2.a': 'Focus không có trên App Store, nên bạn tự cài bằng một Apple Account miễn phí qua iloader (Windows hoặc Mac) hoặc SideStore. Bản cài miễn phí hết hạn sau 7 ngày: cài lại bằng iloader, hoặc để SideStore tự làm mới giúp bạn. <a href="install.html">Hướng dẫn cài đặt</a> dẫn bạn đi từng bước trong khoảng 10 phút.',
+    'q2.a': 'Focus không có trên App Store, nên bạn tự cài bằng một Apple Account miễn phí qua iloader (Windows hoặc Mac) hoặc SideStore. Bản cài miễn phí hết hạn sau 7 ngày: cài lại bằng iloader, hoặc để SideStore tự làm mới giúp bạn. <a href="install">Hướng dẫn cài đặt</a> dẫn bạn đi từng bước trong khoảng 10 phút.',
     'q3.q': 'Có cần tài khoản không?',
     'q3.a': 'Không. Ai cũng bắt đầu với một tài khoản khách ẩn danh, việc cần làm và các phiên được sao lưu tự động. Chỉ tạo tài khoản email (mã 6 chữ số, không mật khẩu) nếu bạn muốn đồng bộ giữa các thiết bị.',
     'q4.q': 'Dữ liệu nào được lưu?',
-    'q4.a': 'Việc cần làm và lịch sử phiên được đồng bộ vào cơ sở dữ liệu của chúng tôi. Cài đặt, âm thanh tùy chỉnh và bảo vệ tập trung chỉ nằm trên thiết bị của bạn. Không quảng cáo, không phân tích, không theo dõi, và chúng tôi không bao giờ bán dữ liệu của bạn. Xem đầy đủ trong <a href="privacy.html">Chính sách bảo mật</a>.',
+    'q4.a': 'Việc cần làm và lịch sử phiên được đồng bộ vào cơ sở dữ liệu của chúng tôi. Cài đặt, âm thanh tùy chỉnh và bảo vệ tập trung chỉ nằm trên thiết bị của bạn. Không quảng cáo, không phân tích, không theo dõi, và chúng tôi không bao giờ bán dữ liệu của bạn. Xem đầy đủ trong <a href="privacy">Chính sách bảo mật</a>.',
     'q5.q': 'Có dùng được khi không có mạng không?',
     'q5.a': 'Đồng hồ, island và danh sách việc cần làm chạy ngay trên iPhone. Đồng bộ, Spotify và Google Calendar cần có mạng; các sự kiện lịch sẽ chờ trên thiết bị cho đến khi bạn có mạng trở lại.',
     'q6.q': 'Spotify và Google Calendar cần những gì?',
@@ -133,7 +134,7 @@
     /* index: google calendar */
     // Google OAuth verification text: the English in index.html must stay byte-for-byte, only the attribute is added
     'cal.how': '<strong>Focus dùng Google Calendar như thế nào.</strong> Việc kết nối Google Calendar là tùy chọn. Khi bạn kết nối, Focus tạo một lịch phụ tên &ldquo;Focus&rdquo; trong tài khoản Google của bạn và thêm một sự kiện vào lịch đó mỗi khi bạn hoàn thành một phiên tập trung (và mỗi lần nghỉ, nếu bạn bật tùy chọn này). Focus chỉ yêu cầu quyền <code>calendar.app.created</code>, nên nó chỉ có thể truy cập lịch do chính nó tạo ra &mdash; nó không thể xem, thay đổi hay xóa các lịch hoặc sự kiện khác của bạn. Bạn có thể hủy liên kết bất cứ lúc nào trong phần cài đặt (Settings) của app.',
-    'cal.read': 'Đọc <a href="privacy.html">Chính sách bảo mật</a> để biết đầy đủ chi tiết.',
+    'cal.read': 'Đọc <a href="privacy">Chính sách bảo mật</a> để biết đầy đủ chi tiết.',
 
     /* index: CTA + info */
     'cta.h': 'Cài nó thôi.',
@@ -142,7 +143,7 @@
     'cta.s2': 'Cài iloader trên máy tính',
     'cta.s3': 'Đăng nhập &amp; cài vào iPhone',
     'cta.s4': 'Tin cậy app &amp; mở Focus',
-    'info.p': 'Focus được cài bằng cách sideload với một Apple ID miễn phí. Làm theo <a href="install.html">hướng dẫn cài đặt từng bước</a> cho Windows hoặc Mac.',
+    'info.p': 'Focus được cài bằng cách sideload với một Apple ID miễn phí. Làm theo <a href="install">hướng dẫn cài đặt từng bước</a> cho Windows hoặc Mac.',
     'info.contact': 'Liên hệ &amp; hỗ trợ',
     'info.ask': 'Câu hỏi, báo lỗi hoặc yêu cầu về dữ liệu:',
     'info.meta': 'Focus là một dự án độc lập, không liên kết, không được bảo trợ hay tài trợ bởi Google, Spotify hay Apple.',
@@ -402,7 +403,7 @@
     'tm.third.h': '4. Dịch vụ của bên thứ ba',
     'tm.third.p': 'Focus có thể kết nối với Spotify và Google Calendar theo lựa chọn của bạn, có thể hoạt động cùng ứng dụng Phím tắt (Shortcuts) của Apple, và sử dụng GitHub để phân phối ứng dụng và kiểm tra cập nhật. Việc bạn sử dụng các dịch vụ đó chịu sự điều chỉnh của điều khoản và chính sách quyền riêng tư riêng của họ, và họ có thể thay đổi hoặc hạn chế việc cung cấp dịch vụ bất cứ lúc nào. Quyền truy cập các tính năng Spotify có thể chỉ giới hạn cho những tài khoản được mời. Focus không liên kết với, không được chứng thực hay tài trợ bởi Google, Spotify hay Apple.',
     'tm.cont.h': '5. Nội dung của bạn',
-    'tm.cont.p': 'Bạn sở hữu các việc cần làm và nội dung khác mà bạn tạo trong Focus. Bạn cho phép chúng tôi lưu trữ và xử lý nội dung đó chỉ trong phạm vi cần thiết để cung cấp ứng dụng, như được mô tả trong <a href="privacy.html">Chính sách bảo mật</a>.',
+    'tm.cont.p': 'Bạn sở hữu các việc cần làm và nội dung khác mà bạn tạo trong Focus. Bạn cho phép chúng tôi lưu trữ và xử lý nội dung đó chỉ trong phạm vi cần thiết để cung cấp ứng dụng, như được mô tả trong <a href="privacy">Chính sách bảo mật</a>.',
     'tm.war.h': '6. Từ chối bảo đảm',
     'tm.war.p': 'Focus được cung cấp theo hiện trạng (&ldquo;as is&rdquo;) và tùy theo khả năng sẵn có (&ldquo;as available&rdquo;), không kèm bất kỳ bảo đảm nào, dù rõ ràng hay ngụ ý, bao gồm nhưng không giới hạn ở các bảo đảm về khả năng thương mại, tính phù hợp cho một mục đích cụ thể và không vi phạm quyền. Chúng tôi không bảo đảm rằng Focus sẽ hoạt động liên tục hoặc không có lỗi, hay dữ liệu sẽ không bao giờ bị mất.',
     'tm.liab.h': '7. Giới hạn trách nhiệm',
@@ -419,12 +420,19 @@
   try { lang = localStorage.getItem('lang'); } catch (e) {}
   if (lang !== 'en' && lang !== 'vi') lang = /^vi/i.test(navigator.language || '') ? 'vi' : 'en';
 
+  // Vietnamese visitors: hide tagged text until it is swapped, so English never flashes first.
+  // Only JS adds this class, and apply() always removes it, so without JS the page simply shows English.
+  if (lang === 'vi') { root.lang = 'vi'; root.classList.add('i18n-wait'); }
+
   function T(key, en) { return lang === 'vi' && VI.hasOwnProperty(key) ? VI[key] : en; }
 
   var MISSING = { en: ['exams'], vi: ['sounds'] };
 
   function all(sel) { return [].slice.call(document.querySelectorAll(sel)); }
   function apply() {
+    try { swap(); } finally { root.classList.remove('i18n-wait'); }
+  }
+  function swap() {
     // a page with no tagged text keeps its own <html lang>; only the switch remembers the choice
     if (document.querySelector('[data-i18n]')) root.lang = lang;
     all('[data-i18n]').forEach(function (el) {
@@ -464,7 +472,7 @@
     var b = e.target.closest && e.target.closest('[data-lang]');
     if (b) setLang(b.getAttribute('data-lang'));
   });
-  // apply as soon as the page is parsed, before deferred scripts and first paint where possible
+  // apply as soon as the page is parsed, before deferred scripts; for VI the text stays hidden until then
   if (document.readyState !== 'loading') apply();
   else document.addEventListener('readystatechange', function once() { document.removeEventListener('readystatechange', once); apply(); });
 })();

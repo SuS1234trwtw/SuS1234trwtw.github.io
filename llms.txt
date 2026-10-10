@@ -7,7 +7,7 @@ Focus looks like a terminal: monospace type, black background, no clutter. Run f
 ## Website
 
 - [Home](https://notanlee.github.io/): what $ Focus is, features, screenshots and FAQ
-- [Install guide](https://notanlee.github.io/install.html): step-by-step sideloading with iloader or SideStore, on Windows or Mac
+- [Install guide](https://notanlee.github.io/install): step-by-step sideloading with iloader or SideStore, on Windows or Mac
 
 ## Download
 
@@ -35,8 +35,8 @@ Focus looks like a terminal: monospace type, black background, no clutter. Run f
 
 ## Legal
 
-- [Privacy Policy](https://notanlee.github.io/privacy.html): no ads, no analytics, no tracking
-- [Terms of Service](https://notanlee.github.io/terms.html)
+- [Privacy Policy](https://notanlee.github.io/privacy): no ads, no analytics, no tracking
+- [Terms of Service](https://notanlee.github.io/terms)
 - License: All rights reserved (c) 2026 An Le
 
 ## Contact

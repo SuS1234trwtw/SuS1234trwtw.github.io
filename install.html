@@ -8,13 +8,13 @@
 <meta name="description" content="Step-by-step guide to install Focus on iPhone with iloader or SideStore, on Windows or Mac.">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#F4F4F2">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#121211">
-<link rel="icon" href="logo.png?v=18">
-<link rel="canonical" href="https://notanlee.github.io/install.html">
+<link rel="icon" href="logo.png?v=19">
+<link rel="canonical" href="https://notanlee.github.io/install">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="$ Focus">
 <meta property="og:title" content="Install $ Focus — iloader &amp; SideStore guide">
 <meta property="og:description" content="Step-by-step guide to install Focus on iPhone with iloader or SideStore, on Windows or Mac.">
-<meta property="og:url" content="https://notanlee.github.io/install.html">
+<meta property="og:url" content="https://notanlee.github.io/install">
 <meta property="og:image" content="https://notanlee.github.io/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -25,12 +25,12 @@
 <meta name="twitter:title" content="Install $ Focus — iloader &amp; SideStore guide">
 <meta name="twitter:description" content="Step-by-step guide to install Focus on iPhone with iloader or SideStore, on Windows or Mac.">
 <meta name="twitter:image" content="https://notanlee.github.io/og.png">
-<link rel="apple-touch-icon" href="logo.png?v=18">
+<link rel="apple-touch-icon" href="logo.png?v=19">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500;600&amp;family=Inter+Tight:wght@600;700;800&amp;display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=18">
-<script src="i18n.js?v=18"></script>
+<link rel="stylesheet" href="style.css?v=19">
+<script src="i18n.js?v=19"></script>
 <script>document.documentElement.className += ' js';</script>
 </head>
 <body>
@@ -38,15 +38,15 @@
 <div class="progress" aria-hidden="true"></div>
 
 <header class="site"><nav class="bar" aria-label="Main" data-i18n-attr="aria-label:nav.main">
-<a class="pill logo" href="./" aria-label="$ Focus home" data-i18n-attr="aria-label:nav.homelbl"><img src="logo.png?v=18" alt="" width="18" height="18"><span class="txt">$ Focus</span></a>
+<a class="pill logo" href="./" aria-label="$ Focus home" data-i18n-attr="aria-label:nav.homelbl"><img src="logo.png?v=19" alt="" width="18" height="18"><span class="txt">$ Focus</span></a>
 <div class="menu-wrap"><button class="pill" id="menu-btn" type="button" aria-expanded="false" aria-controls="menu"><span data-i18n="nav.install">Install</span><span class="burger" aria-hidden="true"><i></i><i></i></span></button>
 <div class="menu" id="menu" hidden>
 <a href="./" data-i18n="nav.home">Home</a>
 <a href="./#features" data-i18n="nav.features">Features</a>
-<a href="install.html" aria-current="page" data-i18n="nav.install">Install</a>
+<a href="install" aria-current="page" data-i18n="nav.install">Install</a>
 <a href="./#faq" data-i18n="nav.faq">FAQ</a>
-<a href="privacy.html" data-i18n="nav.privacy">Privacy</a>
-<a href="terms.html" data-i18n="nav.terms">Terms</a>
+<a href="privacy" data-i18n="nav.privacy">Privacy</a>
+<a href="terms" data-i18n="nav.terms">Terms</a>
 <a class="ext" href="https://github.com/notanlee/focus-timer/releases" data-i18n="nav.source">Releases</a>
 <a class="only-sm" href="https://github.com/notanlee/focus-timer/releases/latest" data-i18n="nav.download">Download</a>
 </div></div>
@@ -229,9 +229,9 @@
 <div class="foot-grid">
 <div><p class="label" data-i18n="ft.links">Links:</p><ul>
 <li><a href="https://github.com/notanlee/focus-timer/releases" data-i18n="foot.source">Releases</a></li>
-<li><a href="install.html" data-i18n="nav.install">Install</a></li>
-<li><a href="privacy.html" data-i18n="foot.privacy">Privacy</a></li>
-<li><a href="terms.html" data-i18n="foot.terms">Terms</a></li>
+<li><a href="install" data-i18n="nav.install">Install</a></li>
+<li><a href="privacy" data-i18n="foot.privacy">Privacy</a></li>
+<li><a href="terms" data-i18n="foot.terms">Terms</a></li>
 <li><a href="./#contact" data-i18n="foot.contact">Contact</a></li>
 </ul></div>
 <div><p class="label" data-i18n="ft.say">Say hi:</p><ul>
@@ -253,6 +253,7 @@
   var state = {};
   var tr = window.T || function (k, en) { return en; };
   function two(n) { return (n < 10 ? '0' : '') + n; }
+  var glide = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth';
 
   guides.forEach(function (g) {
     var steps = [].slice.call(g.querySelectorAll('.step'));
@@ -276,7 +277,7 @@
       if (act === 'next') go(g.id, s.i + 1);
       else if (act === 'prev') go(g.id, s.i - 1);
       else if (act === 'all') { g.classList.remove('stepper'); paintCount(s); }
-      else if (act === 'one') { g.classList.add('stepper'); go(g.id, s.i); g.scrollIntoView({ block: 'start' }); }
+      else if (act === 'one') { g.classList.add('stepper'); go(g.id, s.i); g.scrollIntoView({ block: 'start', behavior: glide }); }
     });
     labels(s);
     go(g.id, 0, true);
@@ -313,7 +314,7 @@
     next.disabled = n === s.steps.length - 1;
     if (!quiet) {
       var top = s.g.getBoundingClientRect().top;
-      if (top < 0 || top > innerHeight * 0.5) s.g.scrollIntoView({ block: 'start' });
+      if (top < 0 || top > innerHeight * 0.5) s.g.scrollIntoView({ block: 'start', behavior: glide });
     }
   }
 
@@ -322,7 +323,7 @@
     guides.forEach(function (g) { g.hidden = g.id !== id; });
     tabs.forEach(function (t) { t.setAttribute('aria-selected', t.getAttribute('data-path') === id ? 'true' : 'false'); });
     current = id;
-    if (scroll) state[id].g.scrollIntoView({ block: 'start' });
+    if (scroll) state[id].g.scrollIntoView({ block: 'start', behavior: glide });
   }
 
   var current = null;
@@ -334,7 +335,7 @@
   }
   if (!fromHash()) pick(/Mac/.test(navigator.platform) ? 'iloader-mac' : 'iloader-windows');
   // land at the top of the page unless a guide was asked for
-  addEventListener('hashchange', function () { if (fromHash()) state[current].g.scrollIntoView({ block: 'start' }); });
+  addEventListener('hashchange', function () { if (fromHash()) state[current].g.scrollIntoView({ block: 'start', behavior: glide }); });
 
   document.addEventListener('click', function (e) {
     var a = e.target.closest && e.target.closest('[data-path], [data-go]');
@@ -356,6 +357,6 @@
 
 })();
 </script>
-<script src="site.js?v=18" defer></script>
+<script src="site.js?v=19" defer></script>
 </body>
 </html>

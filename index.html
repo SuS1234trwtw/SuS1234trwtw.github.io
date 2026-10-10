@@ -8,7 +8,7 @@
 <meta name="description" content="A minimal, terminal-style Pomodoro timer and task list for iPhone. Free, in English and Vietnamese, with a live Dynamic Island.">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#F4F4F2">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#121211">
-<link rel="icon" href="logo.png?v=18">
+<link rel="icon" href="logo.png?v=19">
 <link rel="canonical" href="https://notanlee.github.io/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="$ Focus">
@@ -25,13 +25,15 @@
 <meta name="twitter:title" content="$ Focus — Pomodoro timer for iPhone">
 <meta name="twitter:description" content="A minimal, terminal-style Pomodoro timer and task list for iPhone. Free, in English and Vietnamese, with a live Dynamic Island.">
 <meta name="twitter:image" content="https://notanlee.github.io/og.png">
-<link rel="apple-touch-icon" href="logo.png?v=18">
+<link rel="apple-touch-icon" href="logo.png?v=19">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500;600&amp;family=Inter+Tight:wght@600;700;800&amp;display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=18">
-<script src="i18n.js?v=18"></script>
-<script>document.documentElement.className += ' js';</script>
+<link rel="stylesheet" href="style.css?v=19">
+<script src="i18n.js?v=19"></script>
+<script>document.documentElement.className += ' js';
+// screenshots fade in when they arrive (document-level capture sees every <img> load, cached ones too)
+(function (show) { document.addEventListener('load', show, true); document.addEventListener('error', show, true); })(function (e) { if (e.target.tagName === 'IMG') e.target.classList.add('in'); });</script>
 <script type="application/ld+json">
 {
  "@context": "https://schema.org",
@@ -59,7 +61,7 @@
    "url": "https://notanlee.github.io/",
    "image": "https://notanlee.github.io/og.png",
    "downloadUrl": "https://github.com/notanlee/focus-timer/releases/latest",
-   "installUrl": "https://notanlee.github.io/install.html",
+   "installUrl": "https://notanlee.github.io/install",
    "inLanguage": [
     "en",
     "vi"
@@ -84,15 +86,15 @@
 <div class="progress" aria-hidden="true"></div>
 
 <header class="site"><nav class="bar" aria-label="Main" data-i18n-attr="aria-label:nav.main">
-<a class="pill logo" href="./" aria-label="$ Focus home" data-i18n-attr="aria-label:nav.homelbl"><img src="logo.png?v=18" alt="" width="18" height="18"><span class="txt">$ Focus</span></a>
+<a class="pill logo" href="./" aria-label="$ Focus home" data-i18n-attr="aria-label:nav.homelbl"><img src="logo.png?v=19" alt="" width="18" height="18"><span class="txt">$ Focus</span></a>
 <div class="menu-wrap"><button class="pill" id="menu-btn" type="button" aria-expanded="false" aria-controls="menu"><span data-i18n="nav.home">Home</span><span class="burger" aria-hidden="true"><i></i><i></i></span></button>
 <div class="menu" id="menu" hidden>
 <a href="./" aria-current="page" data-i18n="nav.home">Home</a>
 <a href="#features" data-i18n="nav.features">Features</a>
-<a href="install.html" data-i18n="nav.install">Install</a>
+<a href="install" data-i18n="nav.install">Install</a>
 <a href="#faq" data-i18n="nav.faq">FAQ</a>
-<a href="privacy.html" data-i18n="nav.privacy">Privacy</a>
-<a href="terms.html" data-i18n="nav.terms">Terms</a>
+<a href="privacy" data-i18n="nav.privacy">Privacy</a>
+<a href="terms" data-i18n="nav.terms">Terms</a>
 <a class="ext" href="https://github.com/notanlee/focus-timer/releases" data-i18n="nav.source">Releases</a>
 <a class="only-sm" href="https://github.com/notanlee/focus-timer/releases/latest" data-i18n="nav.download">Download</a>
 </div></div>
@@ -115,7 +117,7 @@
 <div class="row"><p class="label" data-i18n="h.get">Get it:</p><div>
 <div class="actions">
 <a class="btn solid" href="https://github.com/notanlee/focus-timer/releases/latest" data-i18n="h.dl">Download &#8599;</a>
-<a class="btn" href="install.html" data-i18n="h.guide">Install guide &rarr;</a>
+<a class="btn" href="install" data-i18n="h.guide">Install guide &rarr;</a>
 </div>
 <p class="fine" data-i18n="h.req">Free &middot; iPhone with iOS 26 or later &middot; installed with a free Apple Account in about 10 minutes</p>
 </div></div>
@@ -127,7 +129,7 @@
 
 <figure class="showcase" aria-labelledby="demo-cap">
 <div class="show">
-<div class="phone"><div class="screen"><img class="shot" src="shots/en/timer.webp" data-shot="timer" alt="Focus showing the timer during a focus block" data-i18n-attr="alt:alt.timer" width="600" height="1301" decoding="async"><div class="island" tabindex="0" role="button" aria-expanded="false" aria-label="Dynamic Island, tap to expand" data-i18n-attr="aria-label:island.aria"><span class="l js-mode">FOCUS</span><span class="r js-time">25:00</span><span class="ctl"><button type="button" class="js-toggle">&#10074;&#10074; pause</button><button data-i18n="ctl.switch" type="button" class="js-switch">&#8644; switch</button></span><span data-i18n="paused" class="note">paused</span></div></div><img class="frame" src="iphone.png" alt="" aria-hidden="true" width="744" height="1530"></div>
+<div class="phone"><div class="screen"><img class="shot" src="shots/en/timer.webp" data-shot="timer" alt="Focus showing the timer during a focus block" data-i18n-attr="alt:alt.timer" width="600" height="1301" decoding="async"><div class="island-layer"><div class="island" tabindex="0" role="button" aria-expanded="false" aria-label="Dynamic Island, tap to expand" data-i18n-attr="aria-label:island.aria"><span class="l js-mode">FOCUS</span><span class="r js-time">25:00</span><span class="ctl"><button type="button" class="js-toggle">&#10074;&#10074; pause</button><button data-i18n="ctl.switch" type="button" class="js-switch">&#8644; switch</button></span><span data-i18n="paused" class="note">paused</span></div></div></div><img class="frame" src="iphone.png" alt="" aria-hidden="true" width="744" height="1530"></div>
 <div class="demo" id="hero-inner">
 <p class="mode"><b class="js-mode">Focus</b> &middot; <span class="js-state">session 1</span></p>
 <p class="time" id="time" tabindex="0" role="button" aria-label="Focus timer, tap to pause or start" data-i18n-attr="aria-label:hero.time">25:00<span class="cursor"></span></p>
@@ -151,7 +153,7 @@
 </figure>
 </div>
 
-<div class="ticker" role="img" aria-label="Styles: Mono, Cozy, PowerShell, CMD, Ubuntu" data-i18n-attr="aria-label:tk.aria"><div class="ticker-track" aria-hidden="true"><span>Mono</span><span class="sep">&middot;</span><span>Cozy</span><span class="sep">&middot;</span><span>PowerShell</span><span class="sep">&middot;</span><span>CMD</span><span class="sep">&middot;</span><span>Ubuntu</span><span class="sep">&middot;</span><span>Mono</span><span class="sep">&middot;</span><span>Cozy</span><span class="sep">&middot;</span><span>PowerShell</span><span class="sep">&middot;</span><span>CMD</span><span class="sep">&middot;</span><span>Ubuntu</span><span class="sep">&middot;</span></div></div>
+<div class="ticker"><span class="sr" data-i18n="tk.aria">Styles: Mono, Cozy, PowerShell, CMD, Ubuntu</span><div class="ticker-track" aria-hidden="true"><span>Mono</span><span class="sep">&middot;</span><span>Cozy</span><span class="sep">&middot;</span><span>PowerShell</span><span class="sep">&middot;</span><span>CMD</span><span class="sep">&middot;</span><span>Ubuntu</span><span class="sep">&middot;</span><span>Mono</span><span class="sep">&middot;</span><span>Cozy</span><span class="sep">&middot;</span><span>PowerShell</span><span class="sep">&middot;</span><span>CMD</span><span class="sep">&middot;</span><span>Ubuntu</span><span class="sep">&middot;</span></div><button class="tk-btn" type="button" aria-pressed="false" aria-label="Pause the moving text" data-i18n-attr="aria-label:tk.pause"></button></div>
 
 <section class="sec page" id="features" aria-labelledby="f-h">
 <div class="sec-head"><h2 class="sec-title" id="f-h" data-i18n="f.h">Features</h2><p class="label">(08)</p></div>
@@ -182,7 +184,7 @@
 </article>
 
 <article class="card">
-<div class="media"><img src="shots/en/island.webp" data-shot="island" alt="The Dynamic Island expanded, with the timer, the song and music buttons" data-i18n-attr="alt:alt.island" width="600" height="1301" loading="lazy" decoding="async"></div>
+<div class="media wide"><img src="shots/en/island.webp" data-shot="island" alt="The Dynamic Island expanded, with the timer, the song and music buttons" data-i18n-attr="alt:alt.island" width="567" height="267" loading="lazy" decoding="async"></div>
 <div class="cap"><h3 data-i18n="f.island">Dynamic Island</h3><span>/ 1.7</span></div>
 <p class="desc" data-i18n="f.island.d">A live countdown in the Dynamic Island and on the Lock Screen. Hold it to pause or switch modes. Home Screen widgets too.</p>
 </article>
@@ -200,7 +202,7 @@
 </article>
 
 <article class="card">
-<div class="media"><img src="shots/en/spotify.webp" data-shot="spotify" alt="Focus showing the song playing on Spotify" data-i18n-attr="alt:alt.spotify" width="600" height="1301" loading="lazy" decoding="async"></div>
+<div class="media bottom"><img src="shots/en/spotify.webp" data-shot="spotify" alt="Focus showing the song playing on Spotify" data-i18n-attr="alt:alt.spotify" width="600" height="1301" loading="lazy" decoding="async"></div>
 <div class="cap"><h3>Spotify</h3><span>/ 1.6</span></div>
 <p class="desc" data-i18n="f.spotify.d">Optional: see and control what&rsquo;s playing without leaving the timer.</p>
 </article>
@@ -209,7 +211,7 @@
 
 <div class="row" id="calendar" style="margin-top:clamp(40px,6vw,72px)"><p class="label" data-i18n="f.cal.l">Google Calendar:</p><div class="fine">
 <p data-i18n="cal.how"><strong>How Focus uses Google Calendar.</strong> Connecting Google Calendar is optional. When you connect, Focus creates one secondary calendar named &ldquo;Focus&rdquo; in your Google account and adds an event to it each time you finish a focus block (and each break, if you turn that on). Focus requests only the <code>calendar.app.created</code> permission, so it can access only the calendar it created &mdash; it cannot see, change or delete your other calendars or events. You can unlink at any time in the app&rsquo;s Settings.</p>
-<p data-i18n="cal.read">Read the <a href="privacy.html">Privacy Policy</a> for full details.</p>
+<p data-i18n="cal.read">Read the <a href="privacy">Privacy Policy</a> for full details.</p>
 </div></div>
 </section>
 
@@ -247,7 +249,7 @@
 <section class="sec page" id="install" aria-labelledby="i-h">
 <h2 class="sec-title" id="i-h" data-i18n="cta.h">Install it.</h2>
 <div class="row" style="margin-top:24px"><p class="label" data-i18n="i.how">How it works:</p><div>
-<p data-i18n="info.p">Focus is installed by sideloading with a free Apple ID. Follow the <a href="install.html">step-by-step install guide</a> for Windows or Mac.</p>
+<p data-i18n="info.p">Focus is installed by sideloading with a free Apple ID. Follow the <a href="install">step-by-step install guide</a> for Windows or Mac.</p>
 <ol class="steps-mini">
 <li data-i18n="cta.s1">Download the Focus IPA</li>
 <li data-i18n="cta.s2">Get iloader on your computer</li>
@@ -255,7 +257,7 @@
 <li data-i18n="cta.s4">Trust it &amp; open Focus</li>
 </ol>
 <div class="actions">
-<a class="btn solid" href="install.html" data-i18n="cta.btn">Open the install guide &rarr;</a>
+<a class="btn solid" href="install" data-i18n="cta.btn">Open the install guide &rarr;</a>
 <a class="btn" href="https://github.com/notanlee/focus-timer/releases" data-i18n="hero.source">Releases &#8599;</a>
 </div>
 </div></div>
@@ -265,9 +267,9 @@
 <div class="sec-head"><h2 class="sec-title" id="q-h" data-i18n="q.h">FAQ</h2><p class="label">(08)</p></div>
 <div class="faq">
 <details><summary data-i18n="q1.q">Is it free?</summary><div class="body"><p data-i18n="q1.a">Yes. $ Focus is free, with no ads, no analytics and no tracking.</p></div></details>
-<details><summary data-i18n="q2.q">Why sideload, and how do I install it?</summary><div class="body"><p data-i18n="q2.a">Focus isn&rsquo;t on the App Store, so you install it yourself with a free Apple Account using iloader (Windows or Mac) or SideStore. Free installs expire after 7 days: re-install with iloader, or let SideStore refresh it for you. The <a href="install.html">install guide</a> walks you through it in about 10 minutes.</p></div></details>
+<details><summary data-i18n="q2.q">Why sideload, and how do I install it?</summary><div class="body"><p data-i18n="q2.a">Focus isn&rsquo;t on the App Store, so you install it yourself with a free Apple Account using iloader (Windows or Mac) or SideStore. Free installs expire after 7 days: re-install with iloader, or let SideStore refresh it for you. The <a href="install">install guide</a> walks you through it in about 10 minutes.</p></div></details>
 <details><summary data-i18n="q3.q">Does it need an account?</summary><div class="body"><p data-i18n="q3.a">No. Everyone starts as an anonymous guest whose tasks and sessions are backed up automatically. Create an email account (a 6-digit code, no password) only if you want to sync across devices.</p></div></details>
-<details><summary data-i18n="q4.q">What data is stored?</summary><div class="body"><p data-i18n="q4.a">Your tasks and session history sync to our database. Settings, custom sounds and focus guard stay on your device. No ads, analytics or tracking, and we never sell your data. The <a href="privacy.html">Privacy Policy</a> has every detail.</p></div></details>
+<details><summary data-i18n="q4.q">What data is stored?</summary><div class="body"><p data-i18n="q4.a">Your tasks and session history sync to our database. Settings, custom sounds and focus guard stay on your device. No ads, analytics or tracking, and we never sell your data. The <a href="privacy">Privacy Policy</a> has every detail.</p></div></details>
 <details><summary data-i18n="q5.q">Does it work offline?</summary><div class="body"><p data-i18n="q5.a">The timer, the island and your task list run on your iPhone. Sync, Spotify and Google Calendar need a connection; calendar events wait on your device until you&rsquo;re back online.</p></div></details>
 <details><summary data-i18n="q6.q">What do Spotify and Google Calendar need?</summary><div class="body"><p data-i18n="q6.a">Both are optional. Spotify needs your Spotify account, and access may be limited to invited accounts. Google Calendar needs a Google account and asks only for the <code>calendar.app.created</code> permission, so Focus can reach only the &ldquo;Focus&rdquo; calendar it creates.</p></div></details>
 <details><summary data-i18n="q7.q">Is it in Vietnamese?</summary><div class="body"><p data-i18n="q7.a">Yes. The app and this website are fully in English and Vietnamese. Switch here with EN / VI at the top; in the app, pick your language during setup or in Settings.</p></div></details>
@@ -292,9 +294,9 @@
 <div class="foot-grid">
 <div><p class="label" data-i18n="ft.links">Links:</p><ul>
 <li><a href="https://github.com/notanlee/focus-timer/releases" data-i18n="foot.source">Releases</a></li>
-<li><a href="install.html" data-i18n="nav.install">Install</a></li>
-<li><a href="privacy.html" data-i18n="foot.privacy">Privacy</a></li>
-<li><a href="terms.html" data-i18n="foot.terms">Terms</a></li>
+<li><a href="install" data-i18n="nav.install">Install</a></li>
+<li><a href="privacy" data-i18n="foot.privacy">Privacy</a></li>
+<li><a href="terms" data-i18n="foot.terms">Terms</a></li>
 <li><a href="./#contact" data-i18n="foot.contact">Contact</a></li>
 </ul></div>
 <div><p class="label" data-i18n="ft.say">Say hi:</p><ul>
@@ -392,7 +394,7 @@
   }, 1000);
 })();
 </script>
-<script src="player.js?v=18" defer></script>
-<script src="site.js?v=18" defer></script>
+<script src="player.js?v=19" defer></script>
+<script src="site.js?v=19" defer></script>
 </body>
 </html>

@@ -306,6 +306,8 @@
     return T('np.title', '{adj} {noun}').replace('{adj}', adj[t.adj]).replace('{noun}', noun[t.noun]);
   }
   var swapTimer = 0;
+  // the text swap lasts as long as the CSS fade (--duration-quick), read once from the stylesheet
+  var swapMs = still ? 0 : (parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--duration-quick')) || 150);
   function swapInfo() {
     var lines = [$('np-title'), $('np-artist'), $('np-up')];
     lines.forEach(function (l) { l.classList.add('swap'); });
@@ -314,7 +316,7 @@
     swapTimer = setTimeout(function () {
       paintInfo();
       lines.forEach(function (l) { l.classList.remove('swap'); });
-    }, 150);
+    }, swapMs);
   }
   function paintInfo() {
     var meta = T('np.gen', 'generated live &middot; no copyright');
@@ -324,20 +326,25 @@
     marquee($('np-title'), fileEl ? fileName : track ? titleOf(track) : T('np.press', 'press play'));
     marquee($('np-up'), T('np.up', 'up next') + ': ' + titleOf(upNext()));
   }
-  // long lines scroll only when they overflow their box; reduced motion keeps the ellipsis
+  // long lines glide back and forth only when they overflow their box; reduced motion keeps the ellipsis.
+  // New text restarts the glide (it happens while the line is faded out); a refit with the same text doesn't.
   function marquee(box, text) {
-    box.firstChild.textContent = text;
+    var span = box.firstChild;
+    if (span.textContent === text) { fit(box); return; }
+    span.textContent = text;
+    box.classList.remove('run');
     fit(box);
   }
   function fit(box) {
-    var span = box.firstChild;
-    box.classList.remove('run');
-    var over = span.scrollWidth - span.clientWidth;
-    if (over > 1 && !still) {
-      box.style.setProperty('--mq-x', -over + 'px');
-      box.style.setProperty('--mq-t', Math.max(6, over / 30 / 0.64).toFixed(1) + 's'); // ~30px/s while moving
-      box.classList.add('run');
-    }
+    var over = Math.ceil(box.firstChild.scrollWidth - box.clientWidth); // same in both states, no need to stop it to measure
+    if (over <= 1 || still) { box.classList.remove('run'); box._over = 0; return; }
+    if (box._over === over && box.classList.contains('run')) return;
+    box._over = over;
+    // each glide ~40px/s, at least 1.6s; the two glides take 60% of the loop (style.css @keyframes mq), holds the rest
+    var glide = Math.max(1.6, over / 40);
+    box.style.setProperty('--mq-x', -over + 'px');
+    box.style.setProperty('--mq-t', (glide * 2 / 0.6).toFixed(2) + 's');
+    box.classList.add('run');
   }
   function refit() { fit($('np-title')); fit($('np-up')); }
   function paintText() {
@@ -359,28 +366,46 @@
     });
     $('np-bpm').textContent = track && !fileEl ? bpmNow() + ' bpm' : '— bpm';
   }
+  // writes only what changed: the clock text once a second, the bar as a compositor-only scaleX
+  var shown = {}, posEl = $('np-pos'), lenEl = $('np-len'), fillEl = $('np-fill'), ppEl = $('np-play');
+  function put(key, val, fn) { if (shown[key] !== val) { shown[key] = val; fn(val); } }
   function draw() {
+    syncLoop();
     var len = fileEl ? (fileEl.duration || 0) : (track ? track.len : 0);
     var pos = currentTime();
-    $('np-pos').textContent = clock(pos);
-    $('np-len').textContent = clock(len);
-    $('np-fill').style.width = (len ? Math.min(100, pos / len * 100) : 0) + '%';
-    var pp = $('np-play');
-    pp.innerHTML = playing ? '&#10074;&#10074;' : '&#9654;';
-    pp.setAttribute('aria-label', playing ? T('np.pause', 'Pause') : T('np.play', 'Play'));
-    el.classList.toggle('playing', playing);
+    put('pos', clock(pos), function (v) { posEl.textContent = v; });
+    put('len', clock(len), function (v) { lenEl.textContent = v; });
+    put('fill', len ? Math.min(1, pos / len).toFixed(4) : '0', function (v) { fillEl.style.transform = 'scaleX(' + v + ')'; });
+    put('pp', playing, function (v) { ppEl.innerHTML = v ? '&#10074;&#10074;' : '&#9654;'; el.classList.toggle('playing', v); });
+    put('ppl', playing ? T('np.pause', 'Pause') : T('np.play', 'Play'), function (v) { ppEl.setAttribute('aria-label', v); });
   }
-  var freq = new Uint8Array(32);
+
+  // the frame loop runs only while music plays; it skips the DOM while the player is off screen
+  // (the track-end check still runs) and stops when paused. Hidden tabs pause the music anyway.
+  var freq = new Uint8Array(32), levels = eqBars.map(function () { return 0.3; }), looping = false, onScreen = true;
   function frame() {
-    if (playing && analyser) {
-      analyser.getByteFrequencyData(freq);
-      eqBars.forEach(function (b, i) { b.style.transform = 'scaleY(' + (0.15 + freq[2 + i * 3] / 255 * 0.85) + ')'; });
-      if (!fileEl && track && currentTime() >= track.len) next();
-    } else {
-      eqBars.forEach(function (b) { b.style.transform = ''; });
+    if (!playing) { looping = false; return; }
+    if (!fileEl && track && currentTime() >= track.len) next();
+    if (onScreen) {
+      if (analyser && !still) {
+        analyser.getByteFrequencyData(freq);
+        eqBars.forEach(function (b, i) {
+          var target = 0.15 + freq[2 + i * 3] / 255 * 0.85;
+          levels[i] += (target - levels[i]) * (target > levels[i] ? 0.6 : 0.2); // quick rise, softer fall
+          b.style.transform = 'scaleY(' + levels[i].toFixed(3) + ')';
+        });
+      }
+      draw();
     }
-    draw();
     requestAnimationFrame(frame);
+  }
+  function syncLoop() {
+    if (playing) { if (!looping) { looping = true; requestAnimationFrame(frame); } return; }
+    // paused: hand the bars back to CSS, which eases them down
+    eqBars.forEach(function (b, i) { b.style.transform = ''; levels[i] = 0.3; });
+  }
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function (es) { onScreen = es[es.length - 1].isIntersecting; if (onScreen) draw(); }).observe(el);
   }
 
   /* ---------- controls ---------- */
@@ -427,5 +452,4 @@
   paintInfo();
   paintStyle();
   draw();
-  requestAnimationFrame(frame);
 })();
