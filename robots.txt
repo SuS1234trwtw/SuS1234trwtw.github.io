@@ -31,4 +31,4 @@ Allow: /
 User-agent: CCBot
 Allow: /
 
-Sitemap: https://sus1234trwtw.github.io/sitemap.xml
+Sitemap: https://notanlee.github.io/sitemap.xml
