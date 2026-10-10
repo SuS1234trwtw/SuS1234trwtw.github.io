@@ -3,15 +3,17 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title data-i18n="idx.title">Focus — Pomodoro timer for iPhone</title>
-<meta name="description" content="A minimal Pomodoro timer and task list for iPhone.">
-<meta name="theme-color" content="#050505">
-<link rel="icon" href="logo.png?v=17">
+<script>try{var t=localStorage.getItem('theme');if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+<title data-i18n="idx.title">$ Focus — Pomodoro timer for iPhone</title>
+<meta name="description" content="A minimal, terminal-style Pomodoro timer and task list for iPhone. Free, in English and Vietnamese, with a live Dynamic Island.">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#F4F4F2">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#121211">
+<link rel="icon" href="logo.png?v=18">
 <link rel="canonical" href="https://sus1234trwtw.github.io/">
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="Focus">
-<meta property="og:title" content="Focus — Pomodoro timer for iPhone">
-<meta property="og:description" content="A minimal Pomodoro timer and task list for iPhone.">
+<meta property="og:site_name" content="$ Focus">
+<meta property="og:title" content="$ Focus — Pomodoro timer for iPhone">
+<meta property="og:description" content="A minimal, terminal-style Pomodoro timer and task list for iPhone. Free, in English and Vietnamese, with a live Dynamic Island.">
 <meta property="og:url" content="https://sus1234trwtw.github.io/">
 <meta property="og:image" content="https://sus1234trwtw.github.io/og.png">
 <meta property="og:image:width" content="1200">
@@ -20,25 +22,16 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:locale:alternate" content="vi_VN">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Focus — Pomodoro timer for iPhone">
-<meta name="twitter:description" content="A minimal Pomodoro timer and task list for iPhone.">
+<meta name="twitter:title" content="$ Focus — Pomodoro timer for iPhone">
+<meta name="twitter:description" content="A minimal, terminal-style Pomodoro timer and task list for iPhone. Free, in English and Vietnamese, with a live Dynamic Island.">
 <meta name="twitter:image" content="https://sus1234trwtw.github.io/og.png">
-<link rel="apple-touch-icon" href="logo.png?v=17">
+<link rel="apple-touch-icon" href="logo.png?v=18">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=17">
-<script src="i18n.js?v=17"></script>
-<script>
-(function () {
-  var d = document.documentElement, seen = false;
-  d.className += ' js';
-  // boot on every visit; skip it only when coming back from another page of this site
-  try { seen = sessionStorage.getItem('focus.booted') === '1' && document.referrer.indexOf(location.origin) === 0; } catch (e) {}
-  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (!seen && !reduce) d.className += ' booting';
-})();
-</script>
+<link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500;600&amp;family=Inter+Tight:wght@600;700;800&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css?v=18">
+<script src="i18n.js?v=18"></script>
+<script>document.documentElement.className += ' js';</script>
 <script type="application/ld+json">
 {
  "@context": "https://schema.org",
@@ -46,7 +39,7 @@
   {
    "@type": "WebSite",
    "@id": "https://sus1234trwtw.github.io/#website",
-   "name": "Focus",
+   "name": "$ Focus",
    "url": "https://sus1234trwtw.github.io/",
    "inLanguage": [
     "en",
@@ -59,7 +52,7 @@
   {
    "@type": "MobileApplication",
    "@id": "https://sus1234trwtw.github.io/#app",
-   "name": "Focus",
+   "name": "$ Focus",
    "description": "A minimal, terminal-styled Pomodoro timer and task list for iPhone.",
    "operatingSystem": "iOS 26+",
    "applicationCategory": "ProductivityApplication",
@@ -87,64 +80,58 @@
 </script>
 </head>
 <body>
+<a class="skip" href="#main" data-i18n="nav.skip">Skip to content</a>
+<div class="progress" aria-hidden="true"></div>
 
-<div class="boot" id="boot" aria-hidden="true">
-<div class="boot-inner">
-<div class="boot-top"><span class="wdots"><i></i><i></i><i></i></span><span data-i18n="boot.top" class="t">focus &mdash; boot &mdash; tty1 &mdash; 80&times;24</span><span id="boot-clock">00:00:00</span></div>
-<div class="boot-main">
-<div class="boot-log" id="boot-log"></div>
-<aside class="boot-side">
-<p class="h"><span data-i18n="boot.sys">// system</span><em id="v-host">focus-os 1.8.0</em></p>
-<div class="bs-row"><span>cpu</span><div class="bs-bar"><i id="b-cpu"></i></div><em id="v-cpu">0%</em></div>
-<div class="bs-row"><span data-i18n="boot.mem">mem</span><div class="bs-bar"><i id="b-mem"></i></div><em id="v-mem">0%</em></div>
-<div class="bs-row"><span data-i18n="boot.net">net</span><div class="bs-bar"><i id="b-net"></i></div><em id="v-net">0%</em></div>
-<div class="grid-wrap"><p class="h"><span data-i18n="boot.mod">// modules</span><em id="v-mod">0/9</em></p><div class="bs-grid" id="bs-grid"></div></div>
-<div class="wave-wrap"><p class="h"><span data-i18n="boot.sig">// signal</span><em id="v-hz">0 hz</em></p><div class="bs-wave" id="bs-wave"></div></div>
-<p class="h"><span data-i18n="boot.up">// uptime</span><em id="v-up">0.000s</em></p>
-</aside>
-<div class="ascii" id="ascii"></div>
-<p data-i18n="boot.sub" class="ascii-sub" id="ascii-sub">pomodoro &middot; tasks &middot; island</p>
-</div>
-<div class="boot-bottom"><span class="bstage" id="boot-stage">post</span><div class="track"><div class="fill" id="boot-fill"></div></div><span class="pct" id="boot-pct">000%</span></div>
-</div>
-<p data-i18n="boot.skip" class="boot-skip">tap or press any key to skip</p>
-</div>
-
-<header class="site"><div class="wrap">
-<a class="brand" href="./"><img src="logo.png?v=17" alt="">Focus</a>
-<nav>
+<header class="site"><nav class="bar" aria-label="Main" data-i18n-attr="aria-label:nav.main">
+<a class="pill logo" href="./" aria-label="$ Focus home" data-i18n-attr="aria-label:nav.homelbl"><img src="logo.png?v=18" alt="" width="18" height="18"><span class="txt">$ Focus</span></a>
+<div class="menu-wrap"><button class="pill" id="menu-btn" type="button" aria-expanded="false" aria-controls="menu"><span data-i18n="nav.home">Home</span><span class="burger" aria-hidden="true"><i></i><i></i></span></button>
+<div class="menu" id="menu" hidden>
+<a href="./" aria-current="page" data-i18n="nav.home">Home</a>
+<a href="#features" data-i18n="nav.features">Features</a>
 <a href="install.html" data-i18n="nav.install">Install</a>
+<a href="#faq" data-i18n="nav.faq">FAQ</a>
 <a href="privacy.html" data-i18n="nav.privacy">Privacy</a>
 <a href="terms.html" data-i18n="nav.terms">Terms</a>
 <a class="ext" href="https://github.com/SuS1234trwtw/focus-timer/releases" data-i18n="nav.source">Releases</a>
-<span class="lang" role="group" aria-label="Language / Ngôn ngữ"><button type="button" data-lang="en" lang="en" title="English" aria-pressed="true">EN</button><i aria-hidden="true">/</i><button type="button" data-lang="vi" lang="vi" title="Tiếng Việt" aria-pressed="false">VI</button></span>
-</nav>
-<span class="scrollbar" id="scrollbar"></span>
-</div></header>
+<a class="only-sm" href="https://github.com/SuS1234trwtw/focus-timer/releases/latest" data-i18n="nav.download">Download</a>
+</div></div>
+<span class="grow"></span>
+<span class="pill lang" role="group" aria-label="Language / Ngôn ngữ"><button type="button" data-lang="en" lang="en" title="English" aria-pressed="true">EN</button><i aria-hidden="true">/</i><button type="button" data-lang="vi" lang="vi" title="Tiếng Việt" aria-pressed="false">VI</button></span>
+<button class="pill icon" type="button" data-theme-toggle aria-pressed="false" aria-label="Dark mode" data-i18n-attr="aria-label:nav.theme">&#9680;</button>
+<a class="pill solid dl" href="https://github.com/SuS1234trwtw/focus-timer/releases/latest"><span data-i18n="nav.download">Download</span> &gt;</a>
+</nav></header>
 
-<main class="home">
+<main id="main" class="home" tabindex="-1">
 
-<section class="hero" aria-label="Focus">
-<div class="hero-inner" id="hero-inner">
-<p class="mode reveal"><b class="js-mode">Focus</b> &middot; <span class="js-state">session 1</span></p>
-<h1 data-i18n-attr="aria-label:hero.time" class="time reveal d1 js-clock" id="time" tabindex="0" role="button" aria-label="Focus timer, tap to pause or start">25:00<span class="cursor"></span></h1>
-<p data-i18n="hero.tag" class="tag reveal d2">A minimal Pomodoro timer and task list for iPhone, with a terminal-inspired look.</p>
-<div class="actions reveal d3">
-<a data-i18n="hero.install" class="btn solid" href="install.html">+ Install</a>
-<a data-i18n="hero.source" class="btn" href="https://github.com/SuS1234trwtw/focus-timer/releases">Releases &#8599;</a>
+<div class="page">
+<section class="hero" aria-labelledby="top-h">
+<h1 class="giant" id="top-h">$ Focus</h1>
+
+<div class="row"><p class="label" data-i18n="h.like">You&rsquo;ll like it:</p><div>
+<p class="lede" data-i18n="h.lede">A minimal Pomodoro timer and task list for iPhone that looks like your terminal. Focus blocks, breaks, tasks and a live Dynamic Island, in English and Vietnamese.</p>
+</div></div>
+
+<div class="row"><p class="label" data-i18n="h.get">Get it:</p><div>
+<div class="actions">
+<a class="btn solid" href="https://github.com/SuS1234trwtw/focus-timer/releases/latest" data-i18n="h.dl">Download &#8599;</a>
+<a class="btn" href="install.html" data-i18n="h.guide">Install guide &rarr;</a>
 </div>
-<p data-i18n="hero.hint" class="hint reveal d3">tap the timer to pause &middot; it&rsquo;s live</p>
+<p class="fine" data-i18n="h.req">Free &middot; iPhone with iOS 26 or later &middot; installed with a free Apple Account in about 10 minutes</p>
+</div></div>
+
+<div class="row"><p class="label" data-i18n="h.ss">SideStore source:</p>
+<div class="source"><code>https://github.com/SuS1234trwtw/focus-timer/releases/latest/download/source.json</code><button class="copy" type="button" data-copy="https://github.com/SuS1234trwtw/focus-timer/releases/latest/download/source.json">copy</button></div>
 </div>
-<p data-i18n="hero.scroll" class="scroll-hint">scroll<i>&darr;</i></p>
 </section>
 
-<div class="story" id="story">
-<section class="chapter" data-shot="0" aria-labelledby="c1">
-<p data-i18n="c1.idx" class="idx reveal">[01] &middot; timer</p>
-<h2 data-i18n="c1.h" class="big reveal d1" id="c1">Focus. Break.<br><span class="soft">Repeat.</span></h2>
-<p data-i18n="c1.sub" class="sub reveal d2">Focus &amp; break timer with custom lengths, sounds and haptics.</p>
-<div class="phone-inline reveal d3"><div class="phone"><div class="screen"><div class="slide on" data-i="0"><div class="shot-fallback"><span>&gt;_</span><b data-i18n="shot.timer">timer</b><i data-i18n="shot.soon">screenshot coming soon</i></div><img class="shot" src="shots/timer.webp" alt="Focus showing the timer during a focus block" data-i18n-attr="alt:alt.timer" loading="lazy" decoding="async" onerror="this.remove()"></div></div><img class="frame" src="iphone.png" alt="" aria-hidden="true"></div></div>
-<div class="visual reveal d3">
+<figure class="showcase" aria-labelledby="demo-cap">
+<div class="show">
+<div class="phone"><div class="screen"><img class="shot" src="shots/en/timer.webp" data-shot="timer" alt="Focus showing the timer during a focus block" data-i18n-attr="alt:alt.timer" width="600" height="1301" decoding="async"><div class="island" tabindex="0" role="button" aria-expanded="false" aria-label="Dynamic Island, tap to expand" data-i18n-attr="aria-label:island.aria"><span class="l js-mode">FOCUS</span><span class="r js-time">25:00</span><span class="ctl"><button type="button" class="js-toggle">&#10074;&#10074; pause</button><button data-i18n="ctl.switch" type="button" class="js-switch">&#8644; switch</button></span><span data-i18n="paused" class="note">paused</span></div></div><img class="frame" src="iphone.png" alt="" aria-hidden="true" width="744" height="1530"></div>
+<div class="demo" id="hero-inner">
+<p class="mode"><b class="js-mode">Focus</b> &middot; <span class="js-state">session 1</span></p>
+<p class="time" id="time" tabindex="0" role="button" aria-label="Focus timer, tap to pause or start" data-i18n-attr="aria-label:hero.time">25:00<span class="cursor"></span></p>
+<p class="hint" data-i18n="demo.hint">tap the timer or the island &middot; it&rsquo;s live</p>
 <div class="term">
 <div class="term-bar"><span>~/focus</span><span class="js-state">session 1</span></div>
 <div class="term-body">
@@ -157,144 +144,180 @@
 <button data-i18n="ctl.reset" class="mini js-reset" type="button">&#8634; reset</button>
 </div>
 </div>
-</div>
-</section>
-
-<section class="chapter" data-shot="1" aria-labelledby="c2">
-<p data-i18n="c2.idx" class="idx reveal">[02] &middot; tasks</p>
-<h2 data-i18n="c2.h" class="big reveal d1" id="c2">Your list.<br><span class="soft">Everywhere.</span></h2>
-<p data-i18n="c2.sub" class="sub reveal d2">Simple tasks, synced across your devices.</p>
-<div class="phone-inline reveal d3"><div class="phone"><div class="screen"><div class="slide on" data-i="1"><div class="shot-fallback"><span>&gt;_</span><b data-i18n="shot.tasks">tasks</b><i data-i18n="shot.soon">screenshot coming soon</i></div><img class="shot" src="shots/tasks.webp" alt="Focus showing the task list" data-i18n-attr="alt:alt.tasks" loading="lazy" decoding="async" onerror="this.remove()"></div></div><img class="frame" src="iphone.png" alt="" aria-hidden="true"></div></div>
-<div class="visual reveal d3">
-<div class="term">
-<div class="term-bar"><span>~/tasks</span><span id="tasks-left">2 left</span></div>
-<div class="term-body">
-<ul class="tasks" id="tasks"></ul>
-<form class="add" id="add-task" autocomplete="off">
-<span aria-hidden="true">+</span>
-<input id="new-task" maxlength="48" placeholder="add a task, press enter" aria-label="Add a task" data-i18n-attr="placeholder:tasks.add;aria-label:tasks.addlbl">
-</form>
-</div>
-</div>
-</div>
-</section>
-
-<section class="chapter" data-shot="2" aria-labelledby="c3">
-<p data-i18n="c3.idx" class="idx reveal">[03] &middot; dynamic island</p>
-<h2 data-i18n="c3.h" class="big reveal d1" id="c3">Lives in<br><span class="soft">the island.</span></h2>
-<p data-i18n="c3.sub" class="sub reveal d2">Live countdown on the island and lock screen. Hold it to pause or switch modes.</p>
-<div class="phone-inline reveal d3"><div class="phone"><div class="screen"><div class="slide on" data-i="2"><div class="shot-fallback"><span>&gt;_</span><b data-i18n="shot.lock">lock</b><i data-i18n="shot.soon">screenshot coming soon</i></div><img class="shot" src="shots/lock.webp" alt="Lock screen with the Focus timer in a Live Activity" data-i18n-attr="alt:alt.lock" loading="lazy" decoding="async" onerror="this.remove()"></div><div class="island pisland" tabindex="0" role="button" aria-expanded="false" aria-label="Dynamic Island, tap to expand" data-i18n-attr="aria-label:island.aria"><span class="l js-mode">FOCUS</span><span class="r js-time">25:00</span><span class="ctl"><button type="button" class="js-toggle">&#10074;&#10074; pause</button><button data-i18n="ctl.switch" type="button" class="js-switch">&#8644; switch</button></span><span data-i18n="paused" class="note">paused</span></div></div><img class="frame" src="iphone.png" alt="" aria-hidden="true"></div></div>
-<p data-i18n="c3.tip" class="island-tip reveal d3"><span class="tip-up">&uarr; </span>tap or hold the island on the phone<span class="tip-right"> &rarr;</span></p>
-</section>
-
-<section class="chapter" data-shot="3" aria-labelledby="c4">
-<p data-i18n="c4.idx" class="idx reveal">[04] &middot; spotify</p>
-<h2 data-i18n="c4.h" class="big reveal d1" id="c4">Music,<br><span class="soft">in reach.</span></h2>
-<p data-i18n="c4.sub" class="sub reveal d2">Optional: see and control what&rsquo;s playing. Try it here with music made live in your browser, random every track and free of copyright.</p>
-<div class="phone-inline reveal d3"><div class="phone"><div class="screen"><div class="slide on" data-i="3"><div class="shot-fallback"><span>&gt;_</span><b>spotify</b><i data-i18n="shot.soon">screenshot coming soon</i></div><img class="shot" src="shots/spotify.webp" alt="Focus showing the song playing on Spotify" data-i18n-attr="alt:alt.spotify" loading="lazy" decoding="async" onerror="this.remove()"></div></div><img class="frame" src="iphone.png" alt="" aria-hidden="true"></div></div>
-<div class="visual reveal d3">
 <div id="player-mount"></div>
 </div>
-</section>
+</div>
+<figcaption class="cap" id="demo-cap"><b data-i18n="demo.cap">Live demo &middot; timer, island &amp; music</b><span>/ 1.13</span></figcaption>
+</figure>
+</div>
 
-<section class="chapter" data-shot="4" id="calendar" aria-labelledby="c5">
-<p data-i18n="c5.idx" class="idx reveal">[05] &middot; google calendar</p>
-<h2 data-i18n="c5.h" class="big reveal d1" id="c5">Every block,<br><span class="soft">logged.</span></h2>
-<p data-i18n="c5.sub" class="sub reveal d2">Optional: log finished focus blocks to a &ldquo;Focus&rdquo; calendar.</p>
-<div class="phone-inline reveal d3"><div class="phone"><div class="screen"><div class="slide on" data-i="4"><div class="shot-fallback"><span>&gt;_</span><b data-i18n="shot.calendar">calendar</b><i data-i18n="shot.soon">screenshot coming soon</i></div><img class="shot" src="shots/calendar.webp" alt="Google Calendar showing logged Focus blocks" data-i18n-attr="alt:alt.calendar" loading="lazy" decoding="async" onerror="this.remove()"></div></div><img class="frame" src="iphone.png" alt="" aria-hidden="true"></div></div>
-<div class="visual reveal d3">
-<div class="term">
-<div class="term-bar"><span data-i18n="cal.bar">calendar &middot; focus</span><span data-i18n="cal.today">today</span></div>
-<div class="term-body">
-<div class="cal-row"><span class="h">09:00</span><span data-i18n="cal.focus" class="ev">focus &middot; 25 min</span></div>
-<div class="cal-row"><span class="h">09:25</span><span data-i18n="cal.break" class="ev brk">break &middot; 5 min</span></div>
-<div class="cal-row"><span class="h">09:30</span><span data-i18n="cal.focus" class="ev">focus &middot; 25 min</span></div>
-<div class="cal-row"><span class="h">09:55</span><span data-i18n="cal.focus" class="ev">focus &middot; 25 min</span></div>
+<div class="ticker" role="img" aria-label="Styles: Mono, Cozy, PowerShell, CMD, Ubuntu" data-i18n-attr="aria-label:tk.aria"><div class="ticker-track" aria-hidden="true"><span>Mono</span><span class="sep">&middot;</span><span>Cozy</span><span class="sep">&middot;</span><span>PowerShell</span><span class="sep">&middot;</span><span>CMD</span><span class="sep">&middot;</span><span>Ubuntu</span><span class="sep">&middot;</span><span>Mono</span><span class="sep">&middot;</span><span>Cozy</span><span class="sep">&middot;</span><span>PowerShell</span><span class="sep">&middot;</span><span>CMD</span><span class="sep">&middot;</span><span>Ubuntu</span><span class="sep">&middot;</span></div></div>
+
+<section class="sec page" id="features" aria-labelledby="f-h">
+<div class="sec-head"><h2 class="sec-title" id="f-h" data-i18n="f.h">Features</h2><p class="label">(08)</p></div>
+<div class="cards">
+
+<article class="card">
+<div class="media"><img src="shots/en/timer.webp" data-shot="timer" alt="Focus showing the timer during a focus block" data-i18n-attr="alt:alt.timer" width="600" height="1301" loading="lazy" decoding="async"></div>
+<div class="cap"><h3 data-i18n="f.styles">Terminal styles</h3><span>/ 1.8</span></div>
+<p class="desc" data-i18n="f.styles.d">Five looks: Mono, Cozy, PowerShell, CMD and Ubuntu. Each has its own boot, panic and crash screens, fonts and app icon.</p>
+</article>
+
+<article class="card">
+<div class="media"><img src="shots/en/tasks.webp" data-shot="tasks" alt="Focus showing the task list" data-i18n-attr="alt:alt.tasks" width="600" height="1301" loading="lazy" decoding="async"></div>
+<div class="cap"><h3 data-i18n="f.tasks">Tasks &amp; sync</h3><span>/ 1.13</span></div>
+<p class="desc" data-i18n="f.tasks.d">A short task list that syncs across your devices. Drag to reorder; focusing a task moves it to the top.</p>
+</article>
+
+<article class="card">
+<div class="media"><img src="shots/en/panic.webp" data-shot="panic" alt="The panic screen asking you not to quit a focus block" data-i18n-attr="alt:alt.panic" width="600" height="1301" loading="lazy" decoding="async"></div>
+<div class="cap"><h3 data-i18n="f.panic">Panic screen</h3><span>/ 1.13</span></div>
+<p class="desc" data-i18n="f.panic.d">Hold reset and a terminal pleads with you to keep going while the timer keeps running. Give up and it crashes in your style.</p>
+</article>
+
+<article class="card">
+<div class="media"><img src="shots/en/history.webp" data-shot="history" alt="The stats tab with the daily goal, streak and minutes by subject" data-i18n-attr="alt:alt.history" width="600" height="1301" loading="lazy" decoding="async"></div>
+<div class="cap"><h3 data-i18n="f.history">History &amp; stats</h3><span>/ 1.13</span></div>
+<p class="desc" data-i18n="f.history.d">A weekly chart and every block you ran: done, failed and kept %, with filters for finished or failed blocks.</p>
+</article>
+
+<article class="card">
+<div class="media"><img src="shots/en/island.webp" data-shot="island" alt="The Dynamic Island expanded, with the timer, the song and music buttons" data-i18n-attr="alt:alt.island" width="600" height="1301" loading="lazy" decoding="async"></div>
+<div class="cap"><h3 data-i18n="f.island">Dynamic Island</h3><span>/ 1.7</span></div>
+<p class="desc" data-i18n="f.island.d">A live countdown in the Dynamic Island and on the Lock Screen. Hold it to pause or switch modes. Home Screen widgets too.</p>
+</article>
+
+<article class="card">
+<div class="media"><img src="shots/en/guard.webp" data-shot="guard" alt="Focus guard settings: block apps and silence notifications" data-i18n-attr="alt:alt.guard" width="600" height="1301" loading="lazy" decoding="async"></div>
+<div class="cap"><h3 data-i18n="f.guard">Focus guard</h3><span>/ 1.13</span></div>
+<p class="desc" data-i18n="f.guard.d">With your own Shortcuts automations: opening a distracting app jumps back to the timer, and notifications go quiet during a block.</p>
+</article>
+
+<article class="card">
+<div class="media"><img src="shots/en/calendar.webp" data-shot="calendar" alt="Google Calendar showing logged Focus blocks" data-i18n-attr="alt:alt.calendar" width="600" height="1301" loading="lazy" decoding="async"></div>
+<div class="cap"><h3>Google Calendar</h3><span>/ 1.7</span></div>
+<p class="desc" data-i18n="f.cal.d">Optional: log each finished focus block to a &ldquo;Focus&rdquo; calendar. Details below.</p>
+</article>
+
+<article class="card">
+<div class="media"><img src="shots/en/spotify.webp" data-shot="spotify" alt="Focus showing the song playing on Spotify" data-i18n-attr="alt:alt.spotify" width="600" height="1301" loading="lazy" decoding="async"></div>
+<div class="cap"><h3>Spotify</h3><span>/ 1.6</span></div>
+<p class="desc" data-i18n="f.spotify.d">Optional: see and control what&rsquo;s playing without leaving the timer.</p>
+</article>
+
 </div>
-</div>
-</div>
-<div class="fine reveal">
+
+<div class="row" id="calendar" style="margin-top:clamp(40px,6vw,72px)"><p class="label" data-i18n="f.cal.l">Google Calendar:</p><div class="fine">
 <p data-i18n="cal.how"><strong>How Focus uses Google Calendar.</strong> Connecting Google Calendar is optional. When you connect, Focus creates one secondary calendar named &ldquo;Focus&rdquo; in your Google account and adds an event to it each time you finish a focus block (and each break, if you turn that on). Focus requests only the <code>calendar.app.created</code> permission, so it can access only the calendar it created &mdash; it cannot see, change or delete your other calendars or events. You can unlink at any time in the app&rsquo;s Settings.</p>
 <p data-i18n="cal.read">Read the <a href="privacy.html">Privacy Policy</a> for full details.</p>
+</div></div>
+</section>
+
+<section class="sec page" id="new" aria-labelledby="n-h">
+<div class="sec-head"><h2 class="sec-title" id="n-h" data-i18n="n.h">New in 1.14</h2><p class="label" data-i18n="n.for">For students &middot; coming soon</p></div>
+<div class="cards">
+
+<article class="card">
+<div class="media"><img src="shots/en/exams.webp" data-shot="exams" alt="The timer with an exam countdown chip" data-i18n-attr="alt:alt.exams" width="600" height="1301" loading="lazy" decoding="async"></div>
+<div class="cap"><h3 data-i18n="n.exam">Exam countdown</h3><span>/ 1.14</span></div>
+<p class="desc" data-i18n="n.exam.d">Add your exams and see the days left right on the timer, like D-45 &middot; THPT.</p>
+</article>
+
+<article class="card">
+<div class="media"><img src="shots/en/subjects.webp" data-shot="subjects" alt="Picking a subject for a task" data-i18n-attr="alt:alt.subjects" width="600" height="1301" loading="lazy" decoding="async"></div>
+<div class="cap"><h3 data-i18n="n.subj">Subjects &amp; study stats</h3><span>/ 1.14</span></div>
+<p class="desc" data-i18n="n.subj.d">Label tasks by subject, see where your time goes, set a daily study goal and keep your streak.</p>
+</article>
+
+<article class="card">
+<div class="media"><img src="shots/en/mocktest.webp" data-shot="mocktest" alt="The timer in a 90-minute mock test" data-i18n-attr="alt:alt.mocktest" width="600" height="1301" loading="lazy" decoding="async"></div>
+<div class="cap"><h3 data-i18n="n.mock">Mock-test timer</h3><span>/ 1.14</span></div>
+<p class="desc" data-i18n="n.mock.d">Practise with timers set to real exam lengths for THPT, IELTS and SAT.</p>
+</article>
+
+<article class="card">
+<div class="media"><img src="shots/en/sounds.webp" data-shot="sounds" alt="Focus sounds settings with rain selected" data-i18n-attr="alt:alt.sounds" width="600" height="1301" loading="lazy" decoding="async"></div>
+<div class="cap"><h3 data-i18n="n.snd">Focus sounds</h3><span>/ 1.14</span></div>
+<p class="desc" data-i18n="n.snd.d">Built-in rain, ocean and noise that keep playing while you focus.</p>
+</article>
+
 </div>
 </section>
 
-<section class="chapter" data-shot="5" aria-labelledby="c6">
-<p data-i18n="c6.idx" class="idx reveal">[06] &middot; releases</p>
-<h2 data-i18n="c6.h" class="big reveal d1" id="c6">Every build, in the open.<br><span class="soft">Notes for each one.</span></h2>
-<p data-i18n="c6.sub" class="sub reveal d2">Download any version from GitHub Releases, with notes on what&rsquo;s new and what got fixed. All rights reserved.</p>
-<div class="phone-inline reveal d3"><div class="phone"><div class="screen"><div class="slide on" data-i="5"><div class="shot-fallback"><span>&gt;_</span><b>widget</b><i data-i18n="shot.soon">screenshot coming soon</i></div><img class="shot" src="shots/widget.webp" alt="The Focus widget on the Home Screen" data-i18n-attr="alt:alt.widget" loading="lazy" decoding="async" onerror="this.remove()"></div></div><img class="frame" src="iphone.png" alt="" aria-hidden="true"></div></div>
-<div class="visual reveal d3">
-<div class="term">
-<div class="term-bar"><span>~</span><span>releases</span></div>
-<div class="term-body">
-<p><span class="k">$</span> curl -LO github.com/SuS1234trwtw/focus-timer/releases/latest</p>
-<p data-i18n="git.cloning" class="k">downloading FocusTimer.ipa... done.</p>
-<p><span class="k">$</span> <a data-i18n="git.source" href="https://github.com/SuS1234trwtw/focus-timer/releases">releases &#8599;</a><span class="caret"></span></p>
-</div>
-</div>
-</div>
-</section>
-<div class="stage" aria-hidden="false"><div class="phone sticky"><div class="screen"><div class="slide on" data-i="0"><div class="shot-fallback"><span>&gt;_</span><b data-i18n="shot.timer">timer</b><i data-i18n="shot.soon">screenshot coming soon</i></div><img class="shot" src="shots/timer.webp" alt="Focus showing the timer during a focus block" data-i18n-attr="alt:alt.timer" loading="lazy" decoding="async" onerror="this.remove()"></div><div class="slide" data-i="1"><div class="shot-fallback"><span>&gt;_</span><b data-i18n="shot.tasks">tasks</b><i data-i18n="shot.soon">screenshot coming soon</i></div><img class="shot" src="shots/tasks.webp" alt="Focus showing the task list" data-i18n-attr="alt:alt.tasks" loading="lazy" decoding="async" onerror="this.remove()"></div><div class="slide" data-i="2"><div class="shot-fallback"><span>&gt;_</span><b data-i18n="shot.lock">lock</b><i data-i18n="shot.soon">screenshot coming soon</i></div><img class="shot" src="shots/lock.webp" alt="Lock screen with the Focus timer in a Live Activity" data-i18n-attr="alt:alt.lock" loading="lazy" decoding="async" onerror="this.remove()"></div><div class="slide" data-i="3"><div class="shot-fallback"><span>&gt;_</span><b>spotify</b><i data-i18n="shot.soon">screenshot coming soon</i></div><img class="shot" src="shots/spotify.webp" alt="Focus showing the song playing on Spotify" data-i18n-attr="alt:alt.spotify" loading="lazy" decoding="async" onerror="this.remove()"></div><div class="slide" data-i="4"><div class="shot-fallback"><span>&gt;_</span><b data-i18n="shot.calendar">calendar</b><i data-i18n="shot.soon">screenshot coming soon</i></div><img class="shot" src="shots/calendar.webp" alt="Google Calendar showing logged Focus blocks" data-i18n-attr="alt:alt.calendar" loading="lazy" decoding="async" onerror="this.remove()"></div><div class="slide" data-i="5"><div class="shot-fallback"><span>&gt;_</span><b>widget</b><i data-i18n="shot.soon">screenshot coming soon</i></div><img class="shot" src="shots/widget.webp" alt="The Focus widget on the Home Screen" data-i18n-attr="alt:alt.widget" loading="lazy" decoding="async" onerror="this.remove()"></div><div class="island pisland" tabindex="0" role="button" aria-expanded="false" aria-label="Dynamic Island, tap to expand" data-i18n-attr="aria-label:island.aria"><span class="l js-mode">FOCUS</span><span class="r js-time">25:00</span><span class="ctl"><button type="button" class="js-toggle">&#10074;&#10074; pause</button><button data-i18n="ctl.switch" type="button" class="js-switch">&#8644; switch</button></span><span data-i18n="paused" class="note">paused</span></div></div><img class="frame" src="iphone.png" alt="" aria-hidden="true"></div></div>
-</div>
-
-<section class="cta" aria-labelledby="cta">
-<p data-i18n="cta.q" class="q reveal">&gt; interested?</p>
-<h2 data-i18n="cta.h" class="big reveal d1" id="cta">Install it.</h2>
-<div class="cta-wrap reveal d2">
-<a data-i18n="cta.btn" class="btn solid" href="install.html">Open the install guide &rarr;</a>
-<div class="peek term">
-<div class="term-bar"><span data-i18n="cta.bar">// install guide</span><span data-i18n="cta.min">~10 min</span></div>
-<div class="term-body">
-<ol>
-<li><a data-i18n="cta.s1" href="install.html">Download the Focus IPA</a></li>
-<li><a data-i18n="cta.s2" href="install.html">Get iloader on your computer</a></li>
-<li><a data-i18n="cta.s3" href="install.html">Sign in &amp; install to your iPhone</a></li>
-<li><a data-i18n="cta.s4" href="install.html">Trust it &amp; open Focus</a></li>
-</ol>
-<a data-i18n="cta.all" class="all" href="install.html">full step-by-step guide &rarr;</a>
-</div>
-</div>
-</div>
-</section>
-
-<div class="home-info"><div class="wrap">
-
-<h2 data-i18n="info.h">Install &amp; updates</h2>
+<section class="sec page" id="install" aria-labelledby="i-h">
+<h2 class="sec-title" id="i-h" data-i18n="cta.h">Install it.</h2>
+<div class="row" style="margin-top:24px"><p class="label" data-i18n="i.how">How it works:</p><div>
 <p data-i18n="info.p">Focus is installed by sideloading with a free Apple ID. Follow the <a href="install.html">step-by-step install guide</a> for Windows or Mac.</p>
-<ul>
-<li data-i18n="info.latest"><strong>Latest build:</strong> <a href="https://github.com/SuS1234trwtw/focus-timer/releases/latest">GitHub Releases</a></li>
-<li data-i18n="info.ss"><strong>SideStore source:</strong> <code>https://github.com/SuS1234trwtw/focus-timer/releases/latest/download/source.json</code></li>
-</ul>
+<ol class="steps-mini">
+<li data-i18n="cta.s1">Download the Focus IPA</li>
+<li data-i18n="cta.s2">Get iloader on your computer</li>
+<li data-i18n="cta.s3">Sign in &amp; install to your iPhone</li>
+<li data-i18n="cta.s4">Trust it &amp; open Focus</li>
+</ol>
+<div class="actions">
+<a class="btn solid" href="install.html" data-i18n="cta.btn">Open the install guide &rarr;</a>
+<a class="btn" href="https://github.com/SuS1234trwtw/focus-timer/releases" data-i18n="hero.source">Releases &#8599;</a>
+</div>
+</div></div>
+</section>
 
-<h2 data-i18n="info.contact" id="contact">Contact &amp; support</h2>
-<p data-i18n="info.ask">Questions, bugs or data requests:</p>
+<section class="sec page" id="faq" aria-labelledby="q-h">
+<div class="sec-head"><h2 class="sec-title" id="q-h" data-i18n="q.h">FAQ</h2><p class="label">(08)</p></div>
+<div class="faq">
+<details><summary data-i18n="q1.q">Is it free?</summary><div class="body"><p data-i18n="q1.a">Yes. $ Focus is free, with no ads, no analytics and no tracking.</p></div></details>
+<details><summary data-i18n="q2.q">Why sideload, and how do I install it?</summary><div class="body"><p data-i18n="q2.a">Focus isn&rsquo;t on the App Store, so you install it yourself with a free Apple Account using iloader (Windows or Mac) or SideStore. Free installs expire after 7 days: re-install with iloader, or let SideStore refresh it for you. The <a href="install.html">install guide</a> walks you through it in about 10 minutes.</p></div></details>
+<details><summary data-i18n="q3.q">Does it need an account?</summary><div class="body"><p data-i18n="q3.a">No. Everyone starts as an anonymous guest whose tasks and sessions are backed up automatically. Create an email account (a 6-digit code, no password) only if you want to sync across devices.</p></div></details>
+<details><summary data-i18n="q4.q">What data is stored?</summary><div class="body"><p data-i18n="q4.a">Your tasks and session history sync to our database. Settings, custom sounds and focus guard stay on your device. No ads, analytics or tracking, and we never sell your data. The <a href="privacy.html">Privacy Policy</a> has every detail.</p></div></details>
+<details><summary data-i18n="q5.q">Does it work offline?</summary><div class="body"><p data-i18n="q5.a">The timer, the island and your task list run on your iPhone. Sync, Spotify and Google Calendar need a connection; calendar events wait on your device until you&rsquo;re back online.</p></div></details>
+<details><summary data-i18n="q6.q">What do Spotify and Google Calendar need?</summary><div class="body"><p data-i18n="q6.a">Both are optional. Spotify needs your Spotify account, and access may be limited to invited accounts. Google Calendar needs a Google account and asks only for the <code>calendar.app.created</code> permission, so Focus can reach only the &ldquo;Focus&rdquo; calendar it creates.</p></div></details>
+<details><summary data-i18n="q7.q">Is it in Vietnamese?</summary><div class="body"><p data-i18n="q7.a">Yes. The app and this website are fully in English and Vietnamese. Switch here with EN / VI at the top; in the app, pick your language during setup or in Settings.</p></div></details>
+<details><summary data-i18n="q8.q">Which iPhones does it run on?</summary><div class="body"><p data-i18n="q8.a">Any iPhone with iOS 26 or later. Phones without a Dynamic Island show the timer as a Live Activity on the Lock Screen.</p></div></details>
+</div>
+</section>
+
+<section class="sec page" id="contact" aria-labelledby="c-h">
+<h2 class="sec-title" id="c-h" data-i18n="info.contact">Contact &amp; support</h2>
+<div class="row" style="margin-top:24px"><p class="label" data-i18n="info.ask">Questions, bugs or data requests:</p>
 <ul class="contact">
 <li><strong>GitHub:</strong> <a href="https://github.com/SuS1234trwtw/focus-timer/issues">github.com/SuS1234trwtw/focus-timer/issues</a></li>
 <li><strong>Discord:</strong> <code>notanlee</code></li>
 <li><strong>TikTok:</strong> <a href="https://www.tiktok.com/@notanlee1">@notanlee1</a></li>
-</ul>
+</ul></div>
+<div class="row"><p class="label" data-i18n="c.note">Note:</p><p data-i18n="info.meta" class="fine">Focus is an independent project and is not affiliated with, endorsed by or sponsored by Google, Spotify or Apple.</p></div>
+</section>
 
-<p data-i18n="info.meta" class="meta">Focus is an independent project and is not affiliated with, endorsed by or sponsored by Google, Spotify or Apple.</p>
-</div></div>
 </main>
-<footer class="site"><div class="wrap">
-<span>&copy; 2026 An Le &middot; <a data-i18n="foot.rights" href="https://github.com/SuS1234trwtw/focus-timer/blob/main/LICENSE">All rights reserved</a></span>
-<span><a href="privacy.html" data-i18n="foot.privacy">Privacy</a> &middot; <a href="terms.html" data-i18n="foot.terms">Terms</a> &middot; <a href="./#contact" data-i18n="foot.contact">Contact</a> &middot; <a href="https://github.com/SuS1234trwtw/focus-timer/releases" data-i18n="foot.source">Releases</a></span>
+
+<footer class="site"><div class="page">
+<div class="foot-grid">
+<div><p class="label" data-i18n="ft.links">Links:</p><ul>
+<li><a href="https://github.com/SuS1234trwtw/focus-timer/releases" data-i18n="foot.source">Releases</a></li>
+<li><a href="install.html" data-i18n="nav.install">Install</a></li>
+<li><a href="privacy.html" data-i18n="foot.privacy">Privacy</a></li>
+<li><a href="terms.html" data-i18n="foot.terms">Terms</a></li>
+<li><a href="./#contact" data-i18n="foot.contact">Contact</a></li>
+</ul></div>
+<div><p class="label" data-i18n="ft.say">Say hi:</p><ul>
+<li>Discord: <code>notanlee</code></li>
+<li>TikTok: <a href="https://www.tiktok.com/@notanlee1">@notanlee1</a></li>
+<li>GitHub: <a href="https://github.com/SuS1234trwtw/focus-timer/issues" data-i18n="ft.issues">issues</a></li>
+</ul></div>
+<div><p class="label" data-i18n="ft.upd">Last updated:</p><p data-i18n="ft.date">October 10, 2026</p></div>
+</div>
+<p class="giant" aria-hidden="true">$ Focus</p>
+<div class="foot-base"><span>&copy; 2026 An Le &middot; <a data-i18n="foot.rights" href="https://github.com/SuS1234trwtw/focus-timer/blob/main/LICENSE">All rights reserved</a></span><span data-i18n="ft.req">iPhone &middot; iOS 26+ &middot; EN / VI</span></div>
 </div></footer>
+<button class="totop" type="button" aria-label="Back to top" data-i18n-attr="aria-label:nav.top">^</button>
 
 <script>
 (function () {
-  var root = document.documentElement;
-  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
   function $(id) { return document.getElementById(id); }
-  var tr = window.T || function (k, en) { return en; };
-
   function all(sel) { return [].slice.call(document.querySelectorAll(sel)); }
+  var tr = window.T || function (k, en) { return en; };
   function pad(n) { return (n < 10 ? '0' : '') + n; }
   function fmt(s) { return pad(Math.floor(s / 60)) + ':' + pad(s % 60); }
 
-  /* ---------- one shared timer: hero, meters, island, lock screen ---------- */
+  /* one shared timer: big clock, meters and the island */
   var LEN = { focus: 25 * 60, break: 5 * 60 };
   var T = { mode: 'focus', left: LEN.focus, running: true, round: 1 };
   var islands = all('.island');
@@ -308,10 +331,8 @@
     all('.js-toggle').forEach(function (el) { el.innerHTML = T.running ? '&#10074;&#10074; ' + tr('ctl.pause', 'pause') : '&#9654; ' + tr('ctl.start', 'start'); });
     $('hero-inner').classList.toggle('paused', !T.running);
     islands.forEach(function (el) { el.classList.toggle('paused', !T.running); });
-    // meters: the running one fills up, the other shows its full length
     var mf = $('m-focus'), mb = $('m-break');
     mf.classList.toggle('on', focus); mb.classList.toggle('on', !focus);
-    // clip, not width: no layout on every tick
     mf.querySelector('.fill').style.clipPath = 'inset(0 ' + (focus ? T.left / LEN.focus * 100 : 0) + '% 0 0)';
     mb.querySelector('.fill').style.clipPath = 'inset(0 ' + (focus ? 100 : T.left / LEN.break * 100) + '% 0 0)';
     mf.querySelector('.num').textContent = focus ? fmt(T.left) : '25:00';
@@ -325,17 +346,6 @@
     draw();
   }
   function reset() { T.mode = 'focus'; T.left = LEN.focus; T.round = 1; T.running = true; draw(); }
-  var ticking = false;
-  function startClock() {
-    if (ticking) return;
-    ticking = true;
-    draw();
-    setInterval(function () {
-      if (!T.running) return;
-      T.left -= 1;
-      if (T.left < 0) switchMode(); else draw();
-    }, 1000);
-  }
 
   $('time').addEventListener('click', toggle);
   $('time').addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); } });
@@ -343,22 +353,18 @@
   all('.js-switch').forEach(function (b) { b.addEventListener('click', function (e) { e.stopPropagation(); switchMode(); }); });
   all('.js-reset').forEach(function (b) { b.addEventListener('click', reset); });
 
-  /* ---------- islands (the big one and the one on each phone): tap or hold to expand ---------- */
+  /* island: hover or tap to expand, hold on touch */
   var canHover = !!(window.matchMedia && matchMedia('(hover: hover)').matches);
-  function setIsland(el, open) {
-    el.classList.toggle('open', open);
-    el.setAttribute('aria-expanded', open ? 'true' : 'false');
-  }
+  function setIsland(el, open) { el.classList.toggle('open', open); el.setAttribute('aria-expanded', open ? 'true' : 'false'); }
   islands.forEach(function (el) {
     var holdTimer = null, held = false;
-    function cancelHold() { clearTimeout(holdTimer); }
     el.addEventListener('pointerdown', function (e) {
       if (e.target.closest('button')) return;
       held = false;
       holdTimer = setTimeout(function () { held = true; setIsland(el, true); }, 500);
     });
-    el.addEventListener('pointerup', cancelHold);
-    el.addEventListener('pointerleave', cancelHold);
+    el.addEventListener('pointerup', function () { clearTimeout(holdTimer); });
+    el.addEventListener('pointerleave', function () { clearTimeout(holdTimer); });
     el.addEventListener('click', function (e) {
       if (e.target.closest('button')) return;
       if (held) { held = false; return; }
@@ -375,251 +381,18 @@
       el.addEventListener('mouseleave', function () { setIsland(el, false); });
     }
   });
-  document.addEventListener('click', function (e) {
-    islands.forEach(function (el) { if (!el.contains(e.target)) setIsland(el, false); });
-  });
+  document.addEventListener('click', function (e) { islands.forEach(function (el) { if (!el.contains(e.target)) setIsland(el, false); }); });
+  document.addEventListener('langchange', draw);
 
-  /* ---------- the pinned phone shows each chapter's screen ---------- */
-  var stagePhone = document.querySelector('.phone.sticky');
-  function showShot(i) {
-    if (!stagePhone) return;
-    all('.phone.sticky .slide').forEach(function (s) { s.classList.toggle('on', +s.getAttribute('data-i') === i); });
-    stagePhone.classList.toggle('at-island', i === 2);
-    if (i !== 2) islands.forEach(function (el) { if (stagePhone.contains(el)) setIsland(el, false); });
-  }
-  if (stagePhone && 'IntersectionObserver' in window) {
-    var shotIO = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) { if (e.isIntersecting) showShot(+e.target.getAttribute('data-shot')); });
-    }, { rootMargin: '-45% 0px -45% 0px' });
-    all('.chapter[data-shot]').forEach(function (c) { shotIO.observe(c); });
-  }
-
-  /* ---------- tasks ---------- */
-  var KEY = 'focus.demoTasks';
-  var tasks = [
-    { t: 'outline the essay', k: 'task.1', d: true },
-    { t: 'reply to emails', k: 'task.2', d: true },
-    { t: 'read chapter 4', k: 'task.3', d: false },
-    { t: 'plan tomorrow', k: 'task.4', d: false }
-  ];
-  try { var saved = JSON.parse(localStorage.getItem(KEY)); if (saved && saved.length) tasks = saved; } catch (e) {}
-  function saveTasks() { try { localStorage.setItem(KEY, JSON.stringify(tasks)); } catch (e) {} }
-  function esc(s) { return s.replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
-  function renderTasks(newIdx) {
-    $('tasks').innerHTML = tasks.map(function (k, i) {
-      return '<li><button type="button" class="task' + (k.d ? ' done' : '') + (i === newIdx ? ' new' : '') + '" data-i="' + i + '" aria-pressed="' + k.d + '">' +
-        '<span class="box">' + (k.d ? '[x]' : '[ ]') + '</span><span class="t">' + esc(k.k ? tr(k.k, k.t) : k.t) + '</span></button></li>';
-    }).join('');
-    var left = tasks.filter(function (k) { return !k.d; }).length;
-    $('tasks-left').textContent = left ? tr('tasks.left', '{n} left').replace('{n}', left) : tr('tasks.done', 'all done');
-  }
-  $('tasks').addEventListener('click', function (e) {
-    var b = e.target.closest('.task');
-    if (!b) return;
-    var i = +b.getAttribute('data-i');
-    tasks[i].d = !tasks[i].d;
-    saveTasks();
-    renderTasks();
-    var again = $('tasks').querySelector('[data-i="' + i + '"]');
-    if (again) again.focus();
-  });
-  $('add-task').addEventListener('submit', function (e) {
-    e.preventDefault();
-    var v = $('new-task').value.trim();
-    if (!v) return;
-    tasks.push({ t: v, d: false });
-    if (tasks.length > 7) tasks.shift();
-    $('new-task').value = '';
-    saveTasks();
-    renderTasks(tasks.length - 1);
-  });
-  renderTasks();
-  document.addEventListener('langchange', function () { draw(); renderTasks(); });
-
-  /* ---------- scroll reveal ---------- */
-  var reveals = document.querySelectorAll('.reveal');
-  function revealAll() { for (var i = 0; i < reveals.length; i++) reveals[i].classList.add('in'); }
-  function startReveal() {
-    if (!('IntersectionObserver' in window) || reduce) { revealAll(); return; }
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) {
-        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
-      });
-    }, { rootMargin: '0px 0px -12% 0px', threshold: 0.15 });
-    for (var i = 0; i < reveals.length; i++) io.observe(reveals[i]);
-  }
-
-  /* ---------- scroll progress + hero fade ---------- */
-  var bar = $('scrollbar'), hero = $('hero-inner'), queued = false, lastP = -1;
-  function onScroll() {
-    queued = false;
-    var y = window.scrollY || 0, max = document.documentElement.scrollHeight - innerHeight;
-    bar.style.setProperty('--p', max > 0 ? Math.min(1, y / max) : 0);
-    var p = Math.min(1, y / (innerHeight * 0.7));
-    // transform + opacity only, and no writes once the hero is fully faded out
-    if (!reduce && p !== lastP) {
-      lastP = p;
-      hero.style.transform = 'scale(' + (1 - p * 0.12) + ') translateY(' + (p * -30) + 'px)';
-      hero.style.opacity = 1 - p * 0.9;
-    }
-  }
-  addEventListener('scroll', function () { if (!queued) { queued = true; requestAnimationFrame(onScroll); } }, { passive: true });
-
-  function ready() {
-    startClock();
-    startReveal();
-    onScroll();
-  }
-
-  /* ---------- boot ---------- */
-  if (!root.classList.contains('booting')) { ready(); return; }
-
-  var boot = $('boot'), log = $('boot-log'), fill = $('boot-fill'), pct = $('boot-pct'), stage = $('boot-stage');
-  var ascii = $('ascii'), grid = $('bs-grid'), wave = $('bs-wave');
-  var t0 = performance.now(), timers = [], finished = false, raf = 0, progress = 0;
-
-  // FOCUS in 5 rows of pixels, 45 columns wide
-  var L = {
-    F: ['███████', '██     ', '█████  ', '██     ', '██     '],
-    O: [' ██████ ', '██    ██', '██    ██', '██    ██', ' ██████ '],
-    C: [' ██████', '██     ', '██     ', '██     ', ' ██████'],
-    U: ['██    ██', '██    ██', '██    ██', '██    ██', ' ██████ '],
-    S: [' ██████', '██     ', ' █████ ', '     ██', '██████ ']
-  };
-  var art = '';
-  for (var r = 0; r < 5; r++) art += ['F', 'O', 'C', 'U', 'S'].map(function (c) { return L[c][r]; }).join('  ');
-  ascii.innerHTML = art.split('').map(function (ch) { return ch === ' ' ? '<i></i>' : '<i class="px"></i>'; }).join('');
-  var pixels = [].slice.call(ascii.querySelectorAll('.px'));
-
-  // side panel: module grid and signal wave
-  for (var g = 0; g < 48; g++) grid.appendChild(document.createElement('i'));
-  for (var w = 0; w < 32; w++) wave.appendChild(document.createElement('i'));
-  var cells = [].slice.call(grid.children), bars = [].slice.call(wave.children);
-
-  function later(fn, ms) { timers.push(setTimeout(fn, ms)); }
-  function pad2(n) { return (n < 10 ? '0' : '') + n; }
-  function setPct(p) {
-    progress = p;
-    fill.style.width = p + '%';
-    pct.textContent = ('00' + Math.round(p)).slice(-3) + '%';
-  }
-  function stamp() { return '<span class="ts">[' + ((performance.now() - t0) / 1000).toFixed(4).padStart(8, ' ') + ']</span> '; }
-
-  // the log: one line per step, the newest at the bottom
-  var rows = [];
-  function push(html) {
-    rows.push(stamp() + html);
-    if (rows.length > 16) rows.shift();
-    log.innerHTML = '<div>' + rows.join('\n') + '</div>';
-  }
-  function swapLast(html) {
-    rows[rows.length - 1] = rows[rows.length - 1].replace(/<span class="warn">\[ \.\. \]<\/span>$/, html);
-    log.innerHTML = '<div>' + rows.join('\n') + '</div>';
-  }
-  function dots(name) {
-    var len = name.replace(/&[a-z]+;/g, 'x').length; // an entity is one character on screen
-    return ' ' + new Array(Math.max(2, 26 - len)).join('.') + ' ';
-  }
-
-  // live stats while booting
-  function tick(now) {
-    var s = (now - t0) / 1000;
-    $('v-up').textContent = s.toFixed(3) + 's';
-    var d = new Date();
-    $('boot-clock').textContent = pad2(d.getHours()) + ':' + pad2(d.getMinutes()) + ':' + pad2(d.getSeconds());
-    var cpu = Math.round(35 + 55 * Math.abs(Math.sin(s * 3.1)) * (1 - progress / 140));
-    var mem = Math.round(12 + progress * 0.62);
-    var net = Math.round(20 + 70 * Math.abs(Math.sin(s * 1.7 + 1)));
-    [['cpu', cpu], ['mem', mem], ['net', net]].forEach(function (k) {
-      $('b-' + k[0]).style.width = k[1] + '%';
-      $('v-' + k[0]).textContent = k[1] + '%';
-    });
-    bars.forEach(function (b, i) { b.style.height = (12 + 88 * Math.abs(Math.sin(s * 4 + i * 0.45) * Math.cos(s * 1.3 + i * 0.2))) + '%'; });
-    $('v-hz').textContent = Math.round(400 + 80 * Math.sin(s * 2)) + ' hz';
-    var lit = Math.round(cells.length * progress / 100);
-    cells.forEach(function (c, i) {
-      c.className = i < lit ? 'on' : (i === lit ? (Math.floor(s * 8) % 2 ? 'half' : '') : '');
-    });
-    raf = requestAnimationFrame(tick);
-  }
-  raf = requestAnimationFrame(tick);
-
-  function stageName(k) { return tr('boot.s.' + k, k); }
-  stage.textContent = stageName('post');
-  var steps = [
-    ['post', tr('boot.l1', '<span class="hl">focus-os 1.8.0</span> (build 18) &mdash; booting on tty1'), 0],
-    ['post', tr('boot.l2', 'cpu: 6 cores online &middot; neural engine ready'), 0],
-    ['post', tr('boot.l3', 'mem: mapped 0x0000f000&ndash;0x7ffe3a10 &middot; 8.0 gb'), 0],
-    ['modules', tr('boot.m1', 'timer engine'), 'ok'],
-    ['modules', tr('boot.m2', 'core haptics'), 'ok'],
-    ['modules', tr('boot.m3', 'chime &middot; sounds'), 'ok'],
-    ['modules', tr('boot.m4', 'dynamic island'), 'ok'],
-    ['modules', tr('boot.m5', 'live activity'), 'ok'],
-    ['modules', tr('boot.m6', 'widgets'), 'ok'],
-    ['sync', tr('boot.y1', 'mount ~/tasks (supabase)'), 'ok'],
-    ['sync', tr('boot.y2', 'spotify bridge'), 'idle'],
-    ['sync', tr('boot.y3', 'google calendar'), 'ok'],
-    ['fonts', tr('boot.f1', 'fonts: geist mono &middot; 3 weights'), 0],
-    ['shell', tr('boot.h1', 'starting focus shell'), 0]
-  ];
-  var mods = 0, t = 220;
-  steps.forEach(function (st, i) {
-    var name = st[1], status = st[2];
-    later(function () {
-      stage.textContent = stageName(st[0]);
-      if (status) {
-        push(tr('boot.init', 'init') + ' ' + name + '<span class="warn">' + dots(name) + '</span><span class="warn">[ .. ]</span>');
-      } else {
-        push(name);
-      }
-      setPct((i + 0.5) / steps.length * 78);
-    }, t += 150 + (i % 3) * 40);
-    if (status) {
-      later(function () {
-        swapLast(status === 'ok' ? '<span class="ok">[ ' + tr('boot.ok', 'ok') + ' ]</span>' : '<span class="warn">[' + tr('boot.' + status, status) + ']</span>');
-        if (st[0] === 'modules') { mods += 1; $('v-mod').textContent = mods + '/9'; }
-        setPct((i + 1) / steps.length * 78);
-      }, t += 110);
-    }
-  });
-  // the command, typed
-  var cmd = tr('boot.cmd', '$ focus --start');
-  later(function () { stage.textContent = stageName('shell'); push('<span class="hl"></span>'); }, t += 160);
-  for (var c = 1; c <= cmd.length; c++) (function (n) {
-    later(function () {
-      rows[rows.length - 1] = rows[rows.length - 1].replace(/<span class="hl">.*<\/span>.*$/, '<span class="hl">' + cmd.slice(0, n) + '</span><span class="caret"></span>');
-      log.innerHTML = '<div>' + rows.join('\n') + '</div>';
-    }, t += 38);
-  })(c);
-  later(function () { $('v-mod').textContent = '9/9'; setPct(84); }, t += 160);
-  // the banner assembles pixel by pixel over the dimmed panels
-  later(function () {
-    stage.textContent = stageName('render');
-    boot.classList.add('dim');
-    var order = pixels.slice().sort(function () { return Math.random() - 0.5; });
-    order.forEach(function (p, i) {
-      later(function () { p.classList.add('on'); setPct(84 + 16 * (i + 1) / order.length); }, Math.round(i / order.length * 650));
-    });
-  }, t += 120);
-  later(function () { stage.textContent = stageName('ready'); $('ascii-sub').classList.add('on'); }, t += 760);
-  later(finish, t += 900);
-
-  function finish() {
-    if (finished) return;
-    finished = true;
-    timers.forEach(clearTimeout);
-    cancelAnimationFrame(raf);
-    try { sessionStorage.setItem('focus.booted', '1'); } catch (e) {}
-    boot.classList.add('out');
-    // the header slides in as the overlay finishes fading (--duration-medium, 350ms)
-    setTimeout(function () { root.classList.remove('booting'); ready(); }, 300);
-    setTimeout(function () { boot.style.display = 'none'; }, 400);
-  }
-
-  boot.addEventListener('click', finish);
-  addEventListener('keydown', function () { if (!finished) finish(); });
+  draw();
+  setInterval(function () {
+    if (!T.running) return;
+    T.left -= 1;
+    if (T.left < 0) switchMode(); else draw();
+  }, 1000);
 })();
 </script>
-<script src="player.js?v=17" defer></script>
+<script src="player.js?v=18" defer></script>
+<script src="site.js?v=18" defer></script>
 </body>
 </html>

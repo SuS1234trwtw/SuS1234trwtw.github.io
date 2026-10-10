@@ -3,7 +3,7 @@
    "langchange" event. Loaded in <head> so T exists before any page script runs. */
 (function () {
   var VI = {
-    /* nav + footer (index, install, confirmed) */
+    /* nav + footer (every page) */
     'nav.install': 'Cài đặt',
     'nav.privacy': 'Bảo mật',
     'nav.terms': 'Điều khoản',
@@ -13,43 +13,91 @@
     'foot.terms': 'Điều khoản',
     'foot.contact': 'Liên hệ',
     'foot.source': 'Bản phát hành',
+    'nav.skip': 'Bỏ qua, tới nội dung',
+    'nav.main': 'Điều hướng chính',
+    'nav.homelbl': 'Trang chủ $ Focus',
+    'nav.home': 'Trang chủ',
+    'nav.features': 'Tính năng',
+    'nav.faq': 'Hỏi đáp',
+    'nav.menu': 'Danh mục',
+    'nav.download': 'Tải về',
+    'nav.theme': 'Chế độ tối',
+    'nav.top': 'Lên đầu trang',
+    'ft.links': 'Liên kết:',
+    'ft.say': 'Nhắn mình:',
+    'ft.issues': 'báo lỗi',
+    'ft.upd': 'Cập nhật lần cuối:',
+    'ft.date': 'Ngày 10 tháng 10, 2026',
+    'ft.req': 'iPhone &middot; iOS 26+ &middot; Anh / Việt',
 
-    /* index: boot */
-    'idx.title': 'Focus — Hẹn giờ Pomodoro cho iPhone',
-    'boot.top': 'focus &mdash; khởi động &mdash; tty1 &mdash; 80&times;24',
-    'boot.sys': '// hệ thống',
-    'boot.mem': 'ram',
-    'boot.net': 'mạng',
-    'boot.mod': '// mô-đun',
-    'boot.sig': '// tín hiệu',
-    'boot.up': '// thời gian chạy',
-    'boot.sub': 'pomodoro &middot; việc cần làm &middot; island',
-    'boot.skip': 'chạm hoặc bấm phím bất kỳ để bỏ qua',
-    'boot.s.post': 'kiểm tra',
-    'boot.s.modules': 'mô-đun',
-    'boot.s.sync': 'đồng bộ',
-    'boot.s.fonts': 'phông chữ',
-    'boot.s.shell': 'shell',
-    'boot.s.render': 'dựng hình',
-    'boot.s.ready': 'sẵn sàng',
-    'boot.l1': '<span class="hl">focus-os 1.8.0</span> (bản 18) &mdash; đang khởi động trên tty1',
-    'boot.l2': 'cpu: 6 nhân đã chạy &middot; neural engine sẵn sàng',
-    'boot.l3': 'bộ nhớ: đã ánh xạ 0x0000f000&ndash;0x7ffe3a10 &middot; 8.0 gb',
-    'boot.m1': 'bộ máy hẹn giờ',
-    'boot.m2': 'rung phản hồi',
-    'boot.m3': 'chuông &middot; âm thanh',
-    'boot.m4': 'dynamic island',
-    'boot.m5': 'hoạt động trực tiếp',
-    'boot.m6': 'widget',
-    'boot.y1': 'gắn ~/tasks (supabase)',
-    'boot.y2': 'cầu nối spotify',
-    'boot.y3': 'google calendar',
-    'boot.f1': 'phông: geist mono &middot; 3 độ đậm',
-    'boot.h1': 'đang mở focus shell',
-    'boot.init': 'khởi tạo',
-    'boot.ok': 'ổn',
-    'boot.idle': 'chờ',
-    'boot.cmd': '$ focus --bắt-đầu',
+    /* index */
+    'idx.title': '$ Focus — Hẹn giờ Pomodoro cho iPhone',
+
+    /* index: hero, demo, features */
+    'h.like': 'Bạn sẽ thích:',
+    'h.lede': 'Hẹn giờ Pomodoro và danh sách việc cần làm tối giản cho iPhone, trông như terminal của bạn. Phiên tập trung, giờ nghỉ, việc cần làm và Dynamic Island chạy trực tiếp, bằng tiếng Anh và tiếng Việt.',
+    'h.get': 'Tải app:',
+    'h.dl': 'Tải về &#8599;',
+    'h.guide': 'Hướng dẫn cài &rarr;',
+    'h.req': 'Miễn phí &middot; iPhone chạy iOS 26 trở lên &middot; cài bằng Apple Account miễn phí trong khoảng 10 phút',
+    'h.ss': 'Nguồn SideStore:',
+    'demo.hint': 'chạm vào đồng hồ hoặc island &middot; nó chạy thật đấy',
+    'demo.cap': 'Chạy thử &middot; hẹn giờ, island &amp; nhạc',
+    'tk.aria': 'Phong cách: Mono, Cozy, PowerShell, CMD, Ubuntu',
+    'f.h': 'Tính năng',
+    'f.styles': 'Phong cách terminal',
+    'f.styles.d': 'Năm kiểu giao diện: Mono, Cozy, PowerShell, CMD và Ubuntu. Mỗi kiểu có màn hình khởi động, báo động và crash, phông chữ và biểu tượng app riêng.',
+    'f.tasks': 'Việc cần làm &amp; đồng bộ',
+    'f.tasks.d': 'Danh sách việc ngắn gọn, đồng bộ trên mọi thiết bị của bạn. Kéo để sắp xếp; việc bạn đang tập trung sẽ được đưa lên đầu.',
+    'f.panic': 'Màn hình báo động',
+    'f.panic.d': 'Giữ nút đặt lại, một terminal sẽ năn nỉ bạn đừng bỏ cuộc trong khi đồng hồ vẫn chạy. Bỏ cuộc thì nó crash theo phong cách của bạn.',
+    'f.history': 'Lịch sử &amp; thống kê',
+    'f.history.d': 'Biểu đồ theo tuần và mọi phiên bạn đã chạy: hoàn thành, thất bại và tỉ lệ giữ được, kèm bộ lọc phiên đã xong hoặc thất bại.',
+    'f.island': 'Dynamic Island',
+    'f.island.d': 'Đếm ngược trực tiếp trên Dynamic Island và màn hình khóa. Giữ để tạm dừng hoặc đổi chế độ. Có cả widget trên Màn hình chính.',
+    'f.guard': 'Bảo vệ tập trung',
+    'f.guard.d': 'Dùng mục tự động hóa trong Phím tắt của riêng bạn: mở app gây xao nhãng sẽ quay về đồng hồ, và thông báo được tắt tiếng trong suốt phiên.',
+    'f.cal.d': 'Tùy chọn: ghi mỗi phiên tập trung đã xong vào lịch &ldquo;Focus&rdquo;. Chi tiết ở bên dưới.',
+    'f.cal.l': 'Google Calendar:',
+    'f.spotify.d': 'Tùy chọn: xem và điều khiển bài đang phát mà không cần rời đồng hồ.',
+    'ph.soon': 'ảnh sắp có',
+    'ph.panic': '$ focus --báo-động',
+    'ph.history': '$ focus --lịch-sử',
+    'ph.guard': '$ focus --bảo-vệ',
+    'ph.subjects': '$ focus --môn-học',
+    'ph.mock': '$ focus --thi-thử',
+    'ph.sounds': '$ focus --âm-thanh',
+    'n.h': 'Mới ở bản 1.14',
+    'n.for': 'Cho học sinh &middot; sắp ra mắt',
+    'n.exam': 'Đếm ngược ngày thi',
+    'n.exam.d': 'Thêm kỳ thi và xem số ngày còn lại ngay trên đồng hồ, kiểu D-45 &middot; THPT.',
+    'n.subj': 'Môn học &amp; thống kê học tập',
+    'n.subj.d': 'Gắn nhãn môn học cho việc cần làm, xem thời gian của bạn dành cho môn nào, đặt mục tiêu học mỗi ngày và giữ chuỗi ngày học.',
+    'n.mock': 'Hẹn giờ thi thử',
+    'n.mock.d': 'Luyện đề với đồng hồ đặt đúng thời lượng thi thật của THPT, IELTS và SAT.',
+    'n.snd': 'Âm thanh tập trung',
+    'n.snd.d': 'Tiếng mưa, sóng biển và tiếng ồn có sẵn, vẫn phát trong lúc bạn tập trung.',
+    'i.how': 'Cách cài:',
+    'c.note': 'Lưu ý:',
+
+    /* index: FAQ */
+    'q.h': 'Hỏi đáp',
+    'q1.q': 'App có miễn phí không?',
+    'q1.a': 'Có. $ Focus miễn phí, không quảng cáo, không phân tích và không theo dõi.',
+    'q2.q': 'Sao phải sideload, và cài thế nào?',
+    'q2.a': 'Focus không có trên App Store, nên bạn tự cài bằng một Apple Account miễn phí qua iloader (Windows hoặc Mac) hoặc SideStore. Bản cài miễn phí hết hạn sau 7 ngày: cài lại bằng iloader, hoặc để SideStore tự làm mới giúp bạn. <a href="install.html">Hướng dẫn cài đặt</a> dẫn bạn đi từng bước trong khoảng 10 phút.',
+    'q3.q': 'Có cần tài khoản không?',
+    'q3.a': 'Không. Ai cũng bắt đầu với một tài khoản khách ẩn danh, việc cần làm và các phiên được sao lưu tự động. Chỉ tạo tài khoản email (mã 6 chữ số, không mật khẩu) nếu bạn muốn đồng bộ giữa các thiết bị.',
+    'q4.q': 'Dữ liệu nào được lưu?',
+    'q4.a': 'Việc cần làm và lịch sử phiên được đồng bộ vào cơ sở dữ liệu của chúng tôi. Cài đặt, âm thanh tùy chỉnh và bảo vệ tập trung chỉ nằm trên thiết bị của bạn. Không quảng cáo, không phân tích, không theo dõi, và chúng tôi không bao giờ bán dữ liệu của bạn. Xem đầy đủ trong <a href="privacy.html">Chính sách bảo mật</a>.',
+    'q5.q': 'Có dùng được khi không có mạng không?',
+    'q5.a': 'Đồng hồ, island và danh sách việc cần làm chạy ngay trên iPhone. Đồng bộ, Spotify và Google Calendar cần có mạng; các sự kiện lịch sẽ chờ trên thiết bị cho đến khi bạn có mạng trở lại.',
+    'q6.q': 'Spotify và Google Calendar cần những gì?',
+    'q6.a': 'Cả hai đều là tùy chọn. Spotify cần tài khoản Spotify của bạn, và có thể chỉ mở cho những tài khoản được mời. Google Calendar cần tài khoản Google và chỉ xin quyền <code>calendar.app.created</code>, nên Focus chỉ truy cập được lịch &ldquo;Focus&rdquo; do chính nó tạo ra.',
+    'q7.q': 'Có tiếng Việt không?',
+    'q7.a': 'Có. App và trang web này có đầy đủ tiếng Anh và tiếng Việt. Ở đây, đổi bằng nút EN / VI ở trên cùng; trong app, chọn ngôn ngữ lúc thiết lập hoặc trong phần cài đặt.',
+    'q8.q': 'App chạy trên những iPhone nào?',
+    'q8.a': 'Mọi iPhone chạy iOS 26 trở lên. Máy không có Dynamic Island sẽ hiện đồng hồ dưới dạng Hoạt động trực tiếp trên màn hình khóa.',
 
     /* index: live timer + island (drawn by JS) */
     'mode.focus': 'Tập trung',
@@ -66,78 +114,35 @@
 
     /* index: hero */
     'hero.time': 'Đồng hồ Focus, chạm để tạm dừng hoặc chạy tiếp',
-    'hero.tag': 'Hẹn giờ Pomodoro và danh sách việc cần làm tối giản cho iPhone, mang chất terminal.',
-    'hero.install': '+ Cài đặt',
     'hero.source': 'Bản phát hành &#8599;',
-    'hero.hint': 'chạm vào đồng hồ để tạm dừng &middot; nó chạy thật đấy',
-    'hero.scroll': 'cuộn<i>&darr;</i>',
 
-    /* index: phone screenshots */
-    'shot.soon': 'ảnh chụp màn hình sắp có',
-    'shot.timer': 'hẹn giờ',
-    'shot.tasks': 'việc cần làm',
-    'shot.lock': 'màn hình khóa',
-    'shot.calendar': 'lịch',
     'alt.timer': 'Focus đang hiện đồng hồ trong một phiên tập trung',
     'alt.tasks': 'Focus đang hiện danh sách việc cần làm',
     'alt.lock': 'Màn hình khóa với đồng hồ Focus trong Hoạt động trực tiếp',
     'alt.spotify': 'Focus đang hiện bài hát phát trên Spotify',
+    'alt.island': 'Dynamic Island mở rộng, có đồng hồ, bài hát và nút điều khiển nhạc',
+    'alt.panic': 'Màn hình báo động khuyên bạn đừng bỏ phiên tập trung',
+    'alt.history': 'Tab thống kê với mục tiêu mỗi ngày, chuỗi ngày và số phút theo môn',
+    'alt.guard': 'Cài đặt chặn xao nhãng: chặn app và tắt thông báo',
+    'alt.exams': 'Đồng hồ với thẻ đếm ngược kỳ thi',
+    'alt.subjects': 'Chọn môn học cho một việc',
+    'alt.mocktest': 'Đồng hồ trong một bài thi thử 90 phút',
+    'alt.sounds': 'Cài đặt âm thanh tập trung đang chọn tiếng mưa',
     'alt.calendar': 'Google Calendar hiện các phiên Focus đã được ghi lại',
-    'alt.widget': 'Widget Focus trên Màn hình chính',
 
-    /* index: chapters */
-    'c1.idx': '[01] &middot; hẹn giờ',
-    'c1.h': 'Tập trung. Nghỉ.<br><span class="soft">Lặp lại.</span>',
-    'c1.sub': 'Hẹn giờ tập trung &amp; nghỉ với thời lượng tùy chỉnh, âm thanh và rung phản hồi.',
-    'c2.idx': '[02] &middot; việc cần làm',
-    'c2.h': 'Danh sách của bạn.<br><span class="soft">Ở mọi nơi.</span>',
-    'c2.sub': 'Việc cần làm đơn giản, đồng bộ trên mọi thiết bị của bạn.',
-    'tasks.left': 'còn {n}',
-    'tasks.done': 'xong hết',
-    'tasks.add': 'thêm việc, nhấn enter',
-    'tasks.addlbl': 'Thêm việc',
-    'task.1': 'lên dàn ý bài luận',
-    'task.2': 'trả lời email',
-    'task.3': 'đọc chương 4',
-    'task.4': 'lên kế hoạch ngày mai',
-    'c3.idx': '[03] &middot; dynamic island',
-    'c3.h': 'Ở ngay trên<br><span class="soft">Dynamic Island.</span>',
-    'c3.sub': 'Đếm ngược trực tiếp trên Dynamic Island và màn hình khóa. Giữ để tạm dừng hoặc đổi chế độ.',
-    'c3.tip': '<span class="tip-up">&uarr; </span>chạm hoặc giữ island trên điện thoại<span class="tip-right"> &rarr;</span>',
-    'c4.idx': '[04] &middot; spotify',
-    'c4.h': 'Âm nhạc,<br><span class="soft">trong tầm tay.</span>',
-    'c4.sub': 'Tùy chọn: xem và điều khiển bài đang phát. Thử ngay ở đây với nhạc được tạo trực tiếp trong trình duyệt, mỗi bài một kiểu ngẫu nhiên và không dính bản quyền.',
-    'c5.idx': '[05] &middot; google calendar',
-    'c5.h': 'Mỗi phiên,<br><span class="soft">đều được ghi lại.</span>',
-    'c5.sub': 'Tùy chọn: ghi các phiên tập trung đã xong vào lịch &ldquo;Focus&rdquo;.',
-    'cal.bar': 'lịch &middot; focus',
-    'cal.today': 'hôm nay',
-    'cal.focus': 'tập trung &middot; 25 phút',
-    'cal.break': 'nghỉ &middot; 5 phút',
+    /* index: google calendar */
     // Google OAuth verification text: the English in index.html must stay byte-for-byte, only the attribute is added
     'cal.how': '<strong>Focus dùng Google Calendar như thế nào.</strong> Việc kết nối Google Calendar là tùy chọn. Khi bạn kết nối, Focus tạo một lịch phụ tên &ldquo;Focus&rdquo; trong tài khoản Google của bạn và thêm một sự kiện vào lịch đó mỗi khi bạn hoàn thành một phiên tập trung (và mỗi lần nghỉ, nếu bạn bật tùy chọn này). Focus chỉ yêu cầu quyền <code>calendar.app.created</code>, nên nó chỉ có thể truy cập lịch do chính nó tạo ra &mdash; nó không thể xem, thay đổi hay xóa các lịch hoặc sự kiện khác của bạn. Bạn có thể hủy liên kết bất cứ lúc nào trong phần cài đặt (Settings) của app.',
     'cal.read': 'Đọc <a href="privacy.html">Chính sách bảo mật</a> để biết đầy đủ chi tiết.',
-    'c6.idx': '[06] &middot; bản phát hành',
-    'c6.h': 'Mọi bản build, công khai.<br><span class="soft">Bản nào cũng có ghi chú.</span>',
-    'c6.sub': 'Tải mọi phiên bản trên GitHub Releases, kèm ghi chú tính năng mới và lỗi đã sửa. Bảo lưu mọi quyền.',
-    'git.cloning': 'đang tải FocusTimer.ipa... xong.',
-    'git.source': 'bản phát hành &#8599;',
 
     /* index: CTA + info */
-    'cta.q': '&gt; thấy hay không?',
     'cta.h': 'Cài nó thôi.',
     'cta.btn': 'Mở hướng dẫn cài đặt &rarr;',
-    'cta.bar': '// hướng dẫn cài đặt',
-    'cta.min': '~10 phút',
     'cta.s1': 'Tải file IPA của Focus',
     'cta.s2': 'Cài iloader trên máy tính',
     'cta.s3': 'Đăng nhập &amp; cài vào iPhone',
     'cta.s4': 'Tin cậy app &amp; mở Focus',
-    'cta.all': 'xem hướng dẫn đầy đủ từng bước &rarr;',
-    'info.h': 'Cài đặt &amp; cập nhật',
     'info.p': 'Focus được cài bằng cách sideload với một Apple ID miễn phí. Làm theo <a href="install.html">hướng dẫn cài đặt từng bước</a> cho Windows hoặc Mac.',
-    'info.latest': '<strong>Bản mới nhất:</strong> <a href="https://github.com/SuS1234trwtw/focus-timer/releases/latest">GitHub Releases</a>',
-    'info.ss': '<strong>Nguồn SideStore:</strong> <code>https://github.com/SuS1234trwtw/focus-timer/releases/latest/download/source.json</code>',
     'info.contact': 'Liên hệ &amp; hỗ trợ',
     'info.ask': 'Câu hỏi, báo lỗi hoặc yêu cầu về dữ liệu:',
     'info.meta': 'Focus là một dự án độc lập, không liên kết, không được bảo trợ hay tài trợ bởi Google, Spotify hay Apple.',
@@ -168,7 +173,7 @@
     'np.pause': 'Tạm dừng',
 
     /* install */
-    'in.title': 'Cài Focus — hướng dẫn iloader & SideStore',
+    'in.title': 'Cài $ Focus — hướng dẫn iloader & SideStore',
     'in.h1': 'Cài đặt Focus',
     'in.meta': 'Cập nhật 2 tháng 10, 2026 &middot; iPhone chạy iOS 26 trở lên &middot; Apple Account miễn phí',
     'in.before': 'Trước khi bắt đầu',
@@ -274,7 +279,7 @@
     'in.copy': 'sao chép',
     'in.copied': 'đã sao chép',
     /* confirmed */
-    'cf.title': 'Đã xác nhận email — Focus',
+    'cf.title': 'Đã xác nhận email — $ Focus',
     'cf.log': '$ focus tài-khoản --xác-nhận\n  xác minh email .......... <span class="ok">[ ổn ]</span>',
     'cf.h': 'Đã xác nhận email',
     'cf.lead': 'Quay lại Focus để hoàn tất thiết lập sao lưu &amp; đồng bộ. App sẽ tự nhận; nếu không, mở cài đặt &rarr; tài khoản (Settings &rarr; account) và chạm <strong>i confirmed it</strong> (tôi đã xác nhận).',
@@ -287,7 +292,7 @@
     'cf.retry': '{error}. Quay lại Focus và thử lại.',
 
     /* 404 */
-    'nf.title': '404 — Không tìm thấy trang — Focus',
+    'nf.title': '404 — Không tìm thấy trang — $ Focus',
     'nf.log': '$ cd trang-này\nfocus: không tìm thấy lệnh <span class="err">[ 404 ]</span>',
     'nf.h': '404 &mdash; không tìm thấy lệnh',
     'nf.lead': 'Không có gì ở địa chỉ này. Có thể trang đã được chuyển đi, hoặc link bị gõ sai.',
@@ -295,9 +300,9 @@
     'nf.install': 'Hướng dẫn cài đặt',
 
     /* privacy (privacy.html) + terms (terms.html): the English in the HTML is the binding original, these are reference translations */
-    'pv.title': 'Chính sách bảo mật — Focus',
+    'pv.title': 'Chính sách bảo mật — $ Focus',
     'pv.h1': 'Chính sách bảo mật',
-    'pv.eff': 'Có hiệu lực từ ngày 1 tháng 10 năm 2026 &middot; cập nhật ngày 6 tháng 10 năm 2026 &middot; bản dịch để tham khảo; nếu có khác biệt, bản tiếng Anh được ưu tiên áp dụng',
+    'pv.eff': 'Có hiệu lực từ ngày 1 tháng 10 năm 2026 &middot; cập nhật ngày 10 tháng 10 năm 2026 &middot; bản dịch để tham khảo; nếu có khác biệt, bản tiếng Anh được ưu tiên áp dụng',
     'pv.sum.h': 'Tóm tắt',
     'pv.sum1': 'Không quảng cáo, không phân tích, không theo dõi. Chúng tôi không bao giờ bán dữ liệu của bạn.',
     'pv.sum2': 'Việc cần làm và lịch sử phiên của bạn được đồng bộ vào cơ sở dữ liệu của chúng tôi dưới một tài khoản khách ẩn danh, hoặc dưới một tài khoản email nếu bạn chọn tạo tài khoản.',
@@ -321,6 +326,7 @@
     'pv.col.sess': '<strong>Phiên Focus:</strong> loại phiên (tập trung hoặc nghỉ), thời gian bắt đầu, thời gian kết thúc và độ dài của mỗi phiên đã hoàn thành, cùng việc cần làm mà phiên đó được liên kết. Lịch sử tập trung của bạn (biểu đồ theo tuần và danh sách các phiên tập trung) được tính toán từ lịch sử phiên này.',
     'pv.col.set': '<strong>Cài đặt:</strong> thời lượng hẹn giờ, giao diện, tùy chọn âm thanh và rung phản hồi, ngôn ngữ của bạn (tiếng Anh hoặc tiếng Việt), và việc bạn đã hoàn tất phần thiết lập và hướng dẫn ở lần mở đầu tiên hay chưa. Những dữ liệu này chỉ nằm trên thiết bị của bạn.',
     'pv.col.snd': '<strong>Âm thanh tùy chỉnh:</strong> các tệp âm thanh bạn chọn nhập để làm âm thanh hẹn giờ được sao chép vào bộ nhớ của ứng dụng trên thiết bị của bạn và không bao giờ được tải lên.',
+    'pv.col.study': 'Nhãn môn học bạn gắn cho việc cần làm được đồng bộ cùng với việc cần làm. Các kỳ thi, mục tiêu học tập, cài đặt âm thanh tập trung và bản ghi chấp thuận của bạn (ngày và phiên bản của các tài liệu này mà bạn đã đồng ý) chỉ nằm trên thiết bị của bạn.',
     'pv.col.anon.h': 'Tài khoản khách và tài khoản email tùy chọn',
     'pv.col.anon.p': 'Mọi người dùng đều bắt đầu với tư cách khách: để sao lưu việc cần làm và các phiên của bạn, Focus tự động tạo một tài khoản ẩn danh tại nhà cung cấp cơ sở dữ liệu của chúng tôi. Tài khoản này được nhận diện bằng một ID ngẫu nhiên, và bản sao lưu của tài khoản khách chỉ có thể truy cập được từ chính bản cài đặt ứng dụng đó.',
     'pv.col.email.p': 'Nếu bạn chọn tạo tài khoản hoặc đăng nhập để sao lưu và đồng bộ giữa các thiết bị, Focus sẽ yêu cầu địa chỉ email của bạn và gửi cho bạn một mã đăng nhập gồm 6 chữ số qua email (không có mật khẩu hay liên kết đăng nhập). Địa chỉ email của bạn được nhà cung cấp cơ sở dữ liệu và dịch vụ đăng nhập của chúng tôi lưu cùng với tài khoản của bạn. Chúng tôi chỉ yêu cầu địa chỉ email trong trường hợp đó, và không bao giờ yêu cầu tên hay số điện thoại của bạn. Khi đăng xuất, ứng dụng sẽ trở về một tài khoản khách mới và vẫn giữ dữ liệu trên thiết bị của bạn.',
@@ -372,9 +378,9 @@
     'pv.chg.p': 'Chúng tôi có thể cập nhật chính sách này theo thời gian. Ngày có hiệu lực ở đầu trang cho biết phiên bản mới nhất. Những thay đổi quan trọng sẽ được ghi chú trên trang này.',
     'pv.ct.h': '10. Liên hệ',
     'pv.ct.p': 'Câu hỏi hoặc yêu cầu về quyền riêng tư:',
-    'tm.title': 'Điều khoản dịch vụ — Focus',
+    'tm.title': 'Điều khoản dịch vụ — $ Focus',
     'tm.h1': 'Điều khoản dịch vụ',
-    'tm.eff': 'Có hiệu lực từ ngày 1 tháng 10 năm 2026 &middot; cập nhật ngày 6 tháng 10 năm 2026 &middot; bản dịch để tham khảo; nếu có khác biệt, bản tiếng Anh được ưu tiên áp dụng',
+    'tm.eff': 'Có hiệu lực từ ngày 1 tháng 10 năm 2026 &middot; cập nhật ngày 10 tháng 10 năm 2026 &middot; bản dịch để tham khảo; nếu có khác biệt, bản tiếng Anh được ưu tiên áp dụng',
     'tm.toc1': 'Chấp thuận',
     'tm.toc2': 'Sử dụng Focus',
     'tm.toc3': 'Quyền sở hữu &amp; mã nguồn',
@@ -386,6 +392,7 @@
     'tm.toc9': 'Liên hệ',
     'tm.acc.h': '1. Chấp thuận',
     'tm.acc.p': 'Các Điều khoản dịch vụ này (&ldquo;Điều khoản&rdquo;) điều chỉnh việc bạn sử dụng ứng dụng Focus dành cho iPhone và trang web này (gọi chung là &ldquo;Focus&rdquo;), do An Le phát triển. Bằng việc sử dụng Focus, bạn đồng ý với các Điều khoản này. Nếu bạn không đồng ý, vui lòng không sử dụng Focus.',
+    'tm.acc.box': 'Bạn chấp nhận các Điều khoản này bằng cách đánh dấu vào ô đồng ý trong ứng dụng.',
     'tm.use.h': '2. Sử dụng Focus',
     'tm.use.p': 'Focus là một công cụ năng suất cá nhân miễn phí. Bạn đồng ý sử dụng Focus một cách hợp pháp và không lạm dụng nó, bao gồm cả việc cố gắng làm gián đoạn dịch vụ, truy cập dữ liệu của người dùng khác hoặc lạm dụng các dịch vụ được kết nối.',
     'tm.use.acct': 'Nếu bạn tạo tài khoản bằng địa chỉ email, bạn có trách nhiệm cung cấp một địa chỉ email do bạn kiểm soát và duy trì quyền truy cập vào địa chỉ đó. Chúng tôi có thể xóa các tài khoản không hoạt động hoặc bị sử dụng với mục đích lạm dụng.',
@@ -414,6 +421,8 @@
 
   function T(key, en) { return lang === 'vi' && VI.hasOwnProperty(key) ? VI[key] : en; }
 
+  var MISSING = { en: ['exams'], vi: ['sounds'] };
+
   function all(sel) { return [].slice.call(document.querySelectorAll(sel)); }
   function apply() {
     // a page with no tagged text keeps its own <html lang>; only the switch remembers the choice
@@ -429,6 +438,13 @@
         if (!(name in el._enAttr)) el._enAttr[name] = el.getAttribute(name) || '';
         el.setAttribute(name, T(key, el._enAttr[name]));
       });
+    });
+    // screenshots come in both languages; a shot missing in one language falls back to the other
+    all('img[data-shot]').forEach(function (img) {
+      var name = img.getAttribute('data-shot');
+      var want = (MISSING[lang] || []).indexOf(name) >= 0 ? (lang === 'vi' ? 'en' : 'vi') : lang;
+      var src = 'shots/' + want + '/' + name + '.webp';
+      if (img.getAttribute('src') !== src) img.setAttribute('src', src);
     });
     all('[data-lang]').forEach(function (b) { b.setAttribute('aria-pressed', b.getAttribute('data-lang') === lang ? 'true' : 'false'); });
   }

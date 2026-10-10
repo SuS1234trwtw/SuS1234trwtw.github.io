@@ -1,12 +1,12 @@
-# Focus
+# $ Focus
 
-> Focus is a minimal, terminal-styled Pomodoro timer and task list for iPhone (iOS 26+), made by An Le. It is free and installed by sideloading (iloader or SideStore) with a free Apple ID, not through the App Store.
+> $ Focus (Focus) is a minimal, terminal-styled Pomodoro timer and task list for iPhone (iOS 26+), made by An Le. It is free and installed by sideloading (iloader or SideStore) with a free Apple ID, not through the App Store.
 
 Focus looks like a terminal: monospace type, black background, no clutter. Run focus and break blocks, keep a short task list, and follow the timer from the Lock Screen and Dynamic Island. The app and this website are available in English and Vietnamese.
 
 ## Website
 
-- [Home](https://sus1234trwtw.github.io/): what Focus is, features and screenshots
+- [Home](https://sus1234trwtw.github.io/): what $ Focus is, features, screenshots and FAQ
 - [Install guide](https://sus1234trwtw.github.io/install.html): step-by-step sideloading with iloader or SideStore, on Windows or Mac
 
 ## Download
@@ -23,7 +23,15 @@ Focus looks like a terminal: monospace type, black background, no clutter. Run f
 - Home Screen widgets
 - Spotify: see and control what is playing (optional)
 - Google Calendar: log finished focus blocks to a calendar named "Focus" (optional; uses only the calendar.app.created permission)
+- Five terminal styles (Mono, Cozy, PowerShell, CMD, Ubuntu), panic screen, focus history and stats, focus guard (via Shortcuts)
 - English and Vietnamese
+
+## Coming in 1.14 (for students)
+
+- Exam countdown (e.g. D-45 · THPT)
+- Subjects and study stats with a daily goal and streak
+- Mock-test timer with THPT, IELTS and SAT lengths
+- Built-in focus sounds: rain, ocean, noise
 
 ## Legal
 
