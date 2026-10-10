@@ -8,7 +8,7 @@
 <meta name="description" content="A minimal, terminal-style Pomodoro timer and task list for iPhone. Free, in English and Vietnamese, with a live Dynamic Island.">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#F4F4F2">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#121211">
-<link rel="icon" href="logo.png?v=20">
+<link rel="icon" href="logo.png?v=21">
 <link rel="canonical" href="https://notanlee.github.io/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="$ Focus">
@@ -25,12 +25,12 @@
 <meta name="twitter:title" content="$ Focus — Pomodoro timer for iPhone">
 <meta name="twitter:description" content="A minimal, terminal-style Pomodoro timer and task list for iPhone. Free, in English and Vietnamese, with a live Dynamic Island.">
 <meta name="twitter:image" content="https://notanlee.github.io/og.png">
-<link rel="apple-touch-icon" href="logo.png?v=20">
+<link rel="apple-touch-icon" href="logo.png?v=21">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500;600&amp;family=Inter+Tight:wght@600;700;800&amp;display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=20">
-<script src="i18n.js?v=20"></script>
+<link rel="stylesheet" href="style.css?v=21">
+<script src="i18n.js?v=21"></script>
 <script>document.documentElement.className += ' js';
 // screenshots fade in when they arrive (document-level capture sees every <img> load, cached ones too)
 (function (show) { document.addEventListener('load', show, true); document.addEventListener('error', show, true); })(function (e) { if (e.target.tagName === 'IMG') e.target.classList.add('in'); });</script>
@@ -86,7 +86,7 @@
 <div class="progress" aria-hidden="true"></div>
 
 <header class="site"><nav class="bar" aria-label="Main" data-i18n-attr="aria-label:nav.main">
-<a class="pill logo" href="./" aria-label="$ Focus home" data-i18n-attr="aria-label:nav.homelbl"><img src="logo.png?v=20" alt="" width="18" height="18"><span class="txt">$ Focus</span></a>
+<a class="pill logo" href="./" aria-label="$ Focus home" data-i18n-attr="aria-label:nav.homelbl"><img src="logo.png?v=21" alt="" width="18" height="18"><span class="txt">$ Focus</span></a>
 <div class="menu-wrap"><button class="pill" id="menu-btn" type="button" aria-expanded="false" aria-controls="menu"><span data-i18n="nav.home">Home</span><span class="burger" aria-hidden="true"><i></i><i></i></span></button>
 <div class="menu" id="menu" hidden>
 <a href="./" aria-current="page" data-i18n="nav.home">Home</a>
@@ -215,59 +215,53 @@
 </div></div>
 </section>
 
-<section class="sec page" id="new15" aria-labelledby="n15-h">
-<div class="sec-head"><h2 class="sec-title" id="n15-h" data-i18n="n15.h">New in 1.15</h2><p class="label" data-i18n="n15.for">Only in $ Focus</p></div>
-<div class="cards">
-
-<article class="card">
-<div class="media"><!-- SCREENSHOT: planner --><div class="ph" aria-hidden="true"><span>~/planner</span><b data-i18n="n15.planner.ph">$ focus --plan</b><i data-i18n="ph.soon">screenshot soon</i></div></div>
-<div class="cap"><h3 data-i18n="n15.planner">Exam Autopilot</h3><span>/ 1.15</span></div>
-<p class="desc" data-i18n="n15.planner.d">Pick your exam&rsquo;s subjects and weak spots. Every day the timer shows exactly what to study, and the plan adapts to what you actually did.</p>
-</article>
-
-<article class="card">
-<div class="media"><!-- SCREENSHOT: quits --><div class="ph" aria-hidden="true"><span>~/quits</span><b data-i18n="n15.quits.ph">$ focus --why</b><i data-i18n="ph.soon">screenshot soon</i></div></div>
-<div class="cap"><h3 data-i18n="n15.quits">Quit Journal</h3><span>/ 1.15</span></div>
-<p class="desc" data-i18n="n15.quits.d">Give up on a block and Focus asks why. Stats shows when and why you quit most, with one tip that fits.</p>
-</article>
-
-<article class="card">
-<div class="media"><!-- SCREENSHOT: guide --><div class="ph" aria-hidden="true"><span>~/guide</span><b data-i18n="n15.guide.ph">$ focus --setup</b><i data-i18n="ph.soon">screenshot soon</i></div></div>
-<div class="cap"><h3 data-i18n="n15.guide">New setup guide &amp; tour</h3><span>/ 1.15</span></div>
-<p class="desc" data-i18n="n15.guide.d">A first-run guide that previews the real app, and a tips tour that points at the real buttons.</p>
-</article>
-
-</div>
-</section>
-
 <section class="sec page" id="new" aria-labelledby="n-h">
-<div class="sec-head"><h2 class="sec-title" id="n-h" data-i18n="n.h">Also new: 1.14</h2><p class="label" data-i18n="n.for">For students</p></div>
-<div class="cards">
-
-<article class="card">
-<div class="media"><img src="shots/en/exams.webp" data-shot="exams" alt="The timer with an exam countdown chip" data-i18n-attr="alt:alt.exams" width="600" height="1301" loading="lazy" decoding="async"></div>
-<div class="cap"><h3 data-i18n="n.exam">Exam countdown</h3><span>/ 1.14</span></div>
-<p class="desc" data-i18n="n.exam.d">Add your exams and see the days left right on the timer, like D-45 &middot; THPT.</p>
-</article>
-
-<article class="card">
-<div class="media"><img src="shots/en/subjects.webp" data-shot="subjects" alt="Picking a subject for a task" data-i18n-attr="alt:alt.subjects" width="600" height="1301" loading="lazy" decoding="async"></div>
-<div class="cap"><h3 data-i18n="n.subj">Subjects &amp; study stats</h3><span>/ 1.14</span></div>
-<p class="desc" data-i18n="n.subj.d">Label tasks by subject, see where your time goes, set a daily study goal and keep your streak.</p>
-</article>
-
-<article class="card">
-<div class="media"><img src="shots/en/mocktest.webp" data-shot="mocktest" alt="The timer in a 90-minute mock test" data-i18n-attr="alt:alt.mocktest" width="600" height="1301" loading="lazy" decoding="async"></div>
-<div class="cap"><h3 data-i18n="n.mock">Mock-test timer</h3><span>/ 1.14</span></div>
-<p class="desc" data-i18n="n.mock.d">Practise with timers set to real exam lengths for THPT, IELTS and SAT.</p>
-</article>
-
-<article class="card">
-<div class="media"><img src="shots/en/sounds.webp" data-shot="sounds" alt="Focus sounds settings with rain selected" data-i18n-attr="alt:alt.sounds" width="600" height="1301" loading="lazy" decoding="async"></div>
-<div class="cap"><h3 data-i18n="n.snd">Focus sounds</h3><span>/ 1.14</span></div>
-<p class="desc" data-i18n="n.snd.d">Built-in rain, ocean and noise that keep playing while you focus.</p>
-</article>
-
+<div class="sec-head"><h2 class="sec-title" id="n-h" data-i18n="wn.h">What&rsquo;s new</h2>
+<div class="wn-tabs" role="tablist" aria-label="Versions" data-i18n-attr="aria-label:wn.versions">
+<button role="tab" id="wn-t15" aria-controls="wn-p15" aria-selected="true">1.15</button>
+<button role="tab" id="wn-t14" aria-controls="wn-p14" aria-selected="false" tabindex="-1">1.14</button>
+<button role="tab" id="wn-told" aria-controls="wn-pold" aria-selected="false" tabindex="-1" data-i18n="wn.earlier">earlier</button>
+</div></div>
+<div class="wn-panel" role="tabpanel" id="wn-p15" aria-labelledby="wn-t15">
+<p class="label wn-sub" data-i18n="n15.for">Only in $ Focus</p>
+<ul class="wn-row" tabindex="0">
+<li class="wn-card"><div class="wn-media"><img src="shots/en/planner.webp" data-shot="planner" alt="Today&rsquo;s study plan on the timer tab" data-i18n-attr="alt:alt.planner" width="600" height="1301" loading="lazy" decoding="async"></div>
+<div class="cap"><h3 data-i18n="n15.planner">Exam Autopilot</h3><span>/ 1.15</span></div><p class="desc" data-i18n="n15.planner.d">Pick your exam&rsquo;s subjects and weak spots. Every day the timer shows exactly what to study, and the plan adapts to what you actually did.</p></li>
+<li class="wn-card"><div class="wn-media"><img src="shots/en/planner-stats.webp" data-shot="planner-stats" alt="Weekly plan per subject in stats" data-i18n-attr="alt:alt.plannerstats" width="600" height="1301" loading="lazy" decoding="async"></div>
+<div class="cap"><h3 data-i18n="n15.plan2">Plan vs. actual</h3><span>/ 1.15</span></div><p class="desc" data-i18n="n15.plan2.d">Stats compares each subject&rsquo;s target with what you studied this week, and flags what&rsquo;s behind.</p></li>
+<li class="wn-card"><div class="wn-media"><img src="shots/en/quits.webp" data-shot="quits" alt="The panic screen asking why you are giving up" data-i18n-attr="alt:alt.quits" width="600" height="1301" loading="lazy" decoding="async"></div>
+<div class="cap"><h3 data-i18n="n15.quits">Quit Journal</h3><span>/ 1.15</span></div><p class="desc" data-i18n="n15.quits.d">Give up on a block and Focus asks why: phone, tired, bored, hungry, hard topic&hellip;</p></li>
+<li class="wn-card"><div class="wn-media"><img src="shots/en/quits-stats.webp" data-shot="quits-stats" alt="Quit reasons and a tip in stats" data-i18n-attr="alt:alt.quitsstats" width="600" height="1301" loading="lazy" decoding="async"></div>
+<div class="cap"><h3 data-i18n="n15.quit2">Why you quit</h3><span>/ 1.15</span></div><p class="desc" data-i18n="n15.quit2.d">See your top reasons, the hour you quit most, the subject you give up on, and one tip that fits.</p></li>
+<li class="wn-card"><div class="wn-media"><img src="shots/en/guide.webp" data-shot="guide" alt="The new first-run setup guide" data-i18n-attr="alt:alt.guide" width="600" height="1301" loading="lazy" decoding="async"></div>
+<div class="cap"><h3 data-i18n="n15.guide">New setup guide</h3><span>/ 1.15</span></div><p class="desc" data-i18n="n15.guide.d">A first-run guide that previews the real app, with a study page for your exam and daily goal.</p></li>
+<li class="wn-card"><div class="wn-media"><img src="shots/en/tour.webp" data-shot="tour" alt="The tips tour pointing at the timer" data-i18n-attr="alt:alt.tour" width="600" height="1301" loading="lazy" decoding="async"></div>
+<div class="cap"><h3 data-i18n="n15.tour">Tips that point right</h3><span>/ 1.15</span></div><p class="desc" data-i18n="n15.tour.d">The tips tour measures the real buttons and switches tabs to show you around.</p></li>
+</ul></div>
+<div class="wn-panel" role="tabpanel" id="wn-p14" aria-labelledby="wn-t14" hidden>
+<p class="label wn-sub" data-i18n="n.for">For students</p>
+<ul class="wn-row" tabindex="0">
+<li class="wn-card"><div class="wn-media"><img src="shots/en/exams.webp" data-shot="exams" alt="The timer with an exam countdown chip" data-i18n-attr="alt:alt.exams" width="600" height="1301" loading="lazy" decoding="async"></div>
+<div class="cap"><h3 data-i18n="n.exam">Exam countdown</h3><span>/ 1.14</span></div><p class="desc" data-i18n="n.exam.d">Add your exams and see the days left right on the timer, like D-45 &middot; THPT.</p></li>
+<li class="wn-card"><div class="wn-media"><img src="shots/en/mocktest.webp" data-shot="mocktest" alt="The timer in a 90-minute mock test" data-i18n-attr="alt:alt.mocktest" width="600" height="1301" loading="lazy" decoding="async"></div>
+<div class="cap"><h3 data-i18n="n.mock">Mock-test timer</h3><span>/ 1.14</span></div><p class="desc" data-i18n="n.mock.d">Practise with timers set to real exam lengths for THPT, IELTS and SAT.</p></li>
+<li class="wn-card"><div class="wn-media"><img src="shots/en/subjects.webp" data-shot="subjects" alt="Picking a subject for a task" data-i18n-attr="alt:alt.subjects" width="600" height="1301" loading="lazy" decoding="async"></div>
+<div class="cap"><h3 data-i18n="n.subj">Subjects &amp; study stats</h3><span>/ 1.14</span></div><p class="desc" data-i18n="n.subj.d">Label tasks by subject, see where your time goes, set a daily study goal and keep your streak.</p></li>
+<li class="wn-card"><div class="wn-media"><img src="shots/en/history.webp" data-shot="history" alt="The stats tab with goal, streak and subjects" data-i18n-attr="alt:alt.history" width="600" height="1301" loading="lazy" decoding="async"></div>
+<div class="cap"><h3 data-i18n="n14.stats">Goal &amp; streak</h3><span>/ 1.14</span></div><p class="desc" data-i18n="n14.stats.d">A daily goal meter, a streak and minutes per subject on the new Stats tab.</p></li>
+<li class="wn-card"><div class="wn-media"><img src="shots/en/sounds.webp" data-shot="sounds" alt="Focus sounds settings with rain selected" data-i18n-attr="alt:alt.sounds" width="600" height="1301" loading="lazy" decoding="async"></div>
+<div class="cap"><h3 data-i18n="n.snd">Focus sounds</h3><span>/ 1.14</span></div><p class="desc" data-i18n="n.snd.d">Built-in rain, ocean and noise that keep playing while you focus.</p></li>
+</ul></div>
+<div class="wn-panel" role="tabpanel" id="wn-pold" aria-labelledby="wn-told" hidden>
+<ul class="wn-list">
+<li><a href="https://github.com/notanlee/focus-timer/releases/tag/v1.13.7-36"><b>1.13.7</b><span data-i18n="e.1137">Add tasks from a bar at the bottom; music buttons on the Dynamic Island.</span><i aria-hidden="true">&#8599;</i></a></li>
+<li><a href="https://github.com/notanlee/focus-timer/releases/tag/v1.13.6-35"><b>1.13.6</b><span data-i18n="e.1136">History comes back after reinstalling.</span><i aria-hidden="true">&#8599;</i></a></li>
+<li><a href="https://github.com/notanlee/focus-timer/releases/tag/v1.13.4-33"><b>1.13.4</b><span data-i18n="e.1134">Hour/minute wheels and up to 8 hours per block.</span><i aria-hidden="true">&#8599;</i></a></li>
+<li><a href="https://github.com/notanlee/focus-timer/releases/tag/v1.13.3-32"><b>1.13.3</b><span data-i18n="e.1133">Every style gets its own boot and panic screen; failed blocks in history.</span><i aria-hidden="true">&#8599;</i></a></li>
+<li><a href="https://github.com/notanlee/focus-timer/releases/tag/v1.13.0-29"><b>1.13.0</b><span data-i18n="e.1130">Hold to pause, the panic screen, focus guard and the first tips tour.</span><i aria-hidden="true">&#8599;</i></a></li>
+<li><a href="https://github.com/notanlee/focus-timer/releases/tag/v1.12.0-27"><b>1.12.0</b><span data-i18n="e.1120">Vietnamese across the whole app, and your own timer presets.</span><i aria-hidden="true">&#8599;</i></a></li>
+</ul>
+<p class="label"><a href="https://github.com/notanlee/focus-timer/releases" data-i18n="wn.all">All release notes &#8599;</a></p>
 </div>
 </section>
 
@@ -419,7 +413,7 @@
   }, 1000);
 })();
 </script>
-<script src="player.js?v=20" defer></script>
-<script src="site.js?v=20" defer></script>
+<script src="player.js?v=21" defer></script>
+<script src="site.js?v=21" defer></script>
 </body>
 </html>

@@ -118,3 +118,27 @@
   addEventListener('beforeprint', function () { all('details:not([open])').forEach(function (d) { d.setAttribute('open', ''); d._printOpened = true; }); });
   addEventListener('afterprint', function () { all('details').forEach(function (d) { if (d._printOpened) { d.removeAttribute('open'); d._printOpened = false; } }); });
 })();
+
+// What's new: version tabs (click + arrow keys), one row per version
+(function () {
+  var tabs = [].slice.call(document.querySelectorAll('.wn-tabs [role="tab"]'));
+  if (!tabs.length) return;
+  function select(tab, focus) {
+    tabs.forEach(function (t) {
+      var on = t === tab;
+      t.setAttribute('aria-selected', on ? 'true' : 'false');
+      t.tabIndex = on ? 0 : -1;
+      document.getElementById(t.getAttribute('aria-controls')).hidden = !on;
+    });
+    if (focus) tab.focus();
+  }
+  tabs.forEach(function (t, i) {
+    t.addEventListener('click', function () { select(t); });
+    t.addEventListener('keydown', function (e) {
+      var d = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
+      if (!d) return;
+      e.preventDefault();
+      select(tabs[(i + d + tabs.length) % tabs.length], true);
+    });
+  });
+})();

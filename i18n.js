@@ -70,7 +70,30 @@
     'ph.sounds': '$ focus --âm-thanh',
     'n.h': 'Cũng mới: 1.14',
     'n.for': 'Cho học sinh',
-    'n15.h': 'Mới ở bản 1.15',
+    'wn.h': 'Có gì mới',
+    'wn.versions': 'Các phiên bản',
+    'wn.earlier': 'trước đó',
+    'wn.all': 'Tất cả ghi chú phát hành &#8599;',
+    'n15.plan2': 'Kế hoạch và thực tế',
+    'n15.plan2.d': 'Thống kê so sánh mục tiêu từng môn với thời gian bạn đã học tuần này, và đánh dấu môn đang chậm.',
+    'n15.quit2': 'Vì sao bạn bỏ cuộc',
+    'n15.quit2.d': 'Xem lý do hay gặp nhất, giờ hay bỏ, môn hay bỏ và một gợi ý phù hợp.',
+    'n15.tour': 'Mẹo chỉ đúng chỗ',
+    'n15.tour.d': 'Phần mẹo đo đúng vị trí các nút thật và tự chuyển tab để dẫn bạn đi một vòng.',
+    'n14.stats': 'Mục tiêu &amp; chuỗi ngày',
+    'n14.stats.d': 'Thanh mục tiêu mỗi ngày, chuỗi ngày và số phút theo môn ở tab thống kê mới.',
+    'e.1137': 'Thêm việc từ thanh ở cuối màn hình; nút điều khiển nhạc trên Dynamic Island.',
+    'e.1136': 'Lịch sử tự quay lại sau khi cài lại app.',
+    'e.1134': 'Bánh xe chọn giờ/phút và tối đa 8 giờ mỗi phiên.',
+    'e.1133': 'Mỗi phong cách có màn hình khởi động và báo động riêng; phiên bỏ dở trong lịch sử.',
+    'e.1130': 'Giữ để tạm dừng, màn hình báo động, chặn xao nhãng và phần mẹo đầu tiên.',
+    'e.1120': 'Tiếng Việt cho toàn bộ app, và preset hẹn giờ của riêng bạn.',
+    'alt.planner': 'Kế hoạch học hôm nay ở tab hẹn giờ',
+    'alt.plannerstats': 'Kế hoạch tuần theo môn trong thống kê',
+    'alt.quits': 'Màn hình báo động hỏi vì sao bạn bỏ cuộc',
+    'alt.quitsstats': 'Lý do bỏ cuộc và gợi ý trong thống kê',
+    'alt.guide': 'Hướng dẫn cài đặt lần đầu mới',
+    'alt.tour': 'Phần mẹo đang chỉ vào đồng hồ',
     'n15.for': 'Chỉ có ở $ Focus',
     'n15.planner': 'Lộ trình ôn thi tự động',
     'n15.planner.ph': '$ focus --kế-hoạch',
@@ -437,7 +460,7 @@
 
   function T(key, en) { return lang === 'vi' && VI.hasOwnProperty(key) ? VI[key] : en; }
 
-  var MISSING = { en: ['exams'], vi: ['sounds'] };
+  var MISSING = { en: [], vi: [] };
 
   function all(sel) { return [].slice.call(document.querySelectorAll(sel)); }
   function apply() {
